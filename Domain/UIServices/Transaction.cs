@@ -68,6 +68,7 @@ namespace SuSuerteV2.Domain.UIServices
         public SubProductoGeneral ProductSelected { get; set; }
         public RecaudoResponse listadorecaudosField { get; set; }
         public string tramite { get; set; }
+        public ResponseTokenBetplay ResponseTokenBetplay { get; set; }
 
     }
 

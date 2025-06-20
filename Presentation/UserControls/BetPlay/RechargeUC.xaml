@@ -22,30 +22,33 @@
                 Grid.Row="0">
 
 
-
-
-
                 <TextBlock 
-            x:Name="tbTimer"
-            FontSize="35"
-            Foreground="White"
-            HorizontalAlignment="Right"
-            VerticalAlignment="Top"
-            Margin="0,10,10,0" Height="56" Width="87"/>
+                x:Name="tbTimer"
+                FontSize="35"
+                Foreground="White"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,10,10,0" Height="56" Width="87"/>
 
 
+                <StackPanel Margin="10,0,842,303" 
+                     Name="btnAtras"
+                     MouseDown="UIElement_Interaction">
+                            <Image Source="{StaticResource BtnAtrasBetplay}"
+                     HorizontalAlignment="Left"                     
+                     VerticalAlignment="Top" 
+                     Height="105" 
+                     Width="109" 
+                     Margin="64,40,0,0"/>
 
-                <Grid Margin="10,0,842,303"
-                      TouchDown="Btn_AtrasTouchDown">
-                    <Image Source="/Images/Buttons/btn_atrasBetplay.png"
-                   HorizontalAlignment="Left"                     
-                   VerticalAlignment="Top" Height="105" Width="109" Margin="64,40,0,0"/>
-
-                    <Image Source="/Images/Others/txt_atras.png"
-                   HorizontalAlignment="Left"                   
-                   VerticalAlignment="Top" Height="105" Width="109" Margin="64,150,0,0"/>
-
-                </Grid>
+                    <TextBlock Text="Atrás" 
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Top"
+                     FontSize="16"
+                     FontWeight="Bold"
+                     Foreground="White"
+                     Margin="0,5,0,0"/>
+                </StackPanel>
 
 
                 <Image Source="/Images/Others/LogoBetPlay.png" 
@@ -95,85 +98,100 @@
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top" Height="38" Width="371"/>
 
-                <Image Source="/Images/Keyboard/keyboardBetplay/btn_0.png" 
-                   Margin="0,750,0,0"
-                   HorizontalAlignment="Center"
-                   TouchDown="Keyboard_TouchDown"
-                   Tag="0"
-                   VerticalAlignment="Top" Height="112" Width="112"/>
+                <!-- TECLADO NUMÉRICO -->
+                    <Image Source="/Images/Keyboard/keyboardBetplay/btn_0.png" 
+               Margin="0,750,0,0"
+               HorizontalAlignment="Center"
+               MouseDown="UIElement_Interaction"
+               Tag="0"
+               Name="btn0"
+               VerticalAlignment="Top" Height="112" Width="112"/>
 
-                <Image Source="/Images/Keyboard/keyboardBetplay/btn_1.png" 
-                   Margin="339,616,0,0"
-                   HorizontalAlignment="Left"
-                   TouchDown="Keyboard_TouchDown"
-                   Tag="1"
-                   VerticalAlignment="Top" Height="112" Width="112"/>
+                    <Image Source="/Images/Keyboard/keyboardBetplay/btn_1.png" 
+               Margin="336,616,0,0"
+               HorizontalAlignment="Left"
+               MouseDown="UIElement_Interaction"
+               Tag="1"
+               Name="btn1"
+               VerticalAlignment="Top" Height="112" Width="112"/>
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_2.png" 
-                   Margin="0,616,0,0"
-                   HorizontalAlignment="Center"
-                    TouchDown="Keyboard_TouchDown"
-                   Tag="2"
-                   VerticalAlignment="Top" Height="112" Width="112"/>
+                    <Image Source="/Images/keyboard/keyboardBetplay/btn_2.png" 
+               Margin="0,616,0,0"
+               HorizontalAlignment="Center"
+               MouseDown="UIElement_Interaction"
+               Tag="2"
+               Name="btn2"
+               VerticalAlignment="Top" Height="112" Width="112"/>
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_3.png" 
-                   Margin="629,616,339,0"
-                    TouchDown="Keyboard_TouchDown"
-                   Tag="3"
-                   VerticalAlignment="Top" Height="112" Width="112"/>
+                    <Image Source="/Images/keyboard/keyboardBetplay/btn_3.png" 
+               Margin="632,616,336,0"
+               MouseDown="UIElement_Interaction"
+               Tag="3"
+               Name="btn3"
+               VerticalAlignment="Top" Height="112" Width="112"/>
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_4.png" 
-                   Margin="339,482,0,0"
-                   HorizontalAlignment="Left"
-                    TouchDown="Keyboard_TouchDown"
-                   Tag="4"
-                   VerticalAlignment="Top" Height="112" Width="112" RenderTransformOrigin="0.5,0.616"/>
+                    <Image Source="/Images/keyboard/keyboardBetplay/btn_4.png" 
+               Margin="337,482,0,0"
+               HorizontalAlignment="Left"
+               MouseDown="UIElement_Interaction"
+               Tag="4"
+               Name="btn4"
+               VerticalAlignment="Top" Height="112" Width="112" RenderTransformOrigin="0.5,0.616"/>
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_5.png" 
-                   Margin="0,482,0,0"
-                   HorizontalAlignment="Center"
-                    TouchDown="Keyboard_TouchDown"
-                   Tag="5"
-                   VerticalAlignment="Top" Height="112" Width="112"/>
+                    <Image Source="/Images/keyboard/keyboardBetplay/btn_5.png" 
+               Margin="0,482,0,0"
+               HorizontalAlignment="Center"
+               MouseDown="UIElement_Interaction"
+               Tag="5"
+               Name="btn5"
+               VerticalAlignment="Top" Height="112" Width="112"/>
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_6.png" 
-                   Margin="629,482,339,0"
-                    TouchDown="Keyboard_TouchDown"
-                   Tag="6"
-                   VerticalAlignment="Top" Height="112"/>
+                    <Image Source="/Images/keyboard/keyboardBetplay/btn_6.png" 
+               Margin="632,482,336,0"
+               MouseDown="UIElement_Interaction"
+               Tag="6"
+               Name="btn6"
+               VerticalAlignment="Top" Height="112"/>
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_7.png" 
-                   Margin="339,354,629,0"
-                    TouchDown="Keyboard_TouchDown"
-                   Tag="7"
-                   VerticalAlignment="Top" Height="112"/>
+                    <Image Source="/Images/keyboard/keyboardBetplay/btn_7.png" 
+               Margin="336,354,632,0"
+               MouseDown="UIElement_Interaction"
+               Tag="7"
+               Name="btn7"
+               VerticalAlignment="Top" Height="112"/>
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_8.png" 
-                   Margin="0,354,0,0"
-                   HorizontalAlignment="Center"
-                   Tag="8"
-                    TouchDown="Keyboard_TouchDown"
-                   VerticalAlignment="Top" Height="112" Width="112"/>
+                    <Image Source="/Images/keyboard/keyboardBetplay/btn_8.png" 
+               Margin="488,354,0,0"
+               HorizontalAlignment="Left"
+               Tag="8"
+               Name="btn8"
+               MouseDown="UIElement_Interaction"
+               VerticalAlignment="Top" Height="112" Width="112"/>
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_9.png" 
-                   Margin="629,354,339,0"
-                   Tag="9"
-                    TouchDown="Keyboard_TouchDown"
-                   VerticalAlignment="Top" Height="112" Width="112"/>
+                    <Image Source="/Images/keyboard/keyboardBetplay/btn_9.png" 
+               Margin="632,354,336,0"
+               Tag="9"
+               Name="btn9"
+               MouseDown="UIElement_Interaction"
+               VerticalAlignment="Top" Height="112" Width="112"/>
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_borrar.png" 
-                   Margin="339,750,0,0"
-                   HorizontalAlignment="Left"
-                   TouchDown="Btn_DeleteAllTouchDown"
-                   Tag="All"                
-                   VerticalAlignment="Top" Height="112" Width="112"/>
+                    <Image Source="/Images/keyboard/keyboardBetplay/btn_borrar.png" 
+               Margin="336,750,0,0"
+               HorizontalAlignment="Left"
+               Tag="Borrar"
+               Name="btnBorrar"
+               MouseDown="UIElement_Interaction"
+               VerticalAlignment="Top" Height="112" Width="112"/>
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_volver_uno.png" 
-                   Margin="630,750,0,0"
-                   HorizontalAlignment="Left"
-                    TouchDown="Btn_DeleteTouchDown"
-                    Tag="Borrar"                 
-                   VerticalAlignment="Top" Height="112" Width="112"/>
+                    <Image Source="/Images/keyboard/keyboardBetplay/btn_volver_uno.png" 
+               Margin="634,750,0,0"
+               HorizontalAlignment="Left"
+               MouseDown="UIElement_Interaction"
+               Tag="All"
+               Name="btnVolverUno"
+               VerticalAlignment="Top" Height="112" Width="112"/>
+
+            
 
 
 
@@ -204,12 +222,12 @@
                 <Image Source="/Images/Buttons/btnCancelar.png" 
                   
                    HorizontalAlignment="Left"
-                   TouchDown="Btn_CancelarTouchDown"
+                     MouseDown="UIElement_Interaction"
                    VerticalAlignment="Top" Height="101" Width="346" Margin="129,43,0,0"/>
 
                 <Image Source="/Images/Buttons/btnContinuar.png" 
                   
-                   TouchDown="Btn_ContinuarTouchDown"
+                    MouseDown="UIElement_Interaction"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top" Height="101" Width="346" Margin="610,47,0,0"/>
 
