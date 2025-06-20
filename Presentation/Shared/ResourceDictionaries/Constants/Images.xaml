@@ -3,6 +3,9 @@
 
     <!-- Backgrounds -->
     <BitmapImage x:Key="BACKGENERIC" UriSource="pack://application:,,,/Images/Backgrounds/BgSuSuerte.png"/>
+    <BitmapImage x:Key="FONDO" UriSource="pack://application:,,,/Images/Backgrounds/back_betplay.png"/>
+    
+    
     <BitmapImage x:Key="BACKMAIN" UriSource="pack://application:,,,/Images/Backgrounds/Inicio1.png"/>
   
     

@@ -10,7 +10,7 @@
     <Viewbox Stretch="Uniform">
         <Grid Width="1080" Height="1920">
             <Grid.Background>
-                <ImageBrush ImageSource="{StaticResource BACKGENERIC}" Stretch="Uniform"/>
+                <ImageBrush ImageSource="{StaticResource FONDO}" Stretch="Uniform"/>
             </Grid.Background>
 
             <Grid.RowDefinitions>

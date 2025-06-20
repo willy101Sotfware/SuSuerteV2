@@ -37,4 +37,5 @@
   <ItemGroup>
     <ProjectReference Include="bin\Debug\net8.0-windows\DB\DB.csproj" />
   </ItemGroup>
+
 </Project>

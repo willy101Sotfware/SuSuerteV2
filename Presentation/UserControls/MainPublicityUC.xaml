@@ -6,10 +6,20 @@
              xmlns:local="clr-namespace:SuSuerteV2.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="1920" d:DesignWidth="1080">
-    
-            <Grid PreviewMouseDown="Grid_MouseDown">
-                <Grid.Background>
-                    <ImageBrush ImageSource="{StaticResource BACKMAIN}" Stretch="Uniform"/>
-                </Grid.Background>
-            </Grid>
+
+    <Grid PreviewMouseDown="Grid_MouseDown">
+        <Grid.Background>
+            <ImageBrush ImageSource="{StaticResource BACKGENERIC}" Stretch="Uniform"/>
+        </Grid.Background>
+
+        <!-- Texto grande centrado más arriba -->
+        <TextBlock Text="TOCA LA PANTALLA PARA CONTINUAR"
+                   FontSize="48"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Margin="0,0,0,150"
+                   TextWrapping="Wrap"/>
+    </Grid>
 </local:AppUserControl>

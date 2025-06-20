@@ -6,7 +6,219 @@
               xmlns:local="clr-namespace:SuSuerteV2.UserControls"
               mc:Ignorable="d" 
              d:DesignHeight="1920" d:DesignWidth="1080">
-    <Grid>
-            
-    </Grid>
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1080" Height="1920">
+            <Grid.Background>
+                <ImageBrush ImageSource="{StaticResource FONDO}" Stretch="Uniform"/>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="400" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0">
+
+
+
+
+
+                <TextBlock 
+            x:Name="tbTimer"
+            FontSize="35"
+            Foreground="White"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Margin="0,10,10,0" Height="56" Width="87"/>
+
+
+
+                <Grid Margin="10,0,842,303"
+                      TouchDown="Btn_AtrasTouchDown">
+                    <Image Source="/Images/Buttons/btn_atrasBetplay.png"
+                   HorizontalAlignment="Left"                     
+                   VerticalAlignment="Top" Height="105" Width="109" Margin="64,40,0,0"/>
+
+                    <Image Source="/Images/Others/txt_atras.png"
+                   HorizontalAlignment="Left"                   
+                   VerticalAlignment="Top" Height="105" Width="109" Margin="64,150,0,0"/>
+
+                </Grid>
+
+
+                <Image Source="/Images/Others/LogoBetPlay.png" 
+                   Margin="0,282,0,0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Height="112" Width="290"/>
+
+                <Image Source="/Images/Others/txt_ingresa_valor_recarga.png" 
+                    Margin="0,446,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Height="47" Width="612"/>
+
+
+
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="10,5,-10,395" Grid.RowSpan="2">
+
+                <Image Source="/Images/Others/txt_apuesta_minima.png" 
+                Margin="347,15,0,0"
+                Visibility="Visible"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" Height="73" Width="390"/>
+
+
+
+                <Image Source="/Images/Others/txt_dos_mil.png" 
+                   Margin="429,65,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top" Height="95" Width="226"/>
+
+                <Image Source="/Images/Others/linea_yellow_division.png" 
+                   Margin="268,168,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top" Height="47" Width="532"/>
+
+
+
+                <Image Source="/Images/Others/txt_valor_recarga.png" 
+                   Margin="0,204,0,0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Height="47" Width="388"/>
+
+                <Image Source="/Images/Others/txtingrese.png" 
+                   Margin="377,208,0,0"
+                   Visibility="Hidden"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top" Height="38" Width="371"/>
+
+                <Image Source="/Images/Keyboard/keyboardBetplay/btn_0.png" 
+                   Margin="0,750,0,0"
+                   HorizontalAlignment="Center"
+                   TouchDown="Keyboard_TouchDown"
+                   Tag="0"
+                   VerticalAlignment="Top" Height="112" Width="112"/>
+
+                <Image Source="/Images/Keyboard/keyboardBetplay/btn_1.png" 
+                   Margin="339,616,0,0"
+                   HorizontalAlignment="Left"
+                   TouchDown="Keyboard_TouchDown"
+                   Tag="1"
+                   VerticalAlignment="Top" Height="112" Width="112"/>
+
+                <Image Source="/Images/keyboard/keyboardBetplay/btn_2.png" 
+                   Margin="0,616,0,0"
+                   HorizontalAlignment="Center"
+                    TouchDown="Keyboard_TouchDown"
+                   Tag="2"
+                   VerticalAlignment="Top" Height="112" Width="112"/>
+
+                <Image Source="/Images/keyboard/keyboardBetplay/btn_3.png" 
+                   Margin="629,616,339,0"
+                    TouchDown="Keyboard_TouchDown"
+                   Tag="3"
+                   VerticalAlignment="Top" Height="112" Width="112"/>
+
+                <Image Source="/Images/keyboard/keyboardBetplay/btn_4.png" 
+                   Margin="339,482,0,0"
+                   HorizontalAlignment="Left"
+                    TouchDown="Keyboard_TouchDown"
+                   Tag="4"
+                   VerticalAlignment="Top" Height="112" Width="112" RenderTransformOrigin="0.5,0.616"/>
+
+                <Image Source="/Images/keyboard/keyboardBetplay/btn_5.png" 
+                   Margin="0,482,0,0"
+                   HorizontalAlignment="Center"
+                    TouchDown="Keyboard_TouchDown"
+                   Tag="5"
+                   VerticalAlignment="Top" Height="112" Width="112"/>
+
+                <Image Source="/Images/keyboard/keyboardBetplay/btn_6.png" 
+                   Margin="629,482,339,0"
+                    TouchDown="Keyboard_TouchDown"
+                   Tag="6"
+                   VerticalAlignment="Top" Height="112"/>
+
+                <Image Source="/Images/keyboard/keyboardBetplay/btn_7.png" 
+                   Margin="339,354,629,0"
+                    TouchDown="Keyboard_TouchDown"
+                   Tag="7"
+                   VerticalAlignment="Top" Height="112"/>
+
+                <Image Source="/Images/keyboard/keyboardBetplay/btn_8.png" 
+                   Margin="0,354,0,0"
+                   HorizontalAlignment="Center"
+                   Tag="8"
+                    TouchDown="Keyboard_TouchDown"
+                   VerticalAlignment="Top" Height="112" Width="112"/>
+
+                <Image Source="/Images/keyboard/keyboardBetplay/btn_9.png" 
+                   Margin="629,354,339,0"
+                   Tag="9"
+                    TouchDown="Keyboard_TouchDown"
+                   VerticalAlignment="Top" Height="112" Width="112"/>
+
+                <Image Source="/Images/keyboard/keyboardBetplay/btn_borrar.png" 
+                   Margin="339,750,0,0"
+                   HorizontalAlignment="Left"
+                   TouchDown="Btn_DeleteAllTouchDown"
+                   Tag="All"                
+                   VerticalAlignment="Top" Height="112" Width="112"/>
+
+                <Image Source="/Images/keyboard/keyboardBetplay/btn_volver_uno.png" 
+                   Margin="630,750,0,0"
+                   HorizontalAlignment="Left"
+                    TouchDown="Btn_DeleteTouchDown"
+                    Tag="Borrar"                 
+                   VerticalAlignment="Top" Height="112" Width="112"/>
+
+
+
+
+                <TextBox x:Name="TxtMonto"
+                       GotFocus="focusTxtvalidar"
+                       LostFocus="TxtVal_LostFocus"
+                    HorizontalAlignment="Center" 
+                     Height="58" 
+                     Text="{Binding Val,StringFormat={}{0:C0},UpdateSourceTrigger=PropertyChanged}"
+                     Margin="0,270,0,0" 
+                     TextWrapping="Wrap"
+                      TextAlignment="Center"
+                     TextChanged="txtVal_TextChanged"
+                     VerticalAlignment="Top"       
+                           IsReadOnly="true"
+                           IsReadOnlyCaretVisible="False"
+                     Width="604" FontSize="40" FontFamily="Tahoma"  RenderTransformOrigin="0.5,0.5">
+
+                </TextBox>
+
+
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+
+                <Image Source="/Images/Buttons/btnCancelar.png" 
+                  
+                   HorizontalAlignment="Left"
+                   TouchDown="Btn_CancelarTouchDown"
+                   VerticalAlignment="Top" Height="101" Width="346" Margin="129,43,0,0"/>
+
+                <Image Source="/Images/Buttons/btnContinuar.png" 
+                  
+                   TouchDown="Btn_ContinuarTouchDown"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top" Height="101" Width="346" Margin="610,47,0,0"/>
+
+                <Image Source="/Images/Others/ico_atencion_cliente.png"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Height="114" Width="710" Margin="0,247,0,0"/>
+
+            </Grid>
+
+        </Grid>
+    </Viewbox>
 </local:AppUserControl>
