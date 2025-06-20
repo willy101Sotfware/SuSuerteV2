@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:VirtualKeyboard.Wpf.Converters"
+                     xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" >
+    <converters:UppercaseTypographyConverter x:Key="UppercaseConverter"/>
+    <converters:KeyboardTypeConverter x:Key="KeyboardTypeConverter"/>
+    
+    <Style TargetType="Viewbox">
+        <Setter Property="Width" Value="{DynamicResource KeyboardIconSize}"/>
+        <Setter Property="Height" Value="{DynamicResource KeyboardIconSize}"/>
+    </Style>
+
+    <Style TargetType="Path">
+        <Setter Property="Fill" Value="{DynamicResource KeyboardForegroundBrush}"/>
+    </Style>
+
+    <RepeatButton Style="{DynamicResource KeyboardRepeatButtonStyle}" Foreground="#404040" Delay="500" Interval="50" x:Key="BackspaceButton" Command="{Binding RemoveCharacter}">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Viewbox>
+                <md:PackIcon Foreground="#404040" Kind="KeyboardBackspace"></md:PackIcon>
+            </Viewbox>
+            <TextBlock Text="Borrar" FontSize="10" Margin="0,5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#404040" />
+        </StackPanel>
+    </RepeatButton>
+
+    <Button Style="{DynamicResource KeyboardButtonStyle}" Foreground="Green" x:Key="AcceptButton" Command="{Binding Accept}">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Viewbox>
+                <Canvas Width="24" Height="24">
+                    <Path Data="M19,7V11H5.83L9.41,7.41L8,6L2,12L8,18L9.41,16.58L5.83,13H21V7H19Z" Fill="Green" />
+                </Canvas>
+            </Viewbox>
+            <TextBlock Text="Aceptar" FontSize="10" Margin="0,5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" />
+        </StackPanel>
+    </Button>
+    <Button Style="{DynamicResource KeyboardButtonStyle}" x:Key="deleteButton" Command="{Binding DeleteAll}">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Viewbox>
+                <md:PackIcon Foreground="#404040" Kind="Eraser"></md:PackIcon>
+            </Viewbox>
+            <TextBlock Text="Limpiar" FontSize="10" Margin="0,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#404040" />
+        </StackPanel>
+    </Button>
+    <Button Style="{DynamicResource KeyboardButtonStyle}"  Foreground="Red" x:Key="CancelButton" Command="{Binding Cancel}">
+        
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Viewbox>
+                <md:PackIcon Foreground="Red" Kind="CancelThick"></md:PackIcon>
+            </Viewbox>
+            <TextBlock Text="Cancelar" FontSize="10" Margin="0,5,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" />
+        </StackPanel>
+    </Button>
+    <Button Style="{DynamicResource KeyboardButtonStyle}" Foreground="#404040" x:Key="CasingButton" Command="{Binding ChangeCasing}">
+        <Viewbox>
+            <Viewbox>
+                <md:PackIcon Foreground="#404040" Kind="ArrowTopBoldBoxOutline"></md:PackIcon>
+            </Viewbox>
+        </Viewbox>
+    </Button>
+    <Button Style="{DynamicResource KeyboardButtonStyle}"  x:Key="deleteAll" Command="{Binding DeleteAll}" >
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Viewbox>
+            <md:PackIcon Foreground="#404040" Kind="Eraser"></md:PackIcon>
+        </Viewbox>
+            <TextBlock Text="Limpiar" FontSize="10" Margin="0,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#404040" />
+        </StackPanel>
+    </Button>
+    <Button Style="{DynamicResource KeyboardButtonStyle}" x:Key="aceptAll" Command="{Binding Accept}" >
+        <Viewbox>
+            <md:PackIcon Foreground="#404040" Kind="SubdirectoryArrowLeft"></md:PackIcon>
+        </Viewbox>
+    </Button>
+</ResourceDictionary>

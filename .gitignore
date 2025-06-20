@@ -1,0 +1,27 @@
+.vs/
+[Rr]elease/
+[Dd]ebug/
+bin/
+obj/
+
+# Archivos de configuración local
+*.local.config
+
+# Archivos que pueden contener secretos
+*.env
+.env
+*.secret
+secrets.json
+mailgun_key.txt
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# Archivos de usuario
+*.user
+*.suo
+*.userprefs
+*.usertasks

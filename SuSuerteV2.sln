@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuSuerteV2", "SuSuerteV2.csproj", "{3E81A70A-4A46-4167-865C-074C9140E3D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB", "bin\Debug\net8.0-windows\DB\DB.csproj", "{E06B2A45-58C2-430E-BA28-C9573858B907}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E81A70A-4A46-4167-865C-074C9140E3D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E81A70A-4A46-4167-865C-074C9140E3D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E81A70A-4A46-4167-865C-074C9140E3D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E81A70A-4A46-4167-865C-074C9140E3D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E06B2A45-58C2-430E-BA28-C9573858B907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E06B2A45-58C2-430E-BA28-C9573858B907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E06B2A45-58C2-430E-BA28-C9573858B907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E06B2A45-58C2-430E-BA28-C9573858B907}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6BA5812-A324-4AC1-90C9-9CEC8458E70A}
+	EndGlobalSection
+EndGlobal
