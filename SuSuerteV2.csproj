@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -16,6 +17,7 @@
     <PackageReference Include="MahApps.Metro" Version="2.4.10" />
     <PackageReference Include="MailKit" Version="4.12.1" />
     <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
+    <PackageReference Include="Microsoft.AspNet.SignalR.Client" Version="2.4.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.6">
       <PrivateAssets>all</PrivateAssets>
@@ -33,9 +35,24 @@
     <Resource Include="Images\**\*.png" />
     <Resource Include="Images\**\*.jpg" />
     <Resource Include="Images\**\*.gif" />
+	 <Resource Include="Images\**\*.ico" />
+	 <Resource Include="DLLS\**\*.dll" />
+    <Resource Include="DLLS\**\*.exe" />
+    <Resource Include="DLLS\**\*.json" />
+    <Resource Include="DLLS\**\*.txt" />
+	<Resource Include="DLLS\**\*.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="bin\Debug\net8.0-windows\DB\DB.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="KioskosLib">
+      <HintPath>DLLS\Datafono\KioskosLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MPOST">
+      <HintPath>DLLS\MPOST6\MPOST.dll</HintPath>
+    </Reference>
+
   </ItemGroup>
 
 </Project>
