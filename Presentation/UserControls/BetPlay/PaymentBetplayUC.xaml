@@ -264,7 +264,7 @@
                 <Image Source="/Images/Buttons/btnCancelar.png" 
       
                    HorizontalAlignment="Center"   
-                   Name="cancelar"
+                   Name="BtnCancel"
                    Visibility="{Binding ImgCancel}"
                    MouseDown="UIElement_Interaction"
                    VerticalAlignment="Top" Height="92" Width="336" Margin="0,32,0,0"/>
