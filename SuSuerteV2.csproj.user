@@ -17,6 +17,9 @@
     <Compile Update="Presentation\UserControls\ConfigUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Presentation\UserControls\ElectronicInvoiceUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Presentation\UserControls\MainPublicityUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

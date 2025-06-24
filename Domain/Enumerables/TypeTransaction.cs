@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SuSuerteV2.Domain.Enumerables
+﻿namespace SuSuerteV2.Domain.Enumerables
 {
     public enum TypeTransaction
     {
         Consulta = 1,
-        Pago,
-        Registro,
+        Pago=2,
         Abono = 8,
         Recarga = 9,
         PagoFactura = 10,
-        PagoPiscina = 11,
-
+        Payment = 3,
+        BetPlay = 5,
+        SuperChance = 57,
     }
 }

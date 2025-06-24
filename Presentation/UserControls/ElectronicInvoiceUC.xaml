@@ -1,0 +1,12 @@
+﻿<local:AppUserControl x:Class="SuSuerteV2.Presentation.UserControls.ElectronicInvoiceUC"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:local="clr-namespace:SuSuerteV2.UserControls"
+              mc:Ignorable="d" 
+             d:DesignHeight="1920" d:DesignWidth="1080">
+    <Grid>
+            
+    </Grid>
+</local:AppUserControl>

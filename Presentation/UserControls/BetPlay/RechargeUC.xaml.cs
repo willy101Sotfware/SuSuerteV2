@@ -49,6 +49,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
             InitializeComponent();
             InitializeTimer();
             InitializeComponents();
+            _ts = Transaction.Instance;
         }
 
        
@@ -309,7 +310,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                 if (Validate())
                 {
                     EventLogger.SaveLog(EventType.Info, "RechargeUC", "Ingresa a SendData", "OK");
-                    SendData();
+                    await SendData();
                 }
                 else
                 {
@@ -372,22 +373,40 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
         {
             try
             {
-                if (!string.IsNullOrEmpty(TxtMonto.Text))
+                // Verificar que _ts esté inicializado
+                if (_ts == null)
                 {
-                    string value = TxtMonto.Text.Replace("$", "").Replace(",", "");
+                    EventLogger.SaveLog(EventType.Error, "RechargeUC", "Validate", "Transaction object is null");
+                    return false;
+                }
+
+                if (!string.IsNullOrEmpty(TxtMonto.Text) && TxtMonto.Text != "Valor")
+                {
+                    string value = TxtMonto.Text.Replace("$", "").Replace(",", "").Replace(".", "");
 
                     if (decimal.TryParse(value, out decimal amount))
                     {
                         if (amount >= MONTO_MINIMO && amount <= MONTO_MAXIMO && amount % INCREMENTO_VALIDO == 0)
                         {
-                            if (_ts != null)
-                            {
-                                _ts.Total = amount;
-                            }
+                            _ts.Total = amount;
                             return true;
                         }
+                        else
+                        {
+                            EventLogger.SaveLog(EventType.Warning, "RechargeUC", "Validate",
+                                $"Amount {amount} is outside valid range ({MONTO_MINIMO}-{MONTO_MAXIMO}) or not multiple of {INCREMENTO_VALIDO}");
+                        }
+                    }
+                    else
+                    {
+                        EventLogger.SaveLog(EventType.Warning, "RechargeUC", "Validate", $"Cannot parse amount: {value}");
                     }
                 }
+                else
+                {
+                    EventLogger.SaveLog(EventType.Warning, "RechargeUC", "Validate", "Amount field is empty or contains placeholder text");
+                }
+
                 return false;
             }
             catch (Exception ex)
@@ -396,7 +415,6 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                 return false;
             }
         }
-
         /// <summary>
         /// Envía los datos de la transacción
         /// </summary>
@@ -422,21 +440,24 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                 {
                     loadModal.Close();
                     loadModal = null;
-                    EnableView();
+                    // CAMBIAR EnableView() por:
+                    await HabilitarVista(); // Usar el método correcto
                 }
                 EventLogger.SaveLog(EventType.Error, $"Ocurrió un error en tiempo de ejecución: {ex.Message}", ex);
                 _nav.ShowModal("Ocurrió un error generando la transacción, inténtelo nuevamente", new InfoModal());
             }
         }
+
         /// <summary>
         /// Consulta información de BetPlay
         /// </summary>
         private async void ConsultInforBetplay()
         {
-            _nav.ShowModal("Estamos validando los servicios, un momento por favor", new InfoModal());
-
+            ModalWindow? loadModal = null;
             try
             {
+              _nav.ShowModal("Estamos validando los servicios, un momento por favor", new InfoModal());
+
                 // Obtener token
                 var requestToken = new RequesttokenBetplay
                 {
@@ -448,6 +469,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
 
                 if (respuestaToken == null)
                 {
+                    CloseModal(loadModal);
                     ShowErrorAndNavigate("Este servicio no se encuentra disponible en este momento, intenta nuevamente.");
                     return;
                 }
@@ -465,9 +487,9 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
 
                 // Log de la respuesta
                 var serializedResponse = JsonConvert.SerializeObject(respuesta);
-                EventLogger.SaveLog(EventType.Info, "MenuUC", "BtnBetplay - Respuesta al servicio GetConsultBetplay", "OK", serializedResponse);
+                EventLogger.SaveLog(EventType.Info, "RechargeUC", "ConsultInforBetplay - Respuesta al servicio GetConsultBetplay", "OK", serializedResponse);
 
-                CloseLoadModal();
+                CloseModal(loadModal);
 
                 if (respuesta?.Estado == true)
                 {
@@ -475,7 +497,8 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                     subProductosKiosko = respuesta.Listadosubproductos.Subproducto;
                     _ts.ProductSelected = subProductosKiosko.FirstOrDefault(x => x.Nombre == "RECAUDO BETPLAY");
 
-                    // Dispatcher.Invoke(() => NavigateTo(new ValidateUC()));
+                    // ESTA ES LA LÍNEA CRÍTICA QUE ESTABA COMENTADA:
+                    Dispatcher.Invoke(() => Navigator.Instance.NavigateTo(new ValidateUC()));
                 }
                 else if (respuesta != null)
                 {
@@ -488,10 +511,31 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
             }
             catch (Exception ex)
             {
-                CloseLoadModal();
+                CloseModal(loadModal);
+                EventLogger.SaveLog(EventType.Error, "RechargeUC", "ConsultInforBetplay", ex.Message);
                 ShowErrorAndNavigate("Ocurrió un error generando la transacción, inténtelo nuevamente");
             }
         }
+
+
+
+        private void CloseModal(ModalWindow? modal)
+        {
+            try
+            {
+                if (modal != null)
+                {
+                    modal.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogError("CloseModal", ex);
+            }
+        }
+
+
+
 
         private void ShowErrorAndNavigate(string message)
         {

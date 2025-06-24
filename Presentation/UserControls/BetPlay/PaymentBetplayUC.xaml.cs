@@ -41,6 +41,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
         public PaymentBetplayUC()
         {
             InitializeComponent();
+            _ts = Transaction.Instance;
         }
         private void UIElement_Interaction(object sender, MouseButtonEventArgs e)
         {
@@ -197,6 +198,60 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
             }
         }
 
+        private async Task SavePay()
+        {
+            try
+            {
+                _paymentViewModel.IsPayCompleted = true;
+        
+                _ts.TotalIngresado = _paymentViewModel.EnteredAmount;
+                _ts.TotalDevuelta = _paymentViewModel.DispensedAmount;
+
+                SetTransactionDescription();
+
+
+                if ((_tranStateTemp == StateTransaction.Aprobada || _tranStateTemp == StateTransaction.Cancelada)
+                    && !_ts.DevueltaCorrecta)
+                {
+                    // Si el estado de transacción es aprobada o cancelada y además hay error de devuelta se cambia a su respectivo estado
+                    // CanceladoErrorDevuelta o AprobadaErrorDevuelta
+                    _ts.EstadoTransaccion = (StateTransaction)((int)_tranStateTemp + 2);
+                }
+                else
+                {
+                    _ts.EstadoTransaccion = _tranStateTemp;
+                }
+
+                Api.UpdateTransaction();
+
+                CloseLoadModal();
+
+                if (_tranStateTemp == StateTransaction.Aprobada)
+                {
+                    Navigator.Instance.NavigateTo(new ElectronicInvoiceUC());
+
+
+                    GC.Collect();
+
+                }
+              
+
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, $"Ocurrió un error en tiempo de ejecución: {ex.Message}", ex);
+                if (!_isPayCanceled)
+                {
+                    EventLogger.SaveLog(EventType.Info, "Pago cancelado por error guardando el pago");
+                    await CancelPay();
+                }
+
+                CloseLoadModal();
+                _currentLoadModal = _nav.ShowLoadModal("Ocurrió un error fatal intentando reportar los datos del pago. Por favor comuníquese con soporte técnico.");
+            }
+        }
+
+
 
         private void ReturnMoney(decimal returnValue)
         {
@@ -301,6 +356,25 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
             if (!_ts.DevueltaCorrecta)
                 _ts.Descripcion += $"Ocurrió un error durante la devolución del dinero. Cantidad faltante {_paymentViewModel.RemainingAmount.ToString("C0")}";
         }
+
+        private async Task FinishSuccessfulPay()
+        {
+            if (_paymentViewModel.EnteredAmount > 0 && _paymentViewModel.ReturnAmount > 0)
+            {
+
+                CloseLoadModal();
+                _currentLoadModal = _nav.ShowLoadModal("Pago completado con éxito devolución en curso...");
+                await Task.Delay(3000);
+                EventLogger.SaveLog(EventType.Info, $"Iniciando devuelta de {_paymentViewModel.ReturnAmount}");
+                ReturnMoney(_paymentViewModel.ReturnAmount);
+            }
+            else
+            {
+                _ts.DevueltaCorrecta = true;
+                await SavePay();
+            }
+        }
+
 
         /// <summary>
         /// Establece los callbacks del timer a null
