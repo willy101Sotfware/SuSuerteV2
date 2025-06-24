@@ -153,7 +153,7 @@ namespace SuSuerteV2.Presentation.UserControls
                                 EventLogger.SaveLog(EventType.Info, "Recaudos disponibles",
                                  $"Cantidad: {respuesta.Listadorecaudos?.Recaudo?.Count ?? 0}");
 
-                              //  Navigator.Instance.NavigateTo(new SelectCompanyUC(_ts));
+                              // Navigator.Instance.NavigateTo(new SelectCompanyUC(_ts));
                             }
                             else
                             {
@@ -213,7 +213,7 @@ namespace SuSuerteV2.Presentation.UserControls
             InhabilitarVista();
             EventLogger.SaveLog(EventType.Info, "Abriendo menú Super Astro");
             _ts.Type = ETypeTramites.Astro;
-           // NavigateTo(new ScanDocumentUC());
+            NavigateTo(new ScanDocumentUC());
         }
 
         private async void OpenChanceMenu()

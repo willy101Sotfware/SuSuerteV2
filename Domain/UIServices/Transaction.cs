@@ -47,6 +47,8 @@ namespace SuSuerteV2.Domain.UIServices
         public decimal TotalDevuelta { get; set; }
         public decimal TotalIngresado { get; set; }
 
+        public string Name { get; set; }
+
         public bool DevueltaCorrecta { get; set; }
         public ulong Transacciondistribuidorid { get; set; }
 
@@ -72,6 +74,8 @@ namespace SuSuerteV2.Domain.UIServices
         public RecaudoResponse listadorecaudosField { get; set; }
         public string tramite { get; set; }
         public ResponseTokenBetplay ResponseTokenBetplay { get; set; }
+        public PAYER Payer { get; set; }
+        public static ControlScanner ControlScanner;
 
     }
 

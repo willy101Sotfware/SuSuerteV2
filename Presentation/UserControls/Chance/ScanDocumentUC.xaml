@@ -1,0 +1,57 @@
+﻿<local:AppUserControl x:Class="SuSuerteV2.Presentation.UserControls.Chance.ScanDocumentUC"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SuSuerteV2.UserControls"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             gif:ImageBehavior.AnimateInDesignMode="True"         
+                      
+            mc:Ignorable="d" 
+            d:DesignHeight="1920" d:DesignWidth="1080">
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1080" Height="1920">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="937*"/>
+                <RowDefinition Height="23*"/>
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/Backgrounds/BgSuSuerte.png"/>
+            </Grid.Background>
+
+
+            <Image 
+            gif:ImageBehavior.AnimatedSource="/Images/Gif/Escaner.gif" 
+            gif:ImageBehavior.AnimateInDesignMode="True"
+            gif:ImageBehavior.AutoStart="True"
+                x:Name="GifLoadder" 
+                Stretch="Fill" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Center" 
+                Width="906" 
+                Height="1524" Margin="86,400,88,-4" Grid.RowSpan="2"/>
+
+
+
+            <TextBlock 
+        x:Name="tbTimer"
+        FontSize="45"
+        Foreground="White"
+        VerticalAlignment="Top"
+        Margin="477,10,477,0" Height="60"/>
+
+
+
+            <Image
+        Source="/Images/Buttons/btnatras.png"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top" Height="103" Width="92" Margin="44,30,944,0"
+        PreviewMouseDown="BtnAtras"
+    />
+
+
+
+
+        </Grid>
+    </Viewbox>
+</local:AppUserControl>

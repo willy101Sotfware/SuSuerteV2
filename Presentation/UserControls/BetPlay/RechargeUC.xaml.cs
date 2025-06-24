@@ -424,6 +424,16 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
             ModalWindow? loadModal = null;
             try
             {
+                _ts.Payer = new PAYER
+                {
+                
+                    IDENTIFICATION = _ts.Documento,
+                    NAME = _ts.Name,
+                   
+                };
+                _ts.Type = ETypeTramites.BetPlay;
+                _ts.Tipo = ETransactionType.Payment;
+
                 loadModal = _nav.ShowLoadModal(Messages.VALIDATING_INFO);
                 var tsCreated = await Api.CreateTransaction() ?? throw new Exception("No se pudo enviar la transacción");
                 if (loadModal != null)
@@ -453,7 +463,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
         /// </summary>
         private async void ConsultInforBetplay()
         {
-            ModalWindow? loadModal = null;
+           
             try
             {
               _nav.ShowModal("Estamos validando los servicios, un momento por favor", new InfoModal());
@@ -469,7 +479,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
 
                 if (respuestaToken == null)
                 {
-                    CloseModal(loadModal);
+                   CloseLoadModal();
                     ShowErrorAndNavigate("Este servicio no se encuentra disponible en este momento, intenta nuevamente.");
                     return;
                 }
@@ -489,7 +499,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                 var serializedResponse = JsonConvert.SerializeObject(respuesta);
                 EventLogger.SaveLog(EventType.Info, "RechargeUC", "ConsultInforBetplay - Respuesta al servicio GetConsultBetplay", "OK", serializedResponse);
 
-                CloseModal(loadModal);
+               CloseLoadModal();
 
                 if (respuesta?.Estado == true)
                 {
@@ -509,7 +519,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
             }
             catch (Exception ex)
             {
-                CloseModal(loadModal);
+               CloseLoadModal();
                 EventLogger.SaveLog(EventType.Error, "RechargeUC", "ConsultInforBetplay", ex.Message);
                 ShowErrorAndNavigate("Ocurrió un error generando la transacción, inténtelo nuevamente");
             }
@@ -517,20 +527,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
 
 
 
-        private void CloseModal(ModalWindow? modal)
-        {
-            try
-            {
-                if (modal != null)
-                {
-                    modal.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                LogError("CloseModal", ex);
-            }
-        }
+
 
 
 
