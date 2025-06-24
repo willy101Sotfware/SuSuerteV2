@@ -35,6 +35,8 @@ namespace SuSuerteV2.Domain.UIServices
         public TypeTransaction TipoTransaccion { get; set; }
         public TypePayment TipoPago { get; set; }
         public StateTransaction EstadoTransaccion { get; set; }
+
+        public ETransactionType Tipo { get; set; }
         public string EstadoTransaccionVerb { get; set; }
         public string? Referencia { get; set; }
         public string? Documento { get; set; }

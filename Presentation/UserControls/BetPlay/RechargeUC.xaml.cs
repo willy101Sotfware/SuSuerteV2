@@ -432,6 +432,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                     loadModal = null;
                 }
 
+
                 ConsultInforBetplay();
             }
             catch (Exception ex)
@@ -439,9 +440,8 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                 if (loadModal != null)
                 {
                     loadModal.Close();
-                    loadModal = null;
-                    // CAMBIAR EnableView() por:
-                    await HabilitarVista(); // Usar el método correcto
+
+                    await HabilitarVista(); 
                 }
                 EventLogger.SaveLog(EventType.Error, $"Ocurrió un error en tiempo de ejecución: {ex.Message}", ex);
                 _nav.ShowModal("Ocurrió un error generando la transacción, inténtelo nuevamente", new InfoModal());
@@ -495,10 +495,8 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                 {
                     _ts.Type = ETypeTramites.BetPlay;
                     subProductosKiosko = respuesta.Listadosubproductos.Subproducto;
-                    _ts.ProductSelected = subProductosKiosko.FirstOrDefault(x => x.Nombre == "RECAUDO BETPLAY");
-
-                    // ESTA ES LA LÍNEA CRÍTICA QUE ESTABA COMENTADA:
-                    Dispatcher.Invoke(() => Navigator.Instance.NavigateTo(new ValidateUC()));
+                    
+                   Navigator.Instance.NavigateTo(new ValidateUC());
                 }
                 else if (respuesta != null)
                 {

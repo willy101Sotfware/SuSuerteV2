@@ -3,12 +3,15 @@
     public enum TypeTransaction
     {
         Consulta = 1,
-        Pago=2,
-        Abono = 8,
-        Recarga = 9,
+       	Pago=2,
+        Retiro = 3,
+        Consignacion = 4,
+        Reconsignacion = 5,
+        EstudioCredito = 6,
+        Registro = 7,
+        AbonoFactura = 8,
+        RecargaPrepago = 9,
         PagoFactura = 10,
-        Payment = 3,
-        BetPlay = 5,
-        SuperChance = 57,
+        BetPlay = 11,
     }
 }
