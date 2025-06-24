@@ -19,6 +19,7 @@ namespace SuSuerteV2.Domain.ApiService
         private static string? _token;
         private static RequestQueue _requestsQueue;
 
+        public static ControlScanner ControlScanner;
         static Api()
         {
             _baseAddress = AppConfig.Get("apiBaseAddress");

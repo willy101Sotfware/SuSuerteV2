@@ -1,6 +1,7 @@
 ﻿using SuSuerteV2.Domain.ApiService.IntegrationModels;
 using SuSuerteV2.Domain.ApiService.Models;
 using SuSuerteV2.Domain.Enumerables;
+using System.ComponentModel;
 using System.Windows.Media.Imaging;
 
 namespace SuSuerteV2.Domain.UIServices
@@ -75,7 +76,29 @@ namespace SuSuerteV2.Domain.UIServices
         public string tramite { get; set; }
         public ResponseTokenBetplay ResponseTokenBetplay { get; set; }
         public PAYER Payer { get; set; }
-        public static ControlScanner ControlScanner;
+
+
+
+        private UserDataChance _userData { get; set; }
+        public UserDataChance UserData
+        {
+            get
+            {
+                return _userData;
+            }
+            set
+            {
+                _userData = value;
+                OnPropertyRaised(nameof(UserData));
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyRaised(string propertyname)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
+        }
+
 
     }
 

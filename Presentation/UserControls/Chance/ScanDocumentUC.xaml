@@ -21,9 +21,9 @@
 
 
             <Image 
-            gif:ImageBehavior.AnimatedSource="/Images/Gif/Escaner.gif" 
-            gif:ImageBehavior.AnimateInDesignMode="True"
-            gif:ImageBehavior.AutoStart="True"
+                gif:ImageBehavior.AnimatedSource="/Images/Gif/Escaner.gif" 
+                gif:ImageBehavior.AnimateInDesignMode="True"
+                gif:ImageBehavior.AutoStart="True"
                 x:Name="GifLoadder" 
                 Stretch="Fill" 
                 VerticalAlignment="Top" 
@@ -34,20 +34,20 @@
 
 
             <TextBlock 
-        x:Name="tbTimer"
-        FontSize="45"
-        Foreground="White"
-        VerticalAlignment="Top"
-        Margin="477,10,477,0" Height="60"/>
+                x:Name="tbTimer"
+                FontSize="45"
+                Foreground="White"
+                VerticalAlignment="Top"
+                Margin="477,10,477,0" Height="60"/>
 
 
 
             <Image
-        Source="/Images/Buttons/btnatras.png"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Top" Height="103" Width="92" Margin="44,30,944,0"
-        PreviewMouseDown="BtnAtras"
-    />
+                Source="/Images/Buttons/btnatras.png"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top" Height="103" Width="92" Margin="44,30,944,0"
+                PreviewMouseDown="BtnAtras"
+             />
 
 
 

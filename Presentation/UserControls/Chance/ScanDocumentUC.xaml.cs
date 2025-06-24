@@ -1,7 +1,9 @@
 ﻿using SuSuerteV2.Domain.ApiService;
+using SuSuerteV2.Domain.ApiService.Models;
+using SuSuerteV2.Domain.Enumerables;
 using SuSuerteV2.Domain.UIServices;
-using SuSuerteV2.Modals;
 using SuSuerteV2.UserControls;
+using System.Globalization;
 
 namespace SuSuerteV2.Presentation.UserControls.Chance
 {
@@ -10,7 +12,9 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
     /// </summary>
     public partial class ScanDocumentUC : AppUserControl
     {
-        public Transaction _ts;
+        private Transaction _ts;
+
+        private ControlScanner  _Cs;
         public ScanDocumentUC()
         {
             InitializeComponent();
@@ -19,12 +23,12 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             ActivateScanner();
         }
 
-        private void ActivateScanner()
+           private void ActivateScanner()
         {
             try
             {
 
-                ApiIntegration.ControlScanner.callbackOut = Data =>
+                Api.ControlScanner.callbackOut = Data =>
                 {
 
 
@@ -48,13 +52,13 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
 
                     usuario.FechaNacimiento = fechaFormateada;
 
-                    ts.Document = usuario.NumIdentificacion;
-                    ts.Name = $"{usuario.PrimerNombre} {usuario.PrimerApellido}".ToCapitalized();
+                    _ts.Documento = usuario.NumIdentificacion;
+                    _ts.Name = $"{usuario.PrimerNombre} {usuario.PrimerApellido}".ToCapitalized();
 
                     // Hacer peticion para averiguar si el usuario está registrado
 
-                    ts.UserData = usuario;
-                    AdminPayPlus.ControlScanner.ClosePortScanner();
+                    _ts.UserData = usuario;
+                    Api.ControlScanner.ClosePortScanner();
 
                     // Calcular la edad comparando las fechas de nacimiento y actual
                     int edad = DateTime.Now.Year - fecha.Year;
@@ -68,7 +72,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                         SetCallBacksNull();
                         timer.CallBackStop?.Invoke(1);
 
-                        Utilities.ShowModal("Menores de edad no están permitidos.", EModalType.Error, true);
+                        Utilities.ShowModal("Menores de edad no están permitidos.", EModalType.Error,true);
                         Utilities.navigator.Navigate(UserControlView.Menu);
                         return;
                     }
@@ -98,7 +102,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                         TipoIdentificacion = ETypeIdentification.Cedula,
                         NumIdentificacion = datos[0],
                         PrimerNombre = datos[3],
-                        SegundoNombre = datos[4],
+                        SegundoNombre= datos[4],
                         PrimerApellido = datos[1],
                         SegundoApellido = datos[2],
                         FechaNacimiento = datos[6],
@@ -112,7 +116,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
 
                     // Hacer peticion para averiguar si el usuario está registrado
 
-                    ts.UserData = usuario;
+                    ts.UserData= usuario;
                     AdminPayPlus.ControlScanner.ClosePortScanner();
                     DateTime fecha = DateTime.ParseExact(usuario.FechaNacimiento, "ddMMyyyy", CultureInfo.InvariantCulture);
                     // Calcular la edad comparando las fechas de nacimiento y actual
@@ -127,7 +131,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                         SetCallBacksNull();
                         timer.CallBackStop?.Invoke(1);
 
-                        Utilities.ShowModal("Menores de edad no están permitidos.", EModalType.Error, true);
+                        Utilities.ShowModal("Menores de edad no están permitidos.", EModalType.Error,true);
                         Utilities.navigator.Navigate(UserControlView.Menu);
                         return;
                     }
@@ -146,7 +150,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
 
                     Dispatcher.BeginInvoke((Action)delegate
                     {
-                        Utilities.ShowModal(Error, EModalType.Error, true);
+                        Utilities.ShowModal(Error, EModalType.Error,true);
                         ActivateScanner();
                     });
                 };
@@ -160,7 +164,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                 SetCallBacksNull();
                 timer.CallBackStop?.Invoke(1);
                 AdminPayPlus.ControlScanner.ClosePortScanner();
-                AdminPayPlus.SaveLog(ex.Message + "   " + ex.StackTrace);
+                AdminPayPlus.SaveLog(ex.Message + "   "  + ex.StackTrace);
                 Utilities.ShowModal("Ocurrió un error activando el scanner, por favor intente mas tarde", EModalType.Error, true);
                 Utilities.navigator.Navigate(UserControlView.Menu);
             }
