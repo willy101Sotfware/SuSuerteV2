@@ -24,7 +24,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
     /// </summary>
     public partial class RechargeUC : AppUserControl
     {
-        #region Constantes
+     
         private const string TIMER_INICIAL = "01:00";
         private const int ANIMATION_DELAY = 150;
         private const double SCALE_PRESSED = 0.95;
@@ -33,19 +33,17 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
         private const decimal MONTO_MAXIMO = 500000;
         private const decimal INCREMENTO_VALIDO = 100;
     
-        #endregion
+   
 
-        #region Propiedades Privadas
+     
         private TimerGeneric _timer;
         private DispatcherTimer _animationTimer;
         private Transaction _ts;
-        private ApiIntegration _apiIntegration = new ();
         private ModalWindow? _currentLoadModal = null;
         private List<SubProductoGeneral> subProductosKiosko;
         private Navigator _nav = Navigator.Instance;
-        #endregion
+ 
 
-        #region Constructor
         public RechargeUC()
         {
             InitializeComponent();
@@ -54,7 +52,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
         }
 
        
-        #endregion
+
 
         #region Eventos de Interacción
         /// <summary>
@@ -477,7 +475,6 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                     subProductosKiosko = respuesta.Listadosubproductos.Subproducto;
                     _ts.ProductSelected = subProductosKiosko.FirstOrDefault(x => x.Nombre == "RECAUDO BETPLAY");
 
-                    // Uncomment when ready to navigate
                     // Dispatcher.Invoke(() => NavigateTo(new ValidateUC()));
                 }
                 else if (respuesta != null)

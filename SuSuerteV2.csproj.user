@@ -8,6 +8,9 @@
     <Compile Update="Presentation\UserControls\BetPlay\RechargeUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Presentation\UserControls\BetPlay\ValidateUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Presentation\UserControls\ConfigUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

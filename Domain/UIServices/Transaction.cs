@@ -46,6 +46,7 @@ namespace SuSuerteV2.Domain.UIServices
         public decimal TotalIngresado { get; set; }
 
         public bool DevueltaCorrecta { get; set; }
+        public ulong Transacciondistribuidorid { get; set; }
 
         public ETypeTramites Type { get; set; }
         public ResponseNotifyPayment ResponseNotifyPayment { get; set; }

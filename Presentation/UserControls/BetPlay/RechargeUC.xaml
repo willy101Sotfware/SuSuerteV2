@@ -34,7 +34,7 @@
                 <StackPanel Margin="10,0,842,303" 
                      Name="btnAtras"
                      MouseDown="UIElement_Interaction">
-                            <Image Source="{StaticResource BtnAtrasBetplay}"
+                     <Image Source="{StaticResource BtnAtrasBetplay}"
                      HorizontalAlignment="Left"                     
                      VerticalAlignment="Top" 
                      Height="105" 
@@ -191,14 +191,10 @@
                Name="btnVolverUno"
                VerticalAlignment="Top" Height="112" Width="112"/>
 
-            
-
-
-
 
                 <TextBox x:Name="TxtMonto"
-                       GotFocus="focusTxtvalidar"
-                       LostFocus="TxtVal_LostFocus"
+                    GotFocus="focusTxtvalidar"
+                    LostFocus="TxtVal_LostFocus"
                     HorizontalAlignment="Center" 
                      Height="58" 
                      Text="{Binding Val,StringFormat={}{0:C0},UpdateSourceTrigger=PropertyChanged}"
