@@ -17,8 +17,8 @@ namespace SuSuerteV2.Presentation.UserControls
 {
     public partial class MenuUC : AppUserControl
     {
-        private Transaction _ts;
-        private Task consultarProductos;
+        private readonly Transaction _ts;
+        private readonly Task consultarProductos;
         private List<SubProductoGeneral> subProductosKiosko;
     
 

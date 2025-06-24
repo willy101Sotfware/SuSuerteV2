@@ -266,7 +266,7 @@
                    HorizontalAlignment="Center"   
                    Name="cancelar"
                    Visibility="{Binding ImgCancel}"
-                   TouchDown="Btn_CancelarTouchDown"
+                   MouseDown="UIElement_Interaction"
                    VerticalAlignment="Top" Height="92" Width="336" Margin="0,32,0,0"/>
 
                 <Image Source="/Images/Others/ico_atencion_cliente.png"
