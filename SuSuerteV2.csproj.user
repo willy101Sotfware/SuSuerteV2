@@ -5,6 +5,9 @@
     <Compile Update="Presentation\UserControls\BetPlay\LoginUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Presentation\UserControls\BetPlay\PaymentBetplayUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Presentation\UserControls\BetPlay\RechargeUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

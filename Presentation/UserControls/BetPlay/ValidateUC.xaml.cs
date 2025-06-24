@@ -215,9 +215,9 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
 
                     _ts.ResponseTokenBetplay = RespuestaToken;
 
-                    //Navigator.Instance.NavigateTo(new PaymentBetplayUC());
+                    Navigator.Instance.NavigateTo(new PaymentBetplayUC());
 
-                  
+
 
                 }
                 else
