@@ -79,7 +79,10 @@ namespace SuSuerteV2.Domain.UIServices
         public ResponseTokenBetplay ResponseTokenBetplay { get; set; }
         public PAYER Payer { get; set; }
         public ResponseConsultarCRMRegistro ResponseConsultarCRMRegistro { get; set; }
-
+        public string NombreLoteria { get; set; }
+        public string CodigoLoteria { get; set; }
+        public string NumeroApostadoAstro { get; set; }
+        public int ValorApostadoAstro { get; set; }
 
 
         private UserDataChance _userData { get; set; }

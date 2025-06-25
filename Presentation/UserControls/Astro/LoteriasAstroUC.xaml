@@ -1,0 +1,113 @@
+﻿<local:AppUserControl x:Class="SuSuerteV2.Presentation.UserControls.Astro.LoteriasAstroUC"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:local="clr-namespace:SuSuerteV2.UserControls"
+                      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                      mc:Ignorable="d"
+                      d:DesignHeight="1920" d:DesignWidth="1080">
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1080" Height="1920">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/Backgrounds/BgSuSuerte.png"/>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="400" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0">
+
+                <Grid Margin="10,0,842,303"
+                      TouchDown="Btn_AtrasTouchDown">
+                    <Image Source="/Images/Buttons/btn_atrasBetplay.png"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top" Height="105" Width="109" Margin="64,40,0,0"/>
+
+                    <Image Source="/Images/Others/txt_atras.png"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top" Height="105" Width="109" Margin="64,150,0,0"/>
+
+                </Grid>
+
+
+
+                <TextBlock
+                    x:Name="tbTimer"
+                    FontSize="35"
+                    Foreground="White"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top" Height="53" Width="89"/>
+
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="10,5,-10,395" Grid.RowSpan="2">
+
+
+
+                <Image Source="/Images/Others/txt_selecciona_loteria.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top" Height="105" Width="532"/>
+
+                <Image Source="/Images/Buttons/loteria_astro_sol.png"
+                       HorizontalAlignment="Left"
+                       Tag="Sol"
+                       x:Name="Sol"
+                       TouchDown="SeleccionarOpcion"
+                       VerticalAlignment="Top" Height="319" Width="236" Margin="224,200,0,0"/>
+
+                <TextBox
+                    x:Name="loteriasol"
+                    Visibility="Hidden"
+                    Margin="190,524,586,370"
+                    Text="Esta lotería se encuentra cerrada en este momento"
+                    FontSize="30"
+                    IsReadOnly="True"
+                    IsEnabled="false"
+                    BorderBrush="Transparent"
+                    Foreground="Red"
+                    Background="Transparent"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center"
+                    />
+
+                <Image Source="/Images/Buttons/loteria_astro_luna.png"
+                       HorizontalAlignment="Left"
+                       TouchDown="SeleccionarOpcion"
+                       x:Name="Luna"
+                       Tag="Luna"
+                       VerticalAlignment="Top" Height="356" Width="236" Margin="602,200,0,0"/>
+
+
+                <TextBox
+                    x:Name="loteriaLuna"
+                    Visibility="Hidden"
+                    Margin="568,524,208,334"
+                    Text="Esta lotería se encuentra cerrada en este momento"
+                    FontSize="30"
+                    IsReadOnly="True"
+                    IsEnabled="True"
+                    BorderBrush="Transparent"
+                    Foreground="Red"
+                    Background="Transparent"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center"
+                    />
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+
+
+
+                <Image Source="/Images/Others/ico_atencion_cliente.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top" Height="114" Width="710" Margin="0,247,0,0"/>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</local:AppUserControl>

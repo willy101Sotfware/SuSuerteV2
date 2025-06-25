@@ -517,7 +517,84 @@ namespace SuSuerteV2.Domain.ApiService
             return null;
         }
 
+        public async Task<ResponseGetOTP> GetOTP(RequestGetOTP request)
+        {
+            try
+            {
 
+                string controller = AppConfig.Get("GetOTP");
+
+                _baseAddress = AppConfig.Get("basseAddressIntegration");
+                var response = await GetRequestData<ResponseGeneric>(controller);
+
+
+                if (response != null)
+                {
+                    var x = JsonConvert.SerializeObject(response.data);
+
+                    EventLogger.SaveLog(EventType.Info, "ApiIntegration", "Response OTP: ", x);
+                 
+
+                    response.data = response.data.ToString().Replace(@"\", "");
+                    EventLogger.SaveLog(EventType.Info, "ApiIntegration", "Response OTP2: ", response.data.ToString());
+
+                
+
+                    var requestData = JsonConvert.DeserializeObject<ResponseGetOTP>(response.data.ToString());
+
+
+
+                    return requestData;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, "ApiIntegration", "Response Service GetOTP Catch", ex.Message);
+             
+            }
+
+            return null;
+        }
+
+        public async Task<ResponseVOTP> ValidateOTP(RequestVTOP request)
+        {
+            try
+            {
+
+                string controller = AppConfig.Get("ValidateOTP");
+
+                _baseAddress = AppConfig.Get("basseAddressIntegration");
+
+                var response = await GetRequestData<ResponseGeneric>(controller);
+
+                if (response != null)
+                {
+                    var x = JsonConvert.SerializeObject(response.data);
+
+                    EventLogger.SaveLog(EventType.Info, "ApiIntegration", "Response Validate OTP: ",response.data.ToString());    
+                  
+                    EventLogger.SaveLog(EventType.Info, "ApiIntegration", "Response Validate OTP X deserealizer: ", x);
+               
+
+                    var requestData = JsonConvert.DeserializeObject<ResponseVOTP>(response.data.ToString());
+
+
+
+                    return requestData;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, "ApiIntegration", "Response Service ValidateOTP Catch", ex.Message);
+                
+            }
+
+            return null;
+        }
 
         public static async Task<ResponseGetRecaudo> GetRecaudos(RequestGetRecaudos request)
         {
@@ -567,6 +644,35 @@ namespace SuSuerteV2.Domain.ApiService
             catch (Exception ex)
             {
                 EventLogger.SaveLog(EventType.Error, $"Error en GetParameters: {ex.Message}");
+            }
+            return null;
+        }
+
+        public async Task<ResponseConsultarSignos> ConsultarSigno(RequestConsultarSorteo Machine)
+        {
+            try
+            {
+                string controller = AppConfig.Get("Consultarsigno");
+
+                _baseAddress = AppConfig.Get("basseAddressIntegration");
+
+                var response = await GetRequestData<ResponseGeneric>(controller);
+
+                if (response != null)
+                {
+                    var x = JsonConvert.SerializeObject(response.data);
+
+                    var requestData = JsonConvert.DeserializeObject<ResponseConsultarSignos>(x);
+
+                    EventLogger.SaveLog(EventType.Info,"ApiIntegration", "Respuesta al metodo ConsultarSorteo", "OK", x);
+
+                    return requestData;
+                }
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, "ApiIntegration", "Response Service ConsultarSorteo Catch", ex.Message);
+              
             }
             return null;
         }

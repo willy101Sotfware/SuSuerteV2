@@ -23,9 +23,9 @@
         <Setter Property="FontFamily" Value="Arial" />
         <Setter Property="FontWeight" Value="Bold" />
     </Style>
-    
-    
-    
+
+
+
 
     <Style
         x:Key="KeyboardRepeatButtonStyle"

@@ -1,116 +1,115 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- Backgrounds -->
-    <BitmapImage x:Key="BACKGENERIC" UriSource="pack://application:,,,/Images/Backgrounds/BgSuSuerte.png"/>
-    <BitmapImage x:Key="FONDO" UriSource="pack://application:,,,/Images/Backgrounds/back_betplay.png"/>
-    
-    
-    <BitmapImage x:Key="BACKMAIN" UriSource="pack://application:,,,/Images/Backgrounds/Inicio1.png"/>
-  
-    
-
-    <BitmapImage x:Key="BgNoSelectDia" UriSource="pack://application:,,,/Images/Backgrounds/BgNoSelectDia.png"/>
-    <BitmapImage x:Key="BgSelectDia" UriSource="pack://application:,,,/Images/Backgrounds/BgSelectDia.png"/>
-
-  
-    <BitmapImage x:Key="BgValueA2" UriSource="pack://application:,,,/Images/Backgrounds/BgValueA2.png"/>
-
-    <BitmapImage x:Key="BgValor" UriSource="pack://application:,,,/Images/Backgrounds/BgValor.png"/>
-    <BitmapImage x:Key="BgValueA" UriSource="pack://application:,,,/Images/Backgrounds/BgValueA.png"/>
-
-    <BitmapImage x:Key="BgRegistro" UriSource="pack://application:,,,/Images/Backgrounds/BgRegistro.png"/>
-    <BitmapImage x:Key="BgNums" UriSource="pack://application:,,,/Images/Backgrounds/BgNums.png"/>
-    <BitmapImage x:Key="BgGray" UriSource="pack://application:,,,/Images/Backgrounds/BgGray.png"/>
-
-    <!-- Buttons -->
-    <BitmapImage x:Key="BtnAtras" UriSource="pack://application:,,,/Images/Buttons/BtnAtras.png"/>
-  
-    <BitmapImage x:Key="BtnCancelar" UriSource="pack://application:,,,/Images/Buttons/BtnCancelar.png"/>
-    <BitmapImage x:Key="BtnContinuar" UriSource="pack://application:,,,/Images/Buttons/BtnContinuar.png"/>
+    <!--  Backgrounds  -->
+    <BitmapImage x:Key="BACKGENERIC" UriSource="pack://application:,,,/Images/Backgrounds/BgSuSuerte.png" />
+    <BitmapImage x:Key="FONDO" UriSource="pack://application:,,,/Images/Backgrounds/back_betplay.png" />
 
 
- 
-    <BitmapImage x:Key="BtnVirgo" UriSource="pack://application:,,,/Images/Buttons/virgo.png"/>
-    <BitmapImage x:Key="BtnVirgoSelec" UriSource="pack://application:,,,/Images/Buttons/virgo_selec.png"/>
-    <BitmapImage x:Key="BtnTauro" UriSource="pack://application:,,,/Images/Buttons/tauro.png"/>
-    <BitmapImage x:Key="BtnTauroSelec" UriSource="pack://application:,,,/Images/Buttons/tauro_selec.png"/>
-    <BitmapImage x:Key="BtnSagitario" UriSource="pack://application:,,,/Images/Buttons/sagitario.png"/>
-    <BitmapImage x:Key="BtnSagitarioSelec" UriSource="pack://application:,,,/Images/Buttons/sagitario_selec.png"/>
-    <BitmapImage x:Key="BtnPiscis" UriSource="pack://application:,,,/Images/Buttons/piscis.png"/>
-    <BitmapImage x:Key="BtnPiscisSelec" UriSource="pack://application:,,,/Images/Buttons/piscis_selec.png"/>
-    <BitmapImage x:Key="BtnLibra" UriSource="pack://application:,,,/Images/Buttons/libra.png"/>
-    <BitmapImage x:Key="BtnLibraSelec" UriSource="pack://application:,,,/Images/Buttons/libra_selec.png"/>
-    <BitmapImage x:Key="BtnLeo" UriSource="pack://application:,,,/Images/Buttons/leo.png"/>
-    <BitmapImage x:Key="BtnLeoSelec" UriSource="pack://application:,,,/Images/Buttons/leo_selec.png"/>
-    <BitmapImage x:Key="BtnGeminis" UriSource="pack://application:,,,/Images/Buttons/geminis.png"/>
-    <BitmapImage x:Key="BtnGeminisBlue" UriSource="pack://application:,,,/Images/Buttons/geminis_blue.png"/>
-    <BitmapImage x:Key="BtnEscorpion" UriSource="pack://application:,,,/Images/Buttons/escorpion.png"/>
-    <BitmapImage x:Key="BtnEscorpionSelec" UriSource="pack://application:,,,/Images/Buttons/escorpion_selec.png"/>
-    <BitmapImage x:Key="BtnCapricornio" UriSource="pack://application:,,,/Images/Buttons/capricornio.png"/>
-    <BitmapImage x:Key="BtnCapricornioSelec" UriSource="pack://application:,,,/Images/Buttons/capricornio_selec.png"/>
-    <BitmapImage x:Key="BtnCancer" UriSource="pack://application:,,,/Images/Buttons/cancer.png"/>
-    <BitmapImage x:Key="BtnCancerSelec" UriSource="pack://application:,,,/Images/Buttons/cancer_selec.png"/>
-    <BitmapImage x:Key="BtnAries" UriSource="pack://application:,,,/Images/Buttons/aries.png"/>
-    <BitmapImage x:Key="BtnAriesSelec" UriSource="pack://application:,,,/Images/Buttons/aries_selec.png"/>
-    <BitmapImage x:Key="BtnAcuario" UriSource="pack://application:,,,/Images/Buttons/acuario.png"/>
-    <BitmapImage x:Key="BtnAcuarioSelec" UriSource="pack://application:,,,/Images/Buttons/acuario_selec.png"/>
-    <BitmapImage x:Key="BtnNumeroAleatorio" UriSource="pack://application:,,,/Images/Buttons/BtnNumeroAleatorio.png"/>
-    <BitmapImage x:Key="BtnNumeroAleatorio2" UriSource="pack://application:,,,/Images/Buttons/BtnNumeroAleatorio2.png"/>
-    <BitmapImage x:Key="BtnSi" UriSource="pack://application:,,,/Images/Buttons/BtnSi.png"/>
-    <BitmapImage x:Key="BtnNo" UriSource="pack://application:,,,/Images/Buttons/BtnNo.png"/>
-    <BitmapImage x:Key="BtnEditar" UriSource="pack://application:,,,/Images/Buttons/BtnEditar.png"/>
-    <BitmapImage x:Key="BtnConfirmarA" UriSource="pack://application:,,,/Images/Buttons/BtnConfirmarA.png"/>
-    <BitmapImage x:Key="BtnConfirmarA2" UriSource="pack://application:,,,/Images/Buttons/BtnConfirmarA2.png"/>
-    <BitmapImage x:Key="BtnCancelarA" UriSource="pack://application:,,,/Images/Buttons/BtnCancelarA.png"/>
-    <BitmapImage x:Key="BotonPaquetes" UriSource="pack://application:,,,/Images/Buttons/BotonPaquetes.png"/>
-    <BitmapImage x:Key="BtnAgregar" UriSource="pack://application:,,,/Images/Buttons/BtnAgregar.png"/>
-    <BitmapImage x:Key="BtnServicioInternet" UriSource="pack://application:,,,/Images/Buttons/btn_servicio_internet.png"/>
-    <BitmapImage x:Key="BtnRecaudosSalud" UriSource="pack://application:,,,/Images/Buttons/btn_reacudos_salud.png"/>
-    <BitmapImage x:Key="BtnRecargaBetplay" UriSource="pack://application:,,,/Images/Buttons/btn_recarga_betplay.png"/>
-    <BitmapImage x:Key="BtnOtrosServicios" UriSource="pack://application:,,,/Images/Buttons/btn_otros_servicios.png"/>
-    <BitmapImage x:Key="BtnPropiedadesHorizontales" UriSource="pack://application:,,,/Images/Buttons/btn_propiedades_horizontales.png"/>
-    <BitmapImage x:Key="BtnFacturaServicios" UriSource="pack://application:,,,/Images/Buttons/btn_factura_sevicios.png"/>
-    <BitmapImage x:Key="BtnFunerarias" UriSource="pack://application:,,,/Images/Buttons/btn_funerarias.png"/>
-    <BitmapImage x:Key="BtnCooperativas" UriSource="pack://application:,,,/Images/Buttons/btn_cooperativas.png"/>
-    <BitmapImage x:Key="BtnCuentasCredito" UriSource="pack://application:,,,/Images/Buttons/btn_cuitas_credito.png"/>
-    <BitmapImage x:Key="BtnRecaudo" UriSource="pack://application:,,,/Images/Buttons/btnRecaudo.png"/>
-    <BitmapImage x:Key="BtnAtrasBetplay" UriSource="pack://application:,,,/Images/Buttons/btn_atrasBetplay.png"/>
-    <BitmapImage x:Key="BtnChance" UriSource="pack://application:,,,/Images/Buttons/btnChance.png"/>
-    <BitmapImage x:Key="BtnSRecarga" UriSource="pack://application:,,,/Images/Buttons/s_btn_recargas.png"/>
-
-
-    <!-- Others --> 
-
-    <BitmapImage x:Key="BtnSuperAstro" UriSource="pack://application:,,,/Images/Others/btn_super_astro.png"/>
-    <BitmapImage x:Key="BtnElMejorChance" UriSource="pack://application:,,,/Images/Others/txtElMejorChance.png"/>
-    <BitmapImage x:Key="TxtElMejorChance" UriSource="pack://application:,,,/Images/Others/imgInfo.png"/>
-    <BitmapImage x:Key="Txt_Atras" UriSource="pack://application:,,,/Images/Others/txt_atras.png"/>
-    <BitmapImage x:Key="TxtEresUsuario" UriSource="pack://application:,,,/Images/Others/ txt_si_ya_eres_usuario.png"/>
- 
+    <BitmapImage x:Key="BACKMAIN" UriSource="pack://application:,,,/Images/Backgrounds/Inicio1.png" />
 
 
 
-    <!-- Loterias -->
-    <BitmapImage x:Key="AstroLuna" UriSource="pack://application:,,,/Images/Loterias/ASTRO LUNA.png"/>
-    <BitmapImage x:Key="AstroSol" UriSource="pack://application:,,,/Images/Loterias/ASTRO SOL.png"/>
+    <BitmapImage x:Key="BgNoSelectDia" UriSource="pack://application:,,,/Images/Backgrounds/BgNoSelectDia.png" />
+    <BitmapImage x:Key="BgSelectDia" UriSource="pack://application:,,,/Images/Backgrounds/BgSelectDia.png" />
 
 
-    <!-- LoteriasS -->
-  
-    <BitmapImage x:Key="LoteriasSValle" UriSource="pack://application:,,,/Images/LoteriasS/VALLE.png"/>
+    <BitmapImage x:Key="BgValueA2" UriSource="pack://application:,,,/Images/Backgrounds/BgValueA2.png" />
+
+    <BitmapImage x:Key="BgValor" UriSource="pack://application:,,,/Images/Backgrounds/BgValor.png" />
+    <BitmapImage x:Key="BgValueA" UriSource="pack://application:,,,/Images/Backgrounds/BgValueA.png" />
+
+    <BitmapImage x:Key="BgRegistro" UriSource="pack://application:,,,/Images/Backgrounds/BgRegistro.png" />
+    <BitmapImage x:Key="BgNums" UriSource="pack://application:,,,/Images/Backgrounds/BgNums.png" />
+    <BitmapImage x:Key="BgGray" UriSource="pack://application:,,,/Images/Backgrounds/BgGray.png" />
+
+    <!--  Buttons  -->
+    <BitmapImage x:Key="BtnAtras" UriSource="pack://application:,,,/Images/Buttons/BtnAtras.png" />
+
+    <BitmapImage x:Key="BtnCancelar" UriSource="pack://application:,,,/Images/Buttons/BtnCancelar.png" />
+    <BitmapImage x:Key="BtnContinuar" UriSource="pack://application:,,,/Images/Buttons/BtnContinuar.png" />
 
 
-    <!-- Keyboard -->
-    <BitmapImage x:Key="KeyboardAzul" UriSource="pack://application:,,,/Images/Keyboard/Azul.png"/>
- 
 
-    <!-- Gifs -->
-    <BitmapImage x:Key="GifLoad" UriSource="pack://application:,,,/Images/Gif/Load.gif"/>
-    <BitmapImage x:Key="GifEscanerCedula" UriSource="pack://application:,,,/Images/Gif/escanerCedula.gif"/>
-    <BitmapImage x:Key="GifEscaner" UriSource="pack://application:,,,/Images/Gif/Escaner.gif"/>
+    <BitmapImage x:Key="BtnVirgo" UriSource="pack://application:,,,/Images/Buttons/virgo.png" />
+    <BitmapImage x:Key="BtnVirgoSelec" UriSource="pack://application:,,,/Images/Buttons/virgo_selec.png" />
+    <BitmapImage x:Key="BtnTauro" UriSource="pack://application:,,,/Images/Buttons/tauro.png" />
+    <BitmapImage x:Key="BtnTauroSelec" UriSource="pack://application:,,,/Images/Buttons/tauro_selec.png" />
+    <BitmapImage x:Key="BtnSagitario" UriSource="pack://application:,,,/Images/Buttons/sagitario.png" />
+    <BitmapImage x:Key="BtnSagitarioSelec" UriSource="pack://application:,,,/Images/Buttons/sagitario_selec.png" />
+    <BitmapImage x:Key="BtnPiscis" UriSource="pack://application:,,,/Images/Buttons/piscis.png" />
+    <BitmapImage x:Key="BtnPiscisSelec" UriSource="pack://application:,,,/Images/Buttons/piscis_selec.png" />
+    <BitmapImage x:Key="BtnLibra" UriSource="pack://application:,,,/Images/Buttons/libra.png" />
+    <BitmapImage x:Key="BtnLibraSelec" UriSource="pack://application:,,,/Images/Buttons/libra_selec.png" />
+    <BitmapImage x:Key="BtnLeo" UriSource="pack://application:,,,/Images/Buttons/leo.png" />
+    <BitmapImage x:Key="BtnLeoSelec" UriSource="pack://application:,,,/Images/Buttons/leo_selec.png" />
+    <BitmapImage x:Key="BtnGeminis" UriSource="pack://application:,,,/Images/Buttons/geminis.png" />
+    <BitmapImage x:Key="BtnGeminisBlue" UriSource="pack://application:,,,/Images/Buttons/geminis_blue.png" />
+    <BitmapImage x:Key="BtnEscorpion" UriSource="pack://application:,,,/Images/Buttons/escorpion.png" />
+    <BitmapImage x:Key="BtnEscorpionSelec" UriSource="pack://application:,,,/Images/Buttons/escorpion_selec.png" />
+    <BitmapImage x:Key="BtnCapricornio" UriSource="pack://application:,,,/Images/Buttons/capricornio.png" />
+    <BitmapImage x:Key="BtnCapricornioSelec" UriSource="pack://application:,,,/Images/Buttons/capricornio_selec.png" />
+    <BitmapImage x:Key="BtnCancer" UriSource="pack://application:,,,/Images/Buttons/cancer.png" />
+    <BitmapImage x:Key="BtnCancerSelec" UriSource="pack://application:,,,/Images/Buttons/cancer_selec.png" />
+    <BitmapImage x:Key="BtnAries" UriSource="pack://application:,,,/Images/Buttons/aries.png" />
+    <BitmapImage x:Key="BtnAriesSelec" UriSource="pack://application:,,,/Images/Buttons/aries_selec.png" />
+    <BitmapImage x:Key="BtnAcuario" UriSource="pack://application:,,,/Images/Buttons/acuario.png" />
+    <BitmapImage x:Key="BtnAcuarioSelec" UriSource="pack://application:,,,/Images/Buttons/acuario_selec.png" />
+    <BitmapImage x:Key="BtnNumeroAleatorio" UriSource="pack://application:,,,/Images/Buttons/BtnNumeroAleatorio.png" />
+    <BitmapImage x:Key="BtnNumeroAleatorio2" UriSource="pack://application:,,,/Images/Buttons/BtnNumeroAleatorio2.png" />
+    <BitmapImage x:Key="BtnSi" UriSource="pack://application:,,,/Images/Buttons/BtnSi.png" />
+    <BitmapImage x:Key="BtnNo" UriSource="pack://application:,,,/Images/Buttons/BtnNo.png" />
+    <BitmapImage x:Key="BtnEditar" UriSource="pack://application:,,,/Images/Buttons/BtnEditar.png" />
+    <BitmapImage x:Key="BtnConfirmarA" UriSource="pack://application:,,,/Images/Buttons/BtnConfirmarA.png" />
+    <BitmapImage x:Key="BtnConfirmarA2" UriSource="pack://application:,,,/Images/Buttons/BtnConfirmarA2.png" />
+    <BitmapImage x:Key="BtnCancelarA" UriSource="pack://application:,,,/Images/Buttons/BtnCancelarA.png" />
+    <BitmapImage x:Key="BotonPaquetes" UriSource="pack://application:,,,/Images/Buttons/BotonPaquetes.png" />
+    <BitmapImage x:Key="BtnAgregar" UriSource="pack://application:,,,/Images/Buttons/BtnAgregar.png" />
+    <BitmapImage x:Key="BtnServicioInternet" UriSource="pack://application:,,,/Images/Buttons/btn_servicio_internet.png" />
+    <BitmapImage x:Key="BtnRecaudosSalud" UriSource="pack://application:,,,/Images/Buttons/btn_reacudos_salud.png" />
+    <BitmapImage x:Key="BtnRecargaBetplay" UriSource="pack://application:,,,/Images/Buttons/btn_recarga_betplay.png" />
+    <BitmapImage x:Key="BtnOtrosServicios" UriSource="pack://application:,,,/Images/Buttons/btn_otros_servicios.png" />
+    <BitmapImage x:Key="BtnPropiedadesHorizontales" UriSource="pack://application:,,,/Images/Buttons/btn_propiedades_horizontales.png" />
+    <BitmapImage x:Key="BtnFacturaServicios" UriSource="pack://application:,,,/Images/Buttons/btn_factura_sevicios.png" />
+    <BitmapImage x:Key="BtnFunerarias" UriSource="pack://application:,,,/Images/Buttons/btn_funerarias.png" />
+    <BitmapImage x:Key="BtnCooperativas" UriSource="pack://application:,,,/Images/Buttons/btn_cooperativas.png" />
+    <BitmapImage x:Key="BtnCuentasCredito" UriSource="pack://application:,,,/Images/Buttons/btn_cuitas_credito.png" />
+    <BitmapImage x:Key="BtnRecaudo" UriSource="pack://application:,,,/Images/Buttons/btnRecaudo.png" />
+    <BitmapImage x:Key="BtnAtrasBetplay" UriSource="pack://application:,,,/Images/Buttons/btn_atrasBetplay.png" />
+    <BitmapImage x:Key="BtnChance" UriSource="pack://application:,,,/Images/Buttons/btnChance.png" />
+    <BitmapImage x:Key="BtnSRecarga" UriSource="pack://application:,,,/Images/Buttons/s_btn_recargas.png" />
 
-  
+
+    <!--  Others  -->
+
+    <BitmapImage x:Key="BtnSuperAstro" UriSource="pack://application:,,,/Images/Others/btn_super_astro.png" />
+    <BitmapImage x:Key="BtnElMejorChance" UriSource="pack://application:,,,/Images/Others/txtElMejorChance.png" />
+    <BitmapImage x:Key="TxtElMejorChance" UriSource="pack://application:,,,/Images/Others/imgInfo.png" />
+    <BitmapImage x:Key="Txt_Atras" UriSource="pack://application:,,,/Images/Others/txt_atras.png" />
+    <BitmapImage x:Key="TxtEresUsuario" UriSource="pack://application:,,,/Images/Others/ txt_si_ya_eres_usuario.png" />
+
+
+
+
+    <!--  Loterias  -->
+    <BitmapImage x:Key="AstroLuna" UriSource="pack://application:,,,/Images/Loterias/ASTRO LUNA.png" />
+    <BitmapImage x:Key="AstroSol" UriSource="pack://application:,,,/Images/Loterias/ASTRO SOL.png" />
+
+
+    <!--  LoteriasS  -->
+
+    <BitmapImage x:Key="LoteriasSValle" UriSource="pack://application:,,,/Images/LoteriasS/VALLE.png" />
+
+
+    <!--  Keyboard  -->
+    <BitmapImage x:Key="KeyboardAzul" UriSource="pack://application:,,,/Images/Keyboard/Azul.png" />
+
+
+    <!--  Gifs  -->
+    <BitmapImage x:Key="GifLoad" UriSource="pack://application:,,,/Images/Gif/Load.gif" />
+    <BitmapImage x:Key="GifEscanerCedula" UriSource="pack://application:,,,/Images/Gif/escanerCedula.gif" />
+    <BitmapImage x:Key="GifEscaner" UriSource="pack://application:,,,/Images/Gif/Escaner.gif" />
+
+
 
 
 </ResourceDictionary>

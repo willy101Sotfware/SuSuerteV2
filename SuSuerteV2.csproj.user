@@ -2,6 +2,9 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="Presentation\UserControls\Astro\LoteriasAstroUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Presentation\UserControls\BetPlay\LoginUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -12,6 +15,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Presentation\UserControls\BetPlay\ValidateUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Presentation\UserControls\Chance\FormUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Presentation\UserControls\Chance\LoginChanceUC.xaml.cs">

@@ -1,4 +1,5 @@
-﻿using SuSuerteV2.Presentation.UserControls.ClassDiffrenceTextBox;
+﻿
+using SuSuerteV2.UserControls.ClassDiffrenceTextBox;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;

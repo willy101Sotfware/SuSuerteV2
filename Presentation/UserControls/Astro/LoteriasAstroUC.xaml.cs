@@ -1,24 +1,19 @@
 ﻿using SuSuerteV2.Domain;
 using SuSuerteV2.Domain.ApiService;
 using SuSuerteV2.Domain.ApiService.IntegrationModels;
-using SuSuerteV2.Domain.Enumerables;
 using SuSuerteV2.Domain.UIServices;
 using SuSuerteV2.Modals;
 using SuSuerteV2.Presentation.UserControls.BetPlay;
 using SuSuerteV2.UserControls;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace SuSuerteV2.Presentation.UserControls.Chance
+namespace SuSuerteV2.Presentation.UserControls.Astro
 {
- 
-
     /// <summary>
-    /// Lógica de interacción para LoginChanceUC.xaml
+    /// Lógica de interacción para LoteriasAstroUC.xaml
     /// </summary>
-    public partial class LoginChanceUC : AppUserControl
+    public partial class LoteriasAstroUC : AppUserControl
     {
         private const string TIMER_INICIAL = "01:00";
         private const int ANIMATION_DELAY = 150;
@@ -31,244 +26,19 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
         private DispatcherTimer _animationTimer;
         private Transaction _ts;
         private TimerGeneric _timer;
-        private ModalWindow? _currentLoadModal = null;
+        private DateTime _birthDateUser;
         private ApiIntegration _apiIntegration;
+        private ModalWindow? _currentLoadModal = null;
+        bool solDisponible = false;
+        bool lunaDisponible = false;
 
-        public LoginChanceUC()
+        public LoteriasAstroUC()
         {
             InitializeComponent();
-            InitializeTimer();
             _ts = Transaction.Instance;
-
+            ValidarEstadoLoteria();
+            ActivateTimer();
         }
-
-        private void UIElement_Interaction(object sender, MouseButtonEventArgs e)
-        {
-            if (sender is FrameworkElement element)
-            {
-                // Identificar el elemento por su Source (Image) o Tag
-                string elementId = "";
-
-                if (element is Image img && img.Source != null)
-                {
-                    elementId = img.Source.ToString();
-                }
-                else if (element.Tag != null)
-                {
-                    elementId = element.Tag.ToString();
-                }
-
-                switch (elementId)
-                {
-                    case var source when source.Contains("btnatras.png"):
-                        BtnAtras_Click();
-                        break;
-
-                    case var source when source.Contains("btnCancelar.png"):
-                        BtnCancelar_Click();
-                        break;
-
-                    case var source when source.Contains("btnContinuar.png"):
-                        BtnContinuar_Click();
-                        break;
-
-                    case "9": // Tag del botón Editar
-                        BtnEditar_Click();
-                        break;
-
-                    default:
-                        // Elemento no reconocido
-                        break;
-                }
-            }
-        }
-
-        private void BtnAtras_Click()
-        {
-            try
-            {
-                EventLogger.SaveLog(EventType.Info, "RechargeUC", "Ingresando al evento ProcessAtras", "OK");
-                SetCallBacksNull();
-                _timer?.Stop();
-                Navigator.Instance.NavigateTo(new MenuUC());
-            }
-            catch (Exception ex)
-            {
-                LogError("ProcessAtras", ex);
-            }
-        }
-
-        private void BtnCancelar_Click()
-        {
-            try
-            {
-                EventLogger.SaveLog(EventType.Info, "RechargeUC", "Ingresando al evento ProcessCancelar", "OK");
-                SetCallBacksNull();
-                _timer?.Stop();
-                Navigator.Instance.NavigateTo(new MenuUC());
-            }
-            catch (Exception ex)
-            {
-                LogError("ProcessCancelar", ex);
-            }
-        }
-
-        private void BtnContinuar_Click()
-        {
-            InhabilitarVista();
-
-            SetCallBacksNull();
-            _timer.Stop();  
-            ValidateUpdateData();
-        }
-
-        private void BtnEditar_Click()
-        {
-            // Lógica para botón Editar
-        }
-
-        public void ValidateUpdateData()
-        {
-       
-            try
-            {
-
-
-
-                if (_ts.ResponseConsultarCRMRegistro.CELULAR != txtCelularForm.Text || _ts.ResponseConsultarCRMRegistro.EMAIL != txtEmailForm.Text)
-                {
-
-                    RequestUpdateCrmRegistro request = new RequestUpdateCrmRegistro();
-
-                    request.IDENTIFICACION = _ts.ResponseConsultarCRMRegistro.IDENTIFICACION;
-                    request.TIPO_IDENTIFICACION = _ts.ResponseConsultarCRMRegistro.TIPO_IDENTIFICACION;
-                    request.NOMBRES = _ts.ResponseConsultarCRMRegistro.NOMBRES;
-                    request.APELLIDOS = _ts.ResponseConsultarCRMRegistro.APELLIDOS;
-                    request.CELULAR = txtCelularForm.Text;
-                    request.EMAIL = txtEmailForm.Text;
-
-
-
-                    Task.Run(async () =>
-                    {
-                     
-                        var Response = await _apiIntegration.UpdateRegistroCRM(request);
-
-                        CloseLoadModal();
-
-                        if (Response != null)
-                        {
-
-                            if (_ts.Type == ETypeTramites.SuperChance)
-                            {
-
-                                GetTypeChance();
-                            }
-                            else if (_ts.Type == ETypeTramites.Astro)
-                            {
-                                GetTypeAstro();
-                            }
-                        }
-
-                        else
-                        {
-                            _nav.ShowModal("no se pudo actualizar los datos de manerra correcta, intenta nuevamente",ModalType.Warning);
-                            Navigator.Instance.NavigateTo(new MenuUC());
-                        }
-
-                    });
-
-                    _nav.ShowModal("Estamos actualizando tus datos, un momento por favor", ModalType.Loading);
-
-                }
-                else
-                {
-
-                    if (_ts.Type == ETypeTramites.SuperChance)
-                    {
-
-                        GetTypeChance();
-                    }
-                    else if (_ts.Type == ETypeTramites.Astro)
-                    {
-                        GetTypeAstro();
-                    }
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                CloseLoadModal();
-             
-                _nav.ShowModal("no se pudo actualizar los datos de manerra correcta, intenta nuevamente", ModalType.Error );
-                Navigator.Instance.NavigateTo(new MenuUC());
-            }
-
-        }
-
-        private void GetTypeAstro()
-        {
-            try
-            {
-                RequestConsultarSorteo Request = new RequestConsultarSorteo();
-
-                Request.Transacciondistribuidorid = _ts.IdTransaccionApi.ToString();
-
-
-
-                Task.Run(async () =>
-                {
-
-                    var Response = await _apiIntegration.ConsultarSorteo(Request);
-
-                    CloseLoadModal();
-                
-
-                    if (Response != null)
-                    {
-                        if (Response.Estado)
-                        {
-                            _ts.ResponseConsultarAstro = Response;
-                            Navigator.Instance.NavigateTo(new MenuUC());
-
-
-                        }
-                        else
-                        {
-                          _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", ModalType.Error);
-                            Navigator.Instance.NavigateTo(new MenuUC());
-                        }
-                    }
-                    else
-                    {
-                        _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles,intenta nuevamente", ModalType.Error);
-                        Navigator.Instance.NavigateTo(new MenuUC());
-                    }
-
-
-                });
-
-                _nav.ShowModal("Estamos validando información un momento por favor", ModalType.Loading);
-
-
-            }
-            catch (Exception ex)
-            {
-                EventLogger.SaveLog(EventType.Info,"LoginUC GetTypeChance Catch : " + ex.Message + null);
-                CloseLoadModal();
-           
-                _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", ModalType.Error);
-                Navigator.Instance.NavigateTo(new MenuUC());
-            }
-        }
-
-        private void GetTypeChance()
-        {
-            throw new NotImplementedException();
-        }
-
-
 
 
         #region Métodos de Timer
@@ -292,6 +62,160 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                 LogError("InitializeTimer", ex);
             }
         }
+
+
+        private void ValidarEstadoLoteria()
+        {
+
+
+            foreach (var nombre in _ts.ResponseConsultarAstro.Listadosorteos.Sorteo)
+            {
+                if (nombre.Descripcion == "ASTRO SOL")
+                {
+                    solDisponible = true;
+
+                }
+                else if (nombre.Descripcion == "ASTRO LUNA")
+                {
+                    lunaDisponible = true;
+                }
+
+            }
+
+            if (solDisponible != true)
+            {
+                Sol.IsEnabled = false;
+                Sol.Opacity = 0.5;
+                loteriasol.Visibility = Visibility;
+            }
+
+            if (lunaDisponible != true)
+            {
+                Luna.IsEnabled = false;
+                Luna.Opacity = 0.5;
+                loteriaLuna.Visibility = Visibility;
+            }
+
+        }
+
+        private void SeleccionarOpcion(object sender, EventArgs e)
+        {
+
+            var image = sender as Image;
+
+            if (image == null || image.Tag == null)
+                return;
+
+            string tag = image.Tag.ToString();
+
+            switch (tag)
+            {
+                case "Sol":
+
+
+                    foreach (var nombre in _ts.ResponseConsultarAstro.Listadosorteos.Sorteo)
+                    {
+                        if (nombre.Descripcion == "ASTRO SOL")
+                        {
+                            _ts.NombreLoteria = nombre.Descripcion;
+                            _ts.CodigoLoteria = nombre.Codigoloteria;
+
+                        }
+
+                    }
+
+                    GetTypeSigno(tag);
+
+
+                    break;
+                case "Luna":
+
+                    foreach (var nombre in _ts.ResponseConsultarAstro.Listadosorteos.Sorteo)
+                    {
+                        if (nombre.Descripcion == "ASTRO LUNA")
+                        {
+                            _ts.NombreLoteria = nombre.Descripcion;
+                            _ts.CodigoLoteria = nombre.Codigoloteria;
+
+                        }
+                    }
+
+
+
+                    GetTypeSigno(tag);
+
+
+                    break;
+                default:
+
+                    return;
+                    break;
+
+            }
+
+
+        }
+
+        public void GetTypeSigno(string tag)
+        {
+            try
+            {
+
+                SetCallBacksNull();
+                _timer?.Stop();
+
+                RequestConsultarSorteo Request = new RequestConsultarSorteo();
+
+                Request.Transacciondistribuidorid = _ts.IdTransaccionApi.ToString();
+
+
+
+                Task.Run(async () =>
+                {
+
+                    var Response = await _apiIntegration.ConsultarSigno(Request);
+
+                    CloseLoadModal();
+                
+
+                    if (Response != null)
+                    {
+                        if (Response.Estado)
+                        {
+                            _ts.ResponseConsultarSignos = Response;
+                            Navigator.Instance.NavigateTo(new SignosAstroUC());
+                        
+
+                        }
+                        else
+                        {
+                            _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", ModalType.Error);
+                            Navigator.Instance.NavigateTo(new MenuUC());
+                        }
+                    }
+                    else
+                    {
+                        _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles,intenta nuevamente", ModalType.Error);
+                        Navigator.Instance.NavigateTo(new MenuUC());
+                    }
+
+
+                });
+
+                _nav.ShowModal("Estamos validando información un momento por favor", ModalType.Loading);
+
+
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, nameof(LoteriasAstroUC), "GetTypeSigno", ex.Message);
+
+                CloseLoadModal();
+                _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", ModalType.Error);
+                Navigator.Instance.NavigateTo(new MenuUC());
+            }
+        }
+
 
         /// <summary>
         /// Activa el timer
@@ -436,6 +360,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                 this.IsEnabled = true;
             });
         }
+
 
 
     }

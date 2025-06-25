@@ -1,110 +1,110 @@
 ﻿<local:AppUserControl x:Class="SuSuerteV2.Presentation.UserControls.BetPlay.ValidateUC"
-              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-              xmlns:local="clr-namespace:SuSuerteV2.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="1920" d:DesignWidth="1080">
-                <Viewbox Stretch="Uniform">
-                    <Grid Width="1080" Height="1920">
-                        <Grid.Background>
-                            <ImageBrush ImageSource="/Images/Backgrounds/back_betplay.png"/>
-                        </Grid.Background>
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:local="clr-namespace:SuSuerteV2.UserControls"
+                      mc:Ignorable="d"
+                      d:DesignHeight="1920" d:DesignWidth="1080">
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1080" Height="1920">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/Backgrounds/back_betplay.png"/>
+            </Grid.Background>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="500"/>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="400" />
-                        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="400" />
+            </Grid.RowDefinitions>
 
-                        <Grid
-                           Grid.Row="0">
-                            <TextBlock 
-                           x:Name="tbTimer"
-                           FontSize="35"
-                           Foreground="White"
-                           HorizontalAlignment="Right"
-                           VerticalAlignment="Top"
-                           Margin="0,10,0,0" Height="52" Width="93" RenderTransformOrigin="0.21,0.413"/>
+            <Grid
+                Grid.Row="0">
+                <TextBlock
+                    x:Name="tbTimer"
+                    FontSize="35"
+                    Foreground="White"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0,10,0,0" Height="52" Width="93" RenderTransformOrigin="0.21,0.413"/>
 
-                        </Grid>
+            </Grid>
 
-                        <Image Source="/Images/Others/LogoBetplay.png" 
-                              Margin="373,250,373,0"
-                              VerticalAlignment="Top" Height="126"/>
+            <Image Source="/Images/Others/LogoBetplay.png"
+                   Margin="373,250,373,0"
+                   VerticalAlignment="Top" Height="126"/>
 
-                        <Image Source="/Images/Others/txt_recumen_ventas.png"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Top" Height="60" Width="446" Margin="0,426,0,0"/>
+            <Image Source="/Images/Others/txt_recumen_ventas.png"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Height="60" Width="446" Margin="0,426,0,0"/>
 
-                        <Grid Grid.Row="1">
-
-
-
-                            <Image Source="/Images/Others/linea_yellow_division.png"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Top" Height="60" Width="634" Margin="0,10,0,0"/>
+            <Grid Grid.Row="1">
 
 
 
-
-                            <Image Source="/Images/Others/txt_numero_dedula.png" 
-                              Margin="0,107,0,0"
-                              Visibility="Visible"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Top" Height="36" Width="376"/>
-
-                            <Image Source="/Images/Others/txt_monto.png" 
-                              Margin="0,312,0,0"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Top" Height="46" Width="156"/>
-
-
-                            <TextBox x:Name="TxtCedula"
-                               HorizontalAlignment="Center" 
-                                Height="63"                    
-                                Margin="0,185,0,0" 
-                                TextWrapping="Wrap"
-                                TextAlignment="Center"
-                                VerticalAlignment="Top"
-                                IsHitTestVisible ="False"
-                                Width="634" FontSize="40" FontFamily="Tahoma"/>
-
-                            <TextBox x:Name="TxtMonto"
-                               HorizontalAlignment="Center" 
-                                Height="66"                     
-                                Margin="0,400,0,0" 
-                                TextWrapping="Wrap"
-                                TextAlignment="Center"
-                                VerticalAlignment="Top"
-                                IsHitTestVisible ="False"
-                                Width="634" FontSize="40" FontFamily="Tahoma"/>
+                <Image Source="/Images/Others/linea_yellow_division.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top" Height="60" Width="634" Margin="0,10,0,0"/>
 
 
 
-                        </Grid>
 
-                        <Grid Grid.Row="2">
+                <Image Source="/Images/Others/txt_numero_dedula.png"
+                       Margin="0,107,0,0"
+                       Visibility="Visible"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top" Height="36" Width="376"/>
 
-                            <Image Source="/Images/Buttons/btnCancelar.png" 
-                 
-                              HorizontalAlignment="Left"
-                              MouseDown="UIElement_Interaction"
-                              VerticalAlignment="Top" Height="101" Width="346" Margin="129,43,0,0"/>
+                <Image Source="/Images/Others/txt_monto.png"
+                       Margin="0,312,0,0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top" Height="46" Width="156"/>
 
-                            <Image Source="/Images/Buttons/btnContinuar.png" 
-                 
-                              MouseDown="UIElement_Interaction"
-                              HorizontalAlignment="Left"
-                              VerticalAlignment="Top" Height="101" Width="346" Margin="610,47,0,0"/>
 
-                            <Image Source="/Images/Others/ico_atencion_cliente.png"
-                              HorizontalAlignment="Center"
-                              VerticalAlignment="Top" Height="114" Width="710" Margin="0,247,0,0"/>
+                <TextBox x:Name="TxtCedula"
+                         HorizontalAlignment="Center"
+                         Height="63"
+                         Margin="0,185,0,0"
+                         TextWrapping="Wrap"
+                         TextAlignment="Center"
+                         VerticalAlignment="Top"
+                         IsHitTestVisible ="False"
+                         Width="634" FontSize="40" FontFamily="Tahoma"/>
 
-                        </Grid>
+                <TextBox x:Name="TxtMonto"
+                         HorizontalAlignment="Center"
+                         Height="66"
+                         Margin="0,400,0,0"
+                         TextWrapping="Wrap"
+                         TextAlignment="Center"
+                         VerticalAlignment="Top"
+                         IsHitTestVisible ="False"
+                         Width="634" FontSize="40" FontFamily="Tahoma"/>
 
-                    </Grid>
-                </Viewbox>
+
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+
+                <Image Source="/Images/Buttons/btnCancelar.png"
+
+                       HorizontalAlignment="Left"
+                       MouseDown="UIElement_Interaction"
+                       VerticalAlignment="Top" Height="101" Width="346" Margin="129,43,0,0"/>
+
+                <Image Source="/Images/Buttons/btnContinuar.png"
+
+                       MouseDown="UIElement_Interaction"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top" Height="101" Width="346" Margin="610,47,0,0"/>
+
+                <Image Source="/Images/Others/ico_atencion_cliente.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top" Height="114" Width="710" Margin="0,247,0,0"/>
+
+            </Grid>
+
+        </Grid>
+    </Viewbox>
 </local:AppUserControl>

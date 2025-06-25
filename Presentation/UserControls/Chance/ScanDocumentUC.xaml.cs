@@ -5,6 +5,7 @@ using SuSuerteV2.Domain.ApiService.Models;
 using SuSuerteV2.Domain.Enumerables;
 using SuSuerteV2.Domain.UIServices;
 using SuSuerteV2.Modals;
+using SuSuerteV2.Presentation.UserControls.Astro;
 using SuSuerteV2.Presentation.UserControls.BetPlay;
 using SuSuerteV2.UserControls;
 using System.Globalization;
