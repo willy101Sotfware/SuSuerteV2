@@ -53,6 +53,8 @@ namespace SuSuerteV2.Domain.UIServices
         public bool DevueltaCorrecta { get; set; }
         public ulong Transacciondistribuidorid { get; set; }
 
+        public string NombreUsuario { get; set; }
+
         public ETypeTramites Type { get; set; }
         public ResponseNotifyPayment ResponseNotifyPayment { get; set; }
         public List<Listadotipochancefield> TypeChance { get; set; }
@@ -76,6 +78,7 @@ namespace SuSuerteV2.Domain.UIServices
         public string tramite { get; set; }
         public ResponseTokenBetplay ResponseTokenBetplay { get; set; }
         public PAYER Payer { get; set; }
+        public ResponseConsultarCRMRegistro ResponseConsultarCRMRegistro { get; set; }
 
 
 

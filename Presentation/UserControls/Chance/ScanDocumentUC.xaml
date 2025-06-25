@@ -46,7 +46,9 @@
                 Source="/Images/Buttons/btnatras.png"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top" Height="103" Width="92" Margin="44,30,944,0"
-                PreviewMouseDown="BtnAtras"
+                MouseDown="UIElement_Interaction"
+                Name="btnAtras"
+             
              />
 
 

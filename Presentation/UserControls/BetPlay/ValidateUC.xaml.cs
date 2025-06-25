@@ -26,7 +26,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
         private const decimal INCREMENTO_VALIDO = 100;
         private TimerGeneric _timer;
         private DispatcherTimer _animationTimer;
-        private Navigator _nav = Navigator.Instance;
+     
         private Transaction _ts;
         private ModalWindow? _currentLoadModal = null;
 

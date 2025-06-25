@@ -7,6 +7,7 @@ using SuSuerteV2.Domain.Enumerables;
 using SuSuerteV2.Domain.UIServices;
 using SuSuerteV2.Modals;
 using SuSuerteV2.Presentation.UserControls.BetPlay;
+using SuSuerteV2.Presentation.UserControls.Chance;
 using SuSuerteV2.UserControls;
 using System.Configuration;
 using System.Windows;

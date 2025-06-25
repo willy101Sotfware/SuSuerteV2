@@ -375,7 +375,95 @@ namespace SuSuerteV2.Domain.ApiService
             return null;
         }
 
+        public async Task<ResponseConsultarCRMRegistro> ConsultCrmRegistroRecargas(RequestConsultCrmRegistro request)
+        {
+            try
+            {
 
+
+                var y = JsonConvert.SerializeObject(request);
+                EventLogger.SaveLog(EventType.Info, "ApiIntegration", "entrando a la ejecucion ConsultParametrosRecargas Request", y);
+
+
+                string controller = AppConfig.Get("ConsultarCRMRegistro");
+
+                _baseAddress = AppConfig.Get("basseAddressIntegration");
+
+                var response = await GetRequestData<ResponseGeneric>(controller);
+               
+
+                if (response != null)
+                {
+                    var  x = JsonConvert.SerializeObject(response.data);
+                 
+                    EventLogger .SaveLog(EventType.Info, "ApiIntegration", "entrando a la ejecucion ConsultParametrosRecargas Response", x);
+              
+
+                  
+                    if (response.data != null && !string.IsNullOrEmpty(x) && x != "null" && x != "[]")
+                    {
+
+                        string jsonLimpio = System.Text.RegularExpressions.Regex.Unescape(x).Trim('"');
+
+                        jsonLimpio = jsonLimpio.Replace(@"\", "");
+
+                        var ResponseData = JsonConvert.DeserializeObject<ResponseConsultarCRMRegistro>(jsonLimpio);
+
+                        return ResponseData;
+
+
+                    }
+                    else
+                    {
+
+                        return null;
+                    }
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, "ApiIntegration", "entrando a la ejecucion ConsultParametrosRecargas Catch", ex.Message);
+               
+            }
+            return null;
+        }
+
+        public async Task<ResponseConsultarAstro> ConsultarSorteo(RequestConsultarSorteo Machine)
+        {
+            try
+            {
+                string controller = AppConfig.Get("Consultarsorteo");
+
+                _baseAddress = AppConfig.Get("basseAddressIntegration");
+                var response = await GetRequestData<ResponseGeneric>(controller);
+
+            
+
+                if (response != null)
+                {
+                    var x = JsonConvert.SerializeObject(response.data);
+
+                    var requestData = JsonConvert.DeserializeObject<ResponseConsultarAstro>(x);
+                    if (requestData == null)
+                    {
+                        EventLogger.SaveLog(EventType.Error, "ApiIntegration", "Respuesta al metodo ConsultarSorteo es nula o vacia", x);
+                        return null;
+                    }
+
+
+                    return requestData;
+                }
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, "ApiIntegration", "entrando a la ejecucion ConsultarSorteo Catch", ex.Message);
+               
+            }
+            return null;
+        }
 
         public static async Task<ResponseGetRecaudo> GetRecaudos(RequestGetRecaudos request)
         {
