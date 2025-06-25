@@ -1,0 +1,133 @@
+﻿<local:AppUserControl x:Class="SuSuerteV2.Presentation.UserControls.Chance.LoginChanceUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+          xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+          xmlns:local="clr-namespace:SuSuerteV2.UserControls"
+          xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+          xmlns:local2="clr-namespace:SuSuerteV2.UserControls.ClassDiffrenceTextBox"              
+           
+          mc:Ignorable="d" 
+          d:DesignHeight="1920" d:DesignWidth="1080">
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1080" Height="1920">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/Backgrounds/bgGray.png"/>
+            </Grid.Background>
+
+
+            <TextBlock 
+             x:Name="tbTimer"
+             FontSize="45"
+             Foreground="White"
+             VerticalAlignment="Top"
+             Margin="477,10,477,0" Height="60"/>
+
+            <Image Source="/Images/Buttons/btnatras.png" 
+             Margin="46,55,0,0"
+             HorizontalAlignment="Left"                
+             MouseDown="UIElement_Interaction"
+             VerticalAlignment="Top" Height="103" Width="92"/>
+
+            <Image Source="/Images/Others/iconoCel.png" 
+             Margin="206,719,0,0"
+             HorizontalAlignment="Left"             
+             VerticalAlignment="Top" Height="99" Width="66"/>
+
+            <Image Source="/Images/Others/txtCel.png" 
+             Margin="380,751,378,0"               
+             VerticalAlignment="Top" Height="46"/>
+
+
+            <Image Source="/Images/Others/input.png" 
+             Margin="206,850,0,0"
+             HorizontalAlignment="Left"           
+             VerticalAlignment="Top" 
+             Height="91" 
+             Width="670"/>
+
+            <local2:NumericBox  x:Name="txtCelularForm" 
+                FontSize="40"   
+                FontWeight="Bold"
+                Text=""
+                Margin="210,854,216,997"
+                TextWrapping="Wrap"
+                VerticalContentAlignment="Center"
+                TextAlignment="Center"
+                IsReadOnly="True"
+                IsReadOnlyCaretVisible="False" Background="{x:Null}" BorderBrush="{x:Null}" IsEnabled="False">
+                <local2:NumericBox.Template>
+                    <ControlTemplate/>
+                </local2:NumericBox.Template>
+            </local2:NumericBox>
+
+
+            <Image Source="/Images/Others/iconoMail.png" 
+             Margin="204,1031,0,0"
+             HorizontalAlignment="Left"             
+             VerticalAlignment="Top" Height="67" Width="85"/>
+
+            <Image Source="/Images/Others/Txt_Correo_Electronico.png" 
+             Margin="364,1046,364,0"              
+             VerticalAlignment="Top" Height="45" RenderTransformOrigin="0.659,0.644"/>
+
+
+            <Image Source="/Images/Others/input.png" 
+             Margin="206,1124,0,0"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top" 
+             Height="91" 
+             Width="670"/>
+
+            <local2:EmailTextbox   
+             x:Name="txtEmailForm" 
+                FontSize="40"
+                TextAlignment="Center"
+                TextWrapping="Wrap"
+                FontWeight="Bold"
+                Text=""
+                IsReadOnly="True"
+                IsReadOnlyCaretVisible="False"
+                VerticalContentAlignment="Center"                  
+                Margin="210,1131,216,724" BorderBrush="{x:Null}"
+                >
+            </local2:EmailTextbox>
+
+            <Image Source="/Images/Buttons/BtnEditar.png" 
+             Margin="210,1257,0,0"
+             HorizontalAlignment="Left"
+             Tag="9"
+            Visibility="Hidden"
+             MouseDown="UIElement_Interaction"
+             VerticalAlignment="Top" Height="67" Width="69"/>
+
+            <Label Content="Editar" Margin="288,1269,676,584"
+            FontSize="35px"
+            Visibility="Hidden"
+            Foreground="White"/>
+
+            <TextBlock Text="Confirma o actualiza los datos en pantalla, al correo electrónico llegará el comprobante de la apuesta a realizar" Margin="239,342,237,1257"
+                FontSize="45"
+                TextWrapping="Wrap"
+                TextAlignment="Center"
+                FontWeight="Bold"
+                Foreground="White"/>
+
+            <Image Source="/Images/Buttons/btnCancelar.png" 
+                 Margin="169,1487,0,0"
+                 HorizontalAlignment="Left"
+                 MouseDown="UIElement_Interaction"           
+                 VerticalAlignment="Top" Height="87" Width="291" RenderTransformOrigin="0.402,0.54"/>
+
+            <Image Source="/Images/Buttons/btnContinuar.png" 
+             Margin="619,1487,170,0"          
+             MouseDown="UIElement_Interaction"
+             VerticalAlignment="Top" Height="87"/>
+
+            <Image Source="/Images/Others/imgInfo.png" 
+             Margin="266,1769,0,0"
+             HorizontalAlignment="Left"            
+             VerticalAlignment="Top" Height="141" Width="588"/>
+        </Grid>
+    </Viewbox>
+</local:AppUserControl>

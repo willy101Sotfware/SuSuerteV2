@@ -356,7 +356,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
 
                         if (_ts.Type == ETypeTramites.SuperChance)
                         {
-                            Navigator.Instance.NavigateTo(new LoginUC_Chance());
+                            Navigator.Instance.NavigateTo(new LoginChanceUC());
                           
                         }
                         else if (_ts.Type == ETypeTramites.Astro)
@@ -430,7 +430,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                     }
                     else
                     {
-                        Navigator.Instance.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles,intenta nuevamente", ModalType.Error)
+                        Navigator.Instance.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles,intenta nuevamente", ModalType.Error);
                        Navigator.Instance.NavigateTo(new MenuUC());
                     }
 

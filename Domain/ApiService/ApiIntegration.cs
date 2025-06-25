@@ -465,6 +465,60 @@ namespace SuSuerteV2.Domain.ApiService
             return null;
         }
 
+        public async Task<ResponseGeneric> UpdateRegistroCRM(RequestUpdateCrmRegistro request)
+        {
+            try
+            {
+
+                string controller = AppConfig.Get("UpdateRegistroCRM");
+
+                _baseAddress = AppConfig.Get("basseAddressIntegration");
+                var response = await GetRequestData<ResponseGeneric>(controller);
+            
+
+                if (response != null)
+                {
+                    var x = JsonConvert.SerializeObject(response.data);
+
+                    EventLogger.SaveLog(EventType.Info, "ApiIntegration", "Respuesta al metodo UpdateRegistroCRM", x);
+
+
+                    if (response.data != null && !string.IsNullOrEmpty(x) && x != "null" && x != "[]")
+
+                    {
+                        string jsonLimpio = System.Text.RegularExpressions.Regex.Unescape(x).Trim('"');
+
+                        jsonLimpio = jsonLimpio.Replace(@"\", "");
+                        var requestData = JsonConvert.DeserializeObject<ResponseErrorCrearRegistroCrm>(jsonLimpio);
+
+                        if (requestData.error.code == 40901)
+                        {
+
+                            return response;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+
+                    }
+
+                    return response;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, "ApiIntegration", "entrando a la ejecucion UpdateRegistroCRM Catch", ex.Message);
+          
+            }
+
+            return null;
+        }
+
+
+
         public static async Task<ResponseGetRecaudo> GetRecaudos(RequestGetRecaudos request)
         {
             try
