@@ -30,5 +30,13 @@ namespace SuSuerteV2.UserControls
                 Opacity = 0.3;
             });
         }
+        
+                /// <summary>
+        /// Inicializa los componentes adicionales
+        /// </summary>
+        private void InitializeComponents()
+        {
+            // Inicialización adicional si es necesaria
+        }
     }
 }

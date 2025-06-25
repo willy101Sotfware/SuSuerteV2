@@ -570,16 +570,9 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                 LogError("SetCallBacksNull", ex);
             }
         }
-        #endregion
 
+        #endregion
         #region Métodos de Inicialización y Limpieza
-        /// <summary>
-        /// Inicializa los componentes adicionales
-        /// </summary>
-        private void InitializeComponents()
-        {
-            // Inicialización adicional si es necesaria
-        }
 
         /// <summary>
         /// Limpia los recursos utilizados
