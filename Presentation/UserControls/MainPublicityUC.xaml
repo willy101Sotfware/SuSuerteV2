@@ -1,25 +1,28 @@
-﻿<local:AppUserControl x:Class="SuSuerteV2.Presentation.UserControls.MainPublicityUC"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SuSuerteV2.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="1920" d:DesignWidth="1080">
+﻿<local:AppUserControl
+    x:Class="SuSuerteV2.Presentation.UserControls.MainPublicityUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SuSuerteV2.UserControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="1920"
+    d:DesignWidth="1080"
+    mc:Ignorable="d">
 
     <Grid PreviewMouseDown="Grid_MouseDown">
         <Grid.Background>
-            <ImageBrush ImageSource="{StaticResource BACKGENERIC}" Stretch="Uniform"/>
+            <ImageBrush ImageSource="{StaticResource BACKGENERIC}" Stretch="Uniform" />
         </Grid.Background>
 
-        <!-- Texto grande centrado más arriba -->
-        <TextBlock Text="TOCA LA PANTALLA PARA CONTINUAR"
-                   FontSize="48"
-                   FontWeight="Bold"
-                   Foreground="White"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Bottom"
-                   Margin="0,0,0,150"
-                   TextWrapping="Wrap"/>
+        <!--  Texto grande centrado más arriba  -->
+        <TextBlock
+            Margin="0,0,0,150"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            FontSize="48"
+            FontWeight="Bold"
+            Foreground="White"
+            Text="TOCA LA PANTALLA PARA CONTINUAR"
+            TextWrapping="Wrap" />
     </Grid>
 </local:AppUserControl>

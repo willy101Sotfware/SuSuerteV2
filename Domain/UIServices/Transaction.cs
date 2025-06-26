@@ -36,7 +36,7 @@ namespace SuSuerteV2.Domain.UIServices
         public TypeTransaction TipoTransaccion { get; set; }
         public TypePayment TipoPago { get; set; }
         public StateTransaction EstadoTransaccion { get; set; }
-
+        public ETypeTramites TypeTramite { get; set; }
         public ETransactionType Tipo { get; set; }
         public string EstadoTransaccionVerb { get; set; }
         public string? Referencia { get; set; }
@@ -54,6 +54,20 @@ namespace SuSuerteV2.Domain.UIServices
         public ulong Transacciondistribuidorid { get; set; }
 
         public string NombreUsuario { get; set; }
+        public string Valor { get; set; }
+        public int ValorGanar { get; set; }
+        public string Fecha { get; set; }
+
+        public float Iva { get; set; }
+        public int ExtraMum { get; set; }
+        public string Operador { get; set; }
+
+        public string IdProduct { get; set; }
+
+        public string NumOperator { get; set; }
+        public string StatePay { get; set; }
+
+
 
         public ETypeTramites Type { get; set; }
         public ResponseNotifyPayment ResponseNotifyPayment { get; set; }
@@ -83,7 +97,37 @@ namespace SuSuerteV2.Domain.UIServices
         public string CodigoLoteria { get; set; }
         public string NumeroApostadoAstro { get; set; }
         public int ValorApostadoAstro { get; set; }
+        public List<Chance> ListaChances { get; set; }
 
+        public ResponseNotificarPaquetes ResponseNotificarPaquetes { get; set; }
+        public Dictionary<string, int> DicSginosSeleccionados { get; set; } = new Dictionary<string, int>();
+
+        public class Chance
+        {
+            public List<LotteriesViewModel> Loterias { get; set; }
+            public DateTime FechaJuego { get; set; }
+
+            // Valores de la apuesta
+            public int Directo { get; set; }
+            public int Combinado { get; set; }
+            public int Pata { get; set; }
+            public int Una { get; set; }
+
+            public int TipoChance { get; set; }
+
+
+            //Número jugado
+            public string Numero { get; set; }
+
+            //Total
+            private int _Total { get; set; }
+
+            public int GetTotalChance()
+            {
+                _Total = (Directo + Combinado + Pata + Una) * Loterias.Count;
+                return _Total;
+            }
+        }
 
         private UserDataChance _userData { get; set; }
         public UserDataChance UserData
@@ -103,6 +147,72 @@ namespace SuSuerteV2.Domain.UIServices
         private void OnPropertyRaised(string propertyname)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
+        }
+
+        public class LotteriesViewModel
+        {
+
+            private string _Title;
+            public string Title
+            {
+                get { return this._Title; }
+                set { this._Title = value; }
+            }
+
+            private BitmapImage _ImageData;
+            public BitmapImage ImageData
+            {
+                get { return this._ImageData; }
+                set { this._ImageData = value; }
+            }
+
+            private string _ImageTag;
+            public string ImageTag
+            {
+                get { return this._ImageTag; }
+                set { this._ImageTag = value; }
+            }
+
+            private string _CodigoCodesa;
+            public string CodigoCodesa
+            {
+                get { return this._CodigoCodesa; }
+                set { this._CodigoCodesa = value; }
+            }
+
+            public string IdCodesa { get; set; }
+            public string DescripcionLoteria { get; set; }
+            public string Nombre { get; set; }
+            public string NombreCorto { get; set; }
+
+
+
+
+            private BitmapImage _ImageS;
+            public BitmapImage ImageS
+            {
+                get { return this._ImageS; }
+                set { this._ImageS = value; }
+            }
+
+            private BitmapImage _Image;
+            public BitmapImage Image
+            {
+                get { return this._Image; }
+                set { this._Image = value; }
+            }
+
+            private bool _IsSelected;
+            public bool IsSelected
+            {
+                get { return this._IsSelected; }
+                set
+                {
+                    this._IsSelected = value;
+                    if (_IsSelected) this.ImageData = ImageS;
+                    else this.ImageData = Image;
+                }
+            }
         }
 
 

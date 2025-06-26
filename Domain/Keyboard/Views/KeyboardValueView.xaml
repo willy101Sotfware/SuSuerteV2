@@ -1,46 +1,62 @@
-﻿<UserControl x:ClassModifier="internal"
-             x:Class="VirtualKeyboard.Wpf.Views.KeyboardValueView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:VirtualKeyboard.Wpf.Views"
-             xmlns:controls="clr-namespace:VirtualKeyboard.Wpf.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="VirtualKeyboard.Wpf.Views.KeyboardValueView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:VirtualKeyboard.Wpf.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:VirtualKeyboard.Wpf.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:ClassModifier="internal"
+    mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../ResourceDictionaries/DefaultStyles.xaml"/>
+                <ResourceDictionary Source="../ResourceDictionaries/DefaultStyles.xaml" />
                 <ResourceDictionary Source="../ResourceDictionaries/KeyboardCore.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <StackPanel Orientation="Horizontal" Background="Transparent" HorizontalAlignment="Center">
+    <StackPanel
+        HorizontalAlignment="Center"
+        Background="Transparent"
+        Orientation="Horizontal">
 
         <Border Background="Red" CornerRadius="10,0,0,10">
-            <ContentControl Content="{StaticResource CancelButton}" Width="100" Height="93"/>
+            <ContentControl
+                Width="100"
+                Height="93"
+                Content="{StaticResource CancelButton}" />
         </Border>
 
-        <Border Background="#01365b" MinWidth="400" MaxWidth="400" MinHeight="100" MaxHeight="200">
-            <controls:AdvancedTextBox 
-            TextValue="{Binding KeyboardText, Mode=TwoWay}" 
-            CaretPosition="{Binding CaretPosition, Mode=TwoWay}" 
-            SelectedValue="{Binding SelectedValue, Mode=TwoWay}" 
-            Background="{x:Null}" 
-            BorderBrush="{x:Null}" 
-                 FontWeight="SemiBold"
-           Foreground="White"
-           FontFamily="Geon Soft"   
-            TextWrapping="Wrap" 
+        <Border
+            MinWidth="400"
+            MinHeight="100"
+            MaxWidth="400"
+            MaxHeight="200"
+            Background="#01365b">
+            <controls:AdvancedTextBox
                 VerticalAlignment="Center"
+                AcceptsReturn="True"
+                Background="{x:Null}"
+                BorderBrush="{x:Null}"
+                CaretPosition="{Binding CaretPosition, Mode=TwoWay}"
+                FontFamily="Geon Soft"
+                FontWeight="SemiBold"
+                Foreground="White"
+                HorizontalScrollBarVisibility="Disabled"
+                SelectedValue="{Binding SelectedValue, Mode=TwoWay}"
                 TextAlignment="Center"
-            AcceptsReturn="True" 
-            VerticalScrollBarVisibility="Auto" 
-            HorizontalScrollBarVisibility="Disabled"/>
+                TextValue="{Binding KeyboardText, Mode=TwoWay}"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto" />
         </Border>
         <Border Background="Green" CornerRadius="0,10,10,0">
-            <ContentControl Content="{StaticResource AcceptButton}" Width="100" Height="98"/>
+            <ContentControl
+                Width="100"
+                Height="98"
+                Content="{StaticResource AcceptButton}" />
         </Border>
 
     </StackPanel>

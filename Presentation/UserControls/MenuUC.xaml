@@ -1,99 +1,96 @@
-﻿<local:AppUserControl x:Class="SuSuerteV2.Presentation.UserControls.MenuUC"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SuSuerteV2.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="1920" d:DesignWidth="1080">
+﻿<local:AppUserControl
+    x:Class="SuSuerteV2.Presentation.UserControls.MenuUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SuSuerteV2.UserControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="1920"
+    d:DesignWidth="1080"
+    mc:Ignorable="d">
     <Viewbox Stretch="Uniform">
         <Grid Width="1080" Height="1920">
             <Grid.Background>
-                <ImageBrush ImageSource="{StaticResource BACKGENERIC}" Stretch="Uniform"/>
+                <ImageBrush ImageSource="{StaticResource BACKGENERIC}" Stretch="Uniform" />
             </Grid.Background>
 
-            <!-- Timer -->
-            <TextBlock 
+            <!--  Timer  -->
+            <TextBlock
                 x:Name="tbTimer"
-                FontSize="45"
-                Foreground="White"
-                FontWeight="Bold"
+                Width="126"
+                Height="60"
+                Margin="0,10,464,0"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                Margin="0,10,464,0" 
-                Height="60" 
-                Width="126"/>
+                FontSize="45"
+                FontWeight="Bold"
+                Foreground="White" />
 
-            <!-- Botón Chance -->
+            <!--  Botón Chance  -->
             <Image
-                x:Name="btnChance" 
-                Source="{StaticResource BtnChance}" 
+                x:Name="btnChance"
                 Margin="550,631,16,841"
-                MouseDown="UIElement_Interaction"
                 Cursor="Hand"
-            />
+                MouseDown="UIElement_Interaction"
+                Source="{StaticResource BtnChance}" />
 
-            <!-- Botón Recaudos -->
+            <!--  Botón Recaudos  -->
             <Image
                 x:Name="btnRecaudos"
-                Source="{StaticResource BtnRecaudo}" 
                 Margin="548,1197,18,275"
-                MouseDown="UIElement_Interaction"
                 Cursor="Hand"
-            />
+                MouseDown="UIElement_Interaction"
+                Source="{StaticResource BtnRecaudo}" />
 
-            <!-- Botón Betplay -->
+            <!--  Botón Betplay  -->
             <Image
                 x:Name="btnBetplay"
-                Source="{StaticResource BtnRecargaBetplay}"
                 Margin="104,642,609,830"
-                MouseDown="UIElement_Interaction"
                 Cursor="Hand"
-            />
+                MouseDown="UIElement_Interaction"
+                Source="{StaticResource BtnRecargaBetplay}" />
 
-            <!-- Botón Super Astro -->
+            <!--  Botón Super Astro  -->
             <Image
                 x:Name="btnAstro"
-                Source="{StaticResource BtnSuperAstro}"
-                Visibility="Hidden"
                 Margin="622,1225,92,247"
-                MouseDown="UIElement_Interaction"
                 Cursor="Hand"
-            />
+                MouseDown="UIElement_Interaction"
+                Source="{StaticResource BtnSuperAstro}"
+                Visibility="Hidden" />
 
-            <!-- Botón El Mejor Chance -->
+            <!--  Botón El Mejor Chance  -->
             <Image
                 x:Name="btnElMejorChance"
-                Source="{StaticResource BtnElMejorChance}"
                 Margin="172,287,186,1422"
+                Cursor="Hand"
                 MouseDown="UIElement_Interaction"
-                Cursor="Hand">
+                Source="{StaticResource BtnElMejorChance}">
                 <UIElement.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform />
+                        <TranslateTransform />
                     </TransformGroup>
                 </UIElement.RenderTransform>
             </Image>
 
 
-          
 
-            <!-- Botón Recargas -->
-            <Image 
+
+            <!--  Botón Recargas  -->
+            <Image
                 x:Name="btnRecargas"
-                Source="{StaticResource BtnSRecarga}"
+                Width="315"
+                Height="420"
                 Margin="136,1203,0,0"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top" 
-                Height="420" 
-                Width="315" 
-                RenderTransformOrigin="0.5,0.5"
+                VerticalAlignment="Top"
+                Cursor="Hand"
                 MouseDown="UIElement_Interaction"
-                Cursor="Hand">
-            </Image>
+                RenderTransformOrigin="0.5,0.5"
+                Source="{StaticResource BtnSRecarga}" />
         </Grid>
     </Viewbox>
 </local:AppUserControl>

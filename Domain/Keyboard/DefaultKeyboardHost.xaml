@@ -1,25 +1,36 @@
-﻿<Window x:ClassModifier="internal"
-        x:Class="VirtualKeyboard.Wpf.DefaultKeyboardHost"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:VirtualKeyboard.Wpf"
-        mc:Ignorable="d"
-        WindowState="Maximized" ShowInTaskbar="False" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True">
+﻿<Window
+    x:Class="VirtualKeyboard.Wpf.DefaultKeyboardHost"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:VirtualKeyboard.Wpf"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:ClassModifier="internal"
+    AllowsTransparency="True"
+    ResizeMode="NoResize"
+    ShowInTaskbar="False"
+    WindowState="Maximized"
+    WindowStyle="None"
+    mc:Ignorable="d">
     <Window.Background>
-        <SolidColorBrush Opacity="0.8" Color="Black"/>
+        <SolidColorBrush Opacity="0.8" Color="Black" />
     </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <ContentControl MaxWidth="700" MaxHeight="150" x:Name="KeyboardValueContent"/>
+            <ContentControl
+                x:Name="KeyboardValueContent"
+                MaxWidth="700"
+                MaxHeight="150" />
         </Grid>
         <Grid Grid.Row="1">
-            <ContentControl MaxWidth="900" MaxHeight="360" x:Name="KeyboardContent"/>
+            <ContentControl
+                x:Name="KeyboardContent"
+                MaxWidth="900"
+                MaxHeight="360" />
         </Grid>
     </Grid>
 </Window>

@@ -177,6 +177,10 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             Navigator.Instance.NavigateTo(new MenuUC());
           
         }
+        private void EventTxtSegundoNombre(object sender, EventArgs e)
+        {
+            // Utilities.OpenKeyboard(false, (TextBox)sender, this, 300, 780);
+        }
 
         private void HandleCancelAction()
         {

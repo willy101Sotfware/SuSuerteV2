@@ -1,210 +1,289 @@
-﻿<local:AppUserControl x:Class="SuSuerteV2.Presentation.UserControls.BetPlay.LoginUC"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SuSuerteV2.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="1920" d:DesignWidth="1080"
-             Unloaded="UserControl_Unloaded">
+﻿<local:AppUserControl
+    x:Class="SuSuerteV2.Presentation.UserControls.BetPlay.LoginUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SuSuerteV2.UserControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="1920"
+    d:DesignWidth="1080"
+    Unloaded="UserControl_Unloaded"
+    mc:Ignorable="d">
     <Viewbox Stretch="Uniform">
         <Grid Width="1080" Height="1920">
             <Grid.Background>
-                <ImageBrush ImageSource="{StaticResource FONDO}" Stretch="Uniform"/>
+                <ImageBrush ImageSource="{StaticResource FONDO}" Stretch="Uniform" />
             </Grid.Background>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="500"/>
+                <RowDefinition Height="500" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="400" />
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
-                <StackPanel Margin="10,0,842,303" 
-                           Name="btnAtras"
-                           MouseDown="UIElement_Interaction">
-                    <Image Source="{StaticResource BtnAtrasBetplay}"
-                           HorizontalAlignment="Left"                     
-                           VerticalAlignment="Top" 
-                           Height="105" 
-                           Width="109" 
-                           Margin="64,40,0,0"/>
+                <StackPanel
+                    Name="btnAtras"
+                    Margin="10,0,842,303"
+                    MouseDown="UIElement_Interaction">
+                    <Image
+                        Width="109"
+                        Height="105"
+                        Margin="64,40,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Source="{StaticResource BtnAtrasBetplay}" />
 
-                    <TextBlock Text="Atrás" 
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Top"
-                               FontSize="16"
-                               FontWeight="Bold"
-                               Foreground="White"
-                               Margin="0,5,0,0"/>
+                    <TextBlock
+                        Margin="0,5,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        FontSize="16"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="Atrás" />
                 </StackPanel>
 
-                <Image Source="/Images/Others/txt_si_ya_eres_usuario.png"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Top" Height="124" Width="672" Margin="0,345,0,0"/>
+                <Image
+                    Width="672"
+                    Height="124"
+                    Margin="0,345,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Source="/Images/Others/txt_si_ya_eres_usuario.png" />
 
-                <TextBlock x:Name="tbTimer"
-                           FontSize="35"
-                           Foreground="White"
-                           HorizontalAlignment="Right"
-                           VerticalAlignment="Top" Height="53" Width="89"/>
+                <TextBlock
+                    x:Name="tbTimer"
+                    Width="89"
+                    Height="53"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    FontSize="35"
+                    Foreground="White" />
             </Grid>
 
-            <Grid Grid.Row="1" Margin="10,5,-10,395" Grid.RowSpan="2">
-                <Image Source="/Images/Others/txt_confirmar_numero_cedula-13.png" 
-                       Margin="272,195,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top" Height="46" Width="516"/>
+            <Grid
+                Grid.Row="1"
+                Grid.RowSpan="2"
+                Margin="10,5,-10,395">
+                <Image
+                    Width="516"
+                    Height="46"
+                    Margin="272,195,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Source="/Images/Others/txt_confirmar_numero_cedula-13.png" />
 
-                <Image Source="/Images/Others/txt_ingrese_numero_cedula.png" 
-                       Margin="284,10,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top" Height="37" Width="606"/>
+                <Image
+                    Width="606"
+                    Height="37"
+                    Margin="284,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Source="/Images/Others/txt_ingrese_numero_cedula.png" />
 
-                <!-- TECLADO NUMÉRICO -->
-                <Image Source="/Images/Keyboard/keyboardBetplay/btn_0.png" 
-                       Margin="0,750,0,0"
-                       HorizontalAlignment="Center"
-                       MouseDown="UIElement_Interaction"
-                       Tag="0"
-                       Name="btn0"
-                       VerticalAlignment="Top" Height="112" Width="112"/>
+                <!--  TECLADO NUMÉRICO  -->
+                <Image
+                    Name="btn0"
+                    Width="112"
+                    Height="112"
+                    Margin="0,750,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/Keyboard/keyboardBetplay/btn_0.png"
+                    Tag="0" />
 
-                <Image Source="/Images/Keyboard/keyboardBetplay/btn_1.png" 
-                       Margin="336,616,0,0"
-                       HorizontalAlignment="Left"
-                       MouseDown="UIElement_Interaction"
-                       Tag="1"
-                       Name="btn1"
-                       VerticalAlignment="Top" Height="112" Width="112"/>
+                <Image
+                    Name="btn1"
+                    Width="112"
+                    Height="112"
+                    Margin="336,616,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/Keyboard/keyboardBetplay/btn_1.png"
+                    Tag="1" />
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_2.png" 
-                       Margin="0,616,0,0"
-                       HorizontalAlignment="Center"
-                       MouseDown="UIElement_Interaction"
-                       Tag="2"
-                       Name="btn2"
-                       VerticalAlignment="Top" Height="112" Width="112"/>
+                <Image
+                    Name="btn2"
+                    Width="112"
+                    Height="112"
+                    Margin="0,616,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/keyboard/keyboardBetplay/btn_2.png"
+                    Tag="2" />
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_3.png" 
-                       Margin="632,616,336,0"
-                       MouseDown="UIElement_Interaction"
-                       Tag="3"
-                       Name="btn3"
-                       VerticalAlignment="Top" Height="112" Width="112"/>
+                <Image
+                    Name="btn3"
+                    Width="112"
+                    Height="112"
+                    Margin="632,616,336,0"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/keyboard/keyboardBetplay/btn_3.png"
+                    Tag="3" />
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_4.png" 
-                       Margin="337,482,0,0"
-                       HorizontalAlignment="Left"
-                       MouseDown="UIElement_Interaction"
-                       Tag="4"
-                       Name="btn4"
-                       VerticalAlignment="Top" Height="112" Width="112" RenderTransformOrigin="0.5,0.616"/>
+                <Image
+                    Name="btn4"
+                    Width="112"
+                    Height="112"
+                    Margin="337,482,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    RenderTransformOrigin="0.5,0.616"
+                    Source="/Images/keyboard/keyboardBetplay/btn_4.png"
+                    Tag="4" />
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_5.png" 
-                       Margin="0,482,0,0"
-                       HorizontalAlignment="Center"
-                       MouseDown="UIElement_Interaction"
-                       Tag="5"
-                       Name="btn5"
-                       VerticalAlignment="Top" Height="112" Width="112"/>
+                <Image
+                    Name="btn5"
+                    Width="112"
+                    Height="112"
+                    Margin="0,482,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/keyboard/keyboardBetplay/btn_5.png"
+                    Tag="5" />
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_6.png" 
-                       Margin="632,482,336,0"
-                       MouseDown="UIElement_Interaction"
-                       Tag="6"
-                       Name="btn6"
-                       VerticalAlignment="Top" Height="112"/>
+                <Image
+                    Name="btn6"
+                    Height="112"
+                    Margin="632,482,336,0"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/keyboard/keyboardBetplay/btn_6.png"
+                    Tag="6" />
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_7.png" 
-                       Margin="336,354,632,0"
-                       MouseDown="UIElement_Interaction"
-                       Tag="7"
-                       Name="btn7"
-                       VerticalAlignment="Top" Height="112"/>
+                <Image
+                    Name="btn7"
+                    Height="112"
+                    Margin="336,354,632,0"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/keyboard/keyboardBetplay/btn_7.png"
+                    Tag="7" />
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_8.png" 
-                       Margin="488,354,0,0"
-                       HorizontalAlignment="Left"
-                       Tag="8"
-                       Name="btn8"
-                       MouseDown="UIElement_Interaction"
-                       VerticalAlignment="Top" Height="112" Width="112"/>
+                <Image
+                    Name="btn8"
+                    Width="112"
+                    Height="112"
+                    Margin="488,354,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/keyboard/keyboardBetplay/btn_8.png"
+                    Tag="8" />
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_9.png" 
-                       Margin="632,354,336,0"
-                       Tag="9"
-                       Name="btn9"
-                       MouseDown="UIElement_Interaction"
-                       VerticalAlignment="Top" Height="112" Width="112"/>
+                <Image
+                    Name="btn9"
+                    Width="112"
+                    Height="112"
+                    Margin="632,354,336,0"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/keyboard/keyboardBetplay/btn_9.png"
+                    Tag="9" />
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_borrar.png" 
-                       Margin="336,750,0,0"
-                       HorizontalAlignment="Left"
-                       Tag="Borrar"
-                       Name="btnBorrar"
-                       MouseDown="UIElement_Interaction"
-                       VerticalAlignment="Top" Height="112" Width="112"/>
+                <Image
+                    Name="btnBorrar"
+                    Width="112"
+                    Height="112"
+                    Margin="336,750,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/keyboard/keyboardBetplay/btn_borrar.png"
+                    Tag="Borrar" />
 
-                <Image Source="/Images/keyboard/keyboardBetplay/btn_volver_uno.png" 
-                       Margin="634,750,0,0"
-                       HorizontalAlignment="Left"
-                       MouseDown="UIElement_Interaction"
-                       Tag="All"
-                       Name="btnVolverUno"
-                       VerticalAlignment="Top" Height="112" Width="112"/>
+                <Image
+                    Name="btnVolverUno"
+                    Width="112"
+                    Height="112"
+                    Margin="634,750,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/keyboard/keyboardBetplay/btn_volver_uno.png"
+                    Tag="All" />
 
-                <Image Source="/Images/Buttons/btnCancelar.png" 
-                       Margin="254,915,0,0"
-                       HorizontalAlignment="Left"
-                       MouseDown="UIElement_Interaction"
-                       Name="btnCancelar"
-                       VerticalAlignment="Top" Height="78" Width="228"/>
+                <Image
+                    Name="btnCancelar"
+                    Width="228"
+                    Height="78"
+                    Margin="254,915,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/Buttons/btnCancelar.png" />
 
-                <Image Source="/Images/Buttons/btnContinuar.png"
-                       MouseDown="UIElement_Interaction"
-                       Name="btnContinuar"
-                       VerticalAlignment="Top" Height="78" Margin="598,915,254,0"/>
+                <Image
+                    Name="btnContinuar"
+                    Height="78"
+                    Margin="598,915,254,0"
+                    VerticalAlignment="Top"
+                    MouseDown="UIElement_Interaction"
+                    Source="/Images/Buttons/btnContinuar.png" />
 
-                <!-- TEXTBOXES -->
-                <TextBox x:Name="TxtCedula"
-                         Height="64"                     
-                         HorizontalAlignment="Left"           
-                         VerticalAlignment="Top"
-                         Margin="196,76,0,0"                            
-                         TextWrapping="Wrap"
-                         GotFocus="focusTxtCedula"
-                         LostFocus="TxtNumCel_LostFocus"
-                         TextAlignment="Center"
-                         Foreground="Gray"
-                         Text="Número de cédula"
-                         IsReadOnly="True"
-                         IsReadOnlyCaretVisible="False"
-                         Tag="Cedula"                   
-                         Width="660" FontSize="45" FontFamily="Tahoma"  BorderBrush="{x:Null}"/>
+                <!--  TEXTBOXES  -->
+                <TextBox
+                    x:Name="TxtCedula"
+                    Width="660"
+                    Height="64"
+                    Margin="196,76,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    BorderBrush="{x:Null}"
+                    FontFamily="Tahoma"
+                    FontSize="45"
+                    Foreground="Gray"
+                    GotFocus="focusTxtCedula"
+                    IsReadOnly="True"
+                    IsReadOnlyCaretVisible="False"
+                    LostFocus="TxtNumCel_LostFocus"
+                    Tag="Cedula"
+                    Text="Número de cédula"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
 
-                <TextBox x:Name="TxtValidate"
-                         GotFocus="focusTxtvalidar"
-                         LostFocus="TxtVal_LostFocus"           
-                         VerticalAlignment="Top"
-                         Margin="196,263,224,0" 
-                         Tag="Validate"
-                         TextAlignment="Center"
-                         Foreground="Gray"
-                         TextWrapping="Wrap" 
-                         IsReadOnly="True"
-                         IsReadOnlyCaretVisible="False"
-                         Text="Confirmar" FontSize="45" FontFamily="Tahoma"  BorderBrush="{x:Null}" Height="64"/>
+                <TextBox
+                    x:Name="TxtValidate"
+                    Height="64"
+                    Margin="196,263,224,0"
+                    VerticalAlignment="Top"
+                    BorderBrush="{x:Null}"
+                    FontFamily="Tahoma"
+                    FontSize="45"
+                    Foreground="Gray"
+                    GotFocus="focusTxtvalidar"
+                    IsReadOnly="True"
+                    IsReadOnlyCaretVisible="False"
+                    LostFocus="TxtVal_LostFocus"
+                    Tag="Validate"
+                    Text="Confirmar"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
             </Grid>
 
             <Grid Grid.Row="2">
-                <Image Source="/Images/Others/txt_sr_usuario.png"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Top" Height="126" Width="616" Margin="0,42,0,0"/>
+                <Image
+                    Width="616"
+                    Height="126"
+                    Margin="0,42,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Source="/Images/Others/txt_sr_usuario.png" />
 
-                <Image Source="/Images/Others/ico_atencion_cliente.png"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Top" Height="114" Width="710" Margin="0,247,0,0"/>
+                <Image
+                    Width="710"
+                    Height="114"
+                    Margin="0,247,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Source="/Images/Others/ico_atencion_cliente.png" />
             </Grid>
         </Grid>
     </Viewbox>

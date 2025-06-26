@@ -1,38 +1,52 @@
-﻿<UserControl x:Class="SuSuerteV2.UserControls.GenericButton"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SuSuerteV2.UserControls"
-        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        mc:Ignorable="d"
-        Loaded="GenericButton_Loaded">
+﻿<UserControl
+    x:Class="SuSuerteV2.UserControls.GenericButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SuSuerteV2.UserControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    Loaded="GenericButton_Loaded"
+    mc:Ignorable="d">
     <Viewbox Width="Auto" Stretch="Uniform">
-        <Border 
-                
-                Background="{Binding ButtonBackground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}" 
-                Cursor="Hand" CornerRadius="30" 
-                Width="400"
-                Height="150">
+        <Border
+            Width="400"
+            Height="150"
+            Background="{Binding ButtonBackground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}"
+            CornerRadius="30"
+            Cursor="Hand">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition x:Name="ParentBorder" Width="6*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition x:Name="ParentBorder" Width="6*" />
                 </Grid.ColumnDefinitions>
-                <Border CornerRadius="60" VerticalAlignment="Center" HorizontalAlignment="Center" 
-                        Width="102" Height="102" 
-                        Grid.Column="1"
-                        Background="{Binding BorderForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}">
-                    <md:PackIcon  Kind="{Binding IconKind, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}" Foreground="{Binding IconForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}" x:Name="checkIcon" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Height="80" />
+                <Border
+                    Grid.Column="1"
+                    Width="102"
+                    Height="102"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="{Binding BorderForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}"
+                    CornerRadius="60">
+                    <md:PackIcon
+                        x:Name="checkIcon"
+                        Width="80"
+                        Height="80"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Foreground="{Binding IconForeground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}"
+                        Kind="{Binding IconKind, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}" />
                 </Border>
-                <TextBlock 
-                           x:Name="ButtonMessage"
-                           Grid.Column="2" 
-                           FontSize="80"
-                           Text="{Binding ButtonText, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}" 
-                           Foreground="{Binding ForegroundButton, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}" FontWeight="DemiBold" 
-                           VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBlock
+                    x:Name="ButtonMessage"
+                    Grid.Column="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontSize="80"
+                    FontWeight="DemiBold"
+                    Foreground="{Binding ForegroundButton, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}"
+                    Text="{Binding ButtonText, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:GenericButton}}}" />
             </Grid>
         </Border>
     </Viewbox>

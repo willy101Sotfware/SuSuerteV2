@@ -1,232 +1,228 @@
-﻿<local:AppUserControl x:Class="SuSuerteV2.Presentation.UserControls.Chance.FormUC"
-                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                      xmlns:local="clr-namespace:SuSuerteV2.UserControls"
-                      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                      xmlns:local2="clr-namespace:SuSuerteV2.UserControls.ClassDiffrenceTextBox"
-
-                      mc:Ignorable="d"
-                      d:DesignHeight="1920" d:DesignWidth="1080">
+﻿<local:AppUserControl
+    x:Class="SuSuerteV2.Presentation.UserControls.Chance.FormUC"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SuSuerteV2.UserControls"
+    xmlns:local2="clr-namespace:SuSuerteV2.UserControls.ClassDiffrenceTextBox"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="1920"
+    d:DesignWidth="1080"
+    mc:Ignorable="d">
     <Viewbox Stretch="Uniform">
         <Grid Width="1080" Height="1920">
             <Grid.Background>
-                <ImageBrush  ImageSource="/Images/Backgrounds/BgRegistro.png"/>
+                <ImageBrush ImageSource="/Images/Backgrounds/BgRegistro.png" />
             </Grid.Background>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="400"/>
+                <RowDefinition Height="400" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid
-                Grid.Row="0">
+            <Grid Grid.Row="0">
                 <TextBlock
                     x:Name="tbTimer"
-                    FontSize="45"
-                    Foreground="White"
+                    Width="126"
+                    Margin="0,0,0,341"
                     HorizontalAlignment="Center"
-                    Margin="0,0,0,341" Width="126"/>
+                    FontSize="45"
+                    Foreground="White" />
 
-                <!-- Botón Atrás -->
-                <Image Source="/Images/Buttons/btnatras.png"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       Height="102"
-                       Width="92"
-                       Margin="76,80,0,0"
-                       PreviewMouseDown="HandleButtonAction"
-                       TouchDown="HandleButtonAction"
-                       Cursor="Hand"
-                       Tag="Back"/>
+                <!--  Botón Atrás  -->
+                <Image
+                    Width="92"
+                    Height="102"
+                    Margin="76,80,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Cursor="Hand"
+                    PreviewMouseDown="HandleButtonAction"
+                    Source="/Images/Buttons/btnatras.png"
+                    Tag="Back"
+                    TouchDown="HandleButtonAction" />
 
             </Grid>
 
-            <Grid
-                Grid.Row="1"
-                >
+            <Grid Grid.Row="1">
 
                 <TextBlock
                     x:Name="txtNombre"
+                    Width="388"
                     Margin="134,222,0,0"
-                    VerticalAlignment="Top"
                     HorizontalAlignment="Left"
-                    FontWeight="Bold"
-                    TextAlignment="Left"
-                    FontSize="30"
+                    VerticalAlignment="Top"
                     Background="{x:Null}"
+                    FontSize="30"
+                    FontWeight="Bold"
                     Foreground="Black"
-                    Text="" Width="388"
-                    />
+                    Text=""
+                    TextAlignment="Left" />
 
                 <TextBox
                     x:Name="txtSegundoNombre"
                     Margin="558,207,134,1243"
-                    VerticalContentAlignment = "Center"
-                    FontWeight="Bold"
-                    TextAlignment="Left"
-                    FontSize="30"
+                    VerticalContentAlignment="Center"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
-                    SelectionBrush="{x:Null}"
+                    FontSize="30"
+                    FontWeight="Bold"
                     GotFocus="EventTxtSegundoNombre"
                     IsReadOnly="True"
-                    />
+                    SelectionBrush="{x:Null}"
+                    TextAlignment="Left" />
 
                 <TextBlock
                     x:Name="txtApellido"
                     Margin="134,374,558,1076"
-                    VerticalAlignment = "Center"
+                    VerticalAlignment="Center"
+                    Background="{x:Null}"
                     FontSize="30"
                     FontWeight="Bold"
-                    TextAlignment="Left"
-                    Background="{x:Null}"
                     Text=""
-
-                    />
+                    TextAlignment="Left" />
 
                 <TextBlock
                     x:Name="txtSegundoApellido"
                     Margin="558,374,134,1076"
-                    VerticalAlignment = "Center"
-                    FontWeight="Bold"
-                    TextAlignment="Left"
-                    FontSize="30"
+                    VerticalAlignment="Center"
                     Background="{x:Null}"
+                    FontSize="30"
+                    FontWeight="Bold"
                     Text=""
-                    />
+                    TextAlignment="Left" />
 
                 <TextBlock
                     x:Name="txtNumId"
                     Margin="558,540,134,910"
-                    VerticalAlignment = "Center"
-                    FontWeight="Bold"
-                    TextAlignment="Left"
-                    FontSize="30"
+                    VerticalAlignment="Center"
                     Background="{x:Null}"
+                    FontSize="30"
+                    FontWeight="Bold"
                     Text=""
-                    />
+                    TextAlignment="Left" />
                 <local2:NumericBox
                     x:Name="txtNumCel"
                     Margin="210,876,134,574"
-                    VerticalContentAlignment = "Center"
-                    FontWeight="Bold"
-                    TextAlignment="Left"
-                    FontSize="30"
+                    VerticalContentAlignment="Center"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
-                    SelectionBrush="{x:Null}"
+                    FontSize="30"
+                    FontWeight="Bold"
                     IsReadOnly="True"
-                    TouchDown="TxtCel_Keyboard">
-                </local2:NumericBox>
+                    SelectionBrush="{x:Null}"
+                    TextAlignment="Left"
+                    TouchDown="TxtCel_Keyboard" />
 
                 <local2:EmailTextbox
                     x:Name="txtEmaill"
                     Margin="210,1042,134,408"
-                    FontWeight="Bold"
-                    TextAlignment="Left"
-                    VerticalContentAlignment = "Center"
-                    FontSize="30"
+                    VerticalContentAlignment="Center"
                     Background="{x:Null}"
                     BorderBrush="{x:Null}"
-                    SelectionBrush="{x:Null}"
+                    FontSize="30"
+                    FontWeight="Bold"
                     IsReadOnly="True"
-                    TouchDown="TxtEmail_Keyboard"
-                    >
-                </local2:EmailTextbox>
+                    SelectionBrush="{x:Null}"
+                    TextAlignment="Left"
+                    TouchDown="TxtEmail_Keyboard" />
 
 
-                <ComboBox HorizontalAlignment="Left"
-                          Margin="568,730,0,0"
-                          VerticalAlignment="Top"
-                          x:Name="fecha_dia"
-                          Width="45"
-                          FontWeight="Bold"
-                          IsReadOnly="True" IsEnabled="False"
-                          Height="30" FontSize="20">
+                <ComboBox
+                    x:Name="fecha_dia"
+                    Width="45"
+                    Height="30"
+                    Margin="568,730,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    IsEnabled="False"
+                    IsReadOnly="True" />
 
+                <ComboBox
+                    x:Name="fecha_mes"
+                    Width="45"
+                    Height="30"
+                    Margin="630,730,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    IsEnabled="False"
+                    IsReadOnly="True" />
 
+                <ComboBox
+                    x:Name="fecha_ano"
+                    Width="80"
+                    Height="32"
+                    Margin="689,728,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    IsEnabled="False"
+                    IsReadOnly="True" />
 
-                </ComboBox>
+                <ComboBox
+                    x:Name="typeDocument"
+                    Width="388"
+                    Height="74"
+                    Margin="134,540,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    IsEnabled="False"
+                    IsReadOnly="True" />
 
-                <ComboBox HorizontalAlignment="Left"
-                          Margin="630,730,0,0"
-                          VerticalAlignment="Top"
-                          Width="45"
-                          FontWeight="Bold"
-                          x:Name="fecha_mes"
-                          IsReadOnly="True" IsEnabled="False"
-                          Height="30" FontSize="20">
-
-
-                </ComboBox>
-
-                <ComboBox HorizontalAlignment="Left"
-                          Margin="689,728,0,0"
-                          VerticalAlignment="Top"
-                          Width="80"
-                          FontWeight="Bold"
-                          x:Name="fecha_ano"
-                          IsReadOnly="True" IsEnabled="False"
-                          Height="32" FontSize="20">
-
-
-                </ComboBox>
-
-                <ComboBox HorizontalAlignment="Left"
-                          Margin="134,540,0,0"
-                          VerticalAlignment="Top"
-                          Width="388"
-                          FontWeight="Bold"
-                          x:Name="typeDocument"
-                          Height="74" FontSize="30" IsReadOnly="True" IsEnabled="False"/>
-
-                <ComboBox HorizontalAlignment="Left"
-                          Margin="134,707,0,0"
-                          VerticalAlignment="Top"
-                          Width="388"
-                          FontWeight="Bold"
-                          x:Name="typeGenre"
-                          IsReadOnly="True" IsEnabled="False"
-                          Height="74" FontSize="30">
-
-
-                </ComboBox>
+                <ComboBox
+                    x:Name="typeGenre"
+                    Width="388"
+                    Height="74"
+                    Margin="134,707,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    IsEnabled="False"
+                    IsReadOnly="True" />
 
 
 
                 <Image
                     x:Name="btnCheckDatos"
-                    Source="{Binding imgPathCheck}"
                     Margin="132,1141,908,329"
-                    TouchDown="BtnCheckTratamientoDatos"
-                    />
+                    Source="{Binding imgPathCheck}"
+                    TouchDown="BtnCheckTratamientoDatos" />
 
 
-                <!-- Botón Cancelar -->
-                <Image Source="/Images/Buttons/BtnCancelar.png"
-                       HorizontalAlignment="Left"
-                       TouchDown="HandleButtonAction"
-                       PreviewMouseDown="HandleButtonAction"
-                       VerticalAlignment="Top"
-                       Height="81"
-                       Width="302"
-                       Margin="184,1306,0,0"
-                       Cursor="Hand"
-                       Tag="Cancel"/>
+                <!--  Botón Cancelar  -->
+                <Image
+                    Width="302"
+                    Height="81"
+                    Margin="184,1306,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Cursor="Hand"
+                    PreviewMouseDown="HandleButtonAction"
+                    Source="/Images/Buttons/BtnCancelar.png"
+                    Tag="Cancel"
+                    TouchDown="HandleButtonAction" />
 
-                <!-- Botón Continuar -->
-                <Image Source="/Images/Buttons/btnContinuar.png"
-                       Margin="590,1306,0,0"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       Height="87"
-                       Width="308"
-                       PreviewMouseDown="HandleButtonAction"
-                       TouchDown="HandleButtonAction"
-                       Cursor="Hand"
-                       Tag="Continue"/>
+                <!--  Botón Continuar  -->
+                <Image
+                    Width="308"
+                    Height="87"
+                    Margin="590,1306,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Cursor="Hand"
+                    PreviewMouseDown="HandleButtonAction"
+                    Source="/Images/Buttons/btnContinuar.png"
+                    Tag="Continue"
+                    TouchDown="HandleButtonAction" />
 
 
             </Grid>

@@ -216,8 +216,8 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                     //   calculamos la edad de la persona para validar si este es mayor de edad
                     //if ((DateTime.Now.Year - fecha.Year) < 18)
                     //{
-                    //    Utilities.ShowModal("Menores de edad no están permitidos.", EModalType.Error);
-                    //    Utilities.navigator.Navigate(UserControlView.Menu);
+                    //    AppConfig.ShowModal("Menores de edad no están permitidos.", EModalType.Error);
+                    //    AppConfig.navigator.Navigate(UserControlView.Menu);
                     //    return;
                     //}
 
@@ -275,7 +275,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                     }
                     ConsultPayer();
 
-                    //  Utilities.navigator.Navigate(UserControlView.Form, ts);
+                    //  AppConfig.navigator.Navigate(UserControlView.Form, ts);
 
 
 

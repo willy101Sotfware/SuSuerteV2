@@ -100,60 +100,36 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
 
         private void SeleccionarOpcion(object sender, EventArgs e)
         {
-
-            var image = sender as Image;
-
-            if (image == null || image.Tag == null)
+            if (!(sender is Image image) || image.Tag == null)
                 return;
 
             string tag = image.Tag.ToString();
+            string descripcionLoteria = "";
+            string codigoLoteria = "";
 
             switch (tag)
             {
                 case "Sol":
-
-
-                    foreach (var nombre in _ts.ResponseConsultarAstro.Listadosorteos.Sorteo)
-                    {
-                        if (nombre.Descripcion == "ASTRO SOL")
-                        {
-                            _ts.NombreLoteria = nombre.Descripcion;
-                            _ts.CodigoLoteria = nombre.Codigoloteria;
-
-                        }
-
-                    }
-
-                    GetTypeSigno(tag);
-
-
+                    descripcionLoteria = "ASTRO SOL";
                     break;
                 case "Luna":
-
-                    foreach (var nombre in _ts.ResponseConsultarAstro.Listadosorteos.Sorteo)
-                    {
-                        if (nombre.Descripcion == "ASTRO LUNA")
-                        {
-                            _ts.NombreLoteria = nombre.Descripcion;
-                            _ts.CodigoLoteria = nombre.Codigoloteria;
-
-                        }
-                    }
-
-
-
-                    GetTypeSigno(tag);
-
-
+                    descripcionLoteria = "ASTRO LUNA";
                     break;
                 default:
-
                     return;
-                    break;
-
             }
 
+            // Buscar la lotería correspondiente
+            var loteria = _ts.ResponseConsultarAstro.Listadosorteos.Sorteo
+                .FirstOrDefault(s => s.Descripcion == descripcionLoteria);
 
+            if (loteria != null)
+            {
+                _ts.NombreLoteria = loteria.Descripcion;
+                _ts.CodigoLoteria = loteria.Codigoloteria;
+            }
+
+            GetTypeSigno(tag);
         }
 
         public void GetTypeSigno(string tag)
@@ -215,7 +191,13 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
                 Navigator.Instance.NavigateTo(new MenuUC());
             }
         }
-
+        private void Btn_AtrasTouchDown(object sender, EventArgs e)
+        {
+            EventLogger.SaveLog(EventType.Info, nameof(LoteriasAstroUC), "Btn_AtrasTouchDown", "Ingresando al evento Btn_AtrasTouchDown");
+            SetCallBacksNull();
+            _timer?.Stop();
+            Navigator.Instance.NavigateTo(new MenuUC());
+        }
 
         /// <summary>
         /// Activa el timer
