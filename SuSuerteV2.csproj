@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BarcodeLib.Barcode.ASP.NET">
-      <HintPath>bin\Debug\net8.0-windows\BarcodeLib.Barcode.ASP.NET.dll</HintPath>
+      <HintPath>DLLS\Datafono\BarcodeLib.Barcode.ASP.NET.dll</HintPath>
     </Reference>
     <Reference Include="KioskosLib">
       <HintPath>DLLS\Datafono\KioskosLib.dll</HintPath>
