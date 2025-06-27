@@ -23,6 +23,9 @@
     <Compile Update="Presentation\UserControls\Chance\LoginChanceUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Presentation\UserControls\Chance\OtpUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Presentation\UserControls\Chance\ScanDocumentUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

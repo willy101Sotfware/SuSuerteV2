@@ -733,6 +733,69 @@ namespace SuSuerteV2.Domain.ApiService
         }
 
 
+
+        public async Task<ResponseGeneric> CrearRegistroCRM(CrmCreateRegistro request)
+        {
+            try
+            {
+
+                string controller = AppConfig.Get("CrearRegistroCRM");
+
+                _baseAddress = AppConfig.Get("basseAddressIntegration");
+
+                var response = await GetRequestData<ResponseGeneric>(controller);
+
+                if (response != null)
+                {
+                    var x = JsonConvert.SerializeObject(response.data);
+
+                    EventLogger.SaveLog(EventType.Info, "ApiIntegration", "Respuesta al metodo CrearRegistroCRM", x);
+                  
+
+
+                    if (response!= null)
+
+                    {
+                        string jsonLimpio = System.Text.RegularExpressions.Regex.Unescape(x).Trim('"');
+
+                        jsonLimpio = jsonLimpio.Replace(@"\", "");
+                        var requestData = JsonConvert.DeserializeObject<ResponseErrorCrearRegistroCrm>(jsonLimpio);
+
+                        if (requestData.error.code == 40901)
+                        {
+
+                            return response;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+
+                    }
+
+                    return response;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, "ApiIntegration", "Response Service CrearRegistroCRM Catch", ex.Message);
+                
+            }
+
+            return null;
+        }
+
+
+
+   
+
+
+
+
+
+
         public async Task sendMail(string userMail, byte[] bytesPDF, Transaction transaction)
         {
             _client = new HttpClient();

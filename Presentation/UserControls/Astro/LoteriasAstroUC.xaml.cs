@@ -159,7 +159,7 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
                         if (Response.Estado)
                         {
                             _ts.ResponseConsultarSignos = Response;
-                            Navigator.Instance.NavigateTo(new SignosAstroUC());
+                           // Navigator.Instance.NavigateTo(new SignosAstroUC());
                         
 
                         }

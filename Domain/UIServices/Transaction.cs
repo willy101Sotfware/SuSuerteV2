@@ -216,7 +216,42 @@ namespace SuSuerteV2.Domain.UIServices
         }
 
 
+
+        private CrmCreateRegistro _CrmCreate { get; set; }
+        public CrmCreateRegistro CrmCreate
+        {
+            get
+            {
+                return _CrmCreate;
+            }
+            set
+            {
+                _CrmCreate = value;
+                OnPropertyRaised(nameof(CrmCreate));
+            }
+        }
+
+
+
+
+
     }
+
+
+
+
+    public class CrmCreateRegistro
+    {
+        public string IDENTIFICACION { get; set; }
+        public string NOMBRES { get; set; }
+        public string APELLIDOS { get; set; }
+        public string FECHA_NACIMIENTO { get; set; }
+        public string CELULAR { get; set; }
+        public string EMAIL { get; set; }
+        public string GENERO { get; set; }
+        public string TIPO_IDENTIFICACION { get; set; }
+    }
+
 
 
     public class DataCompany

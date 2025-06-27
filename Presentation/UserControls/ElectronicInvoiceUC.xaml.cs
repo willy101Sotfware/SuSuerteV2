@@ -53,7 +53,7 @@ namespace SuSuerteV2.Presentation.UserControls
             if (_ts.Type == ETypeTramites.Astro)
             {
                 EventLogger.SaveLog(EventType.Info,"ElectronicInvoice", " CancelButton Navegando a FinishAstro Tramite Astro", "OK", "");
-                Navigator.Instance.NavigateTo(new FinishAstroUC());
+                //Navigator.Instance.NavigateTo(new FinishAstroUC());
                 return;
 
               
@@ -62,11 +62,11 @@ namespace SuSuerteV2.Presentation.UserControls
             if (_ts.Type == ETypeTramites.Chance)
             {
                 EventLogger.SaveLog(EventType.Info,"ElectronicInvoice", " CancelButton Navegando a Finish Chance Tramite Astro", "OK", "");
-                Navigator.Instance.NavigateTo(new FinishChanceUC());
+                //Navigator.Instance.NavigateTo(new FinishChanceUC());
  
                 return;
             }
-            Navigator.Instance.NavigateTo(new SuccesRecaudoUC());
+            //Navigator.Instance.NavigateTo(new SuccesRecaudoUC());
          
 
         }
@@ -117,7 +117,7 @@ namespace SuSuerteV2.Presentation.UserControls
             if (_ts.Type == ETypeTramites.Recaudos)
             {
                 EventLogger.SaveLog(EventType.Info, "ElectronicInvoice", "Navegando a FinishAstro Tramite Astro", "OK", "");
-                Navigator.Instance.NavigateTo(new SuccesRecaudoUC());
+               // Navigator.Instance.NavigateTo(new SuccesRecaudoUC());
                 return;
             }
 
@@ -125,7 +125,7 @@ namespace SuSuerteV2.Presentation.UserControls
             if (_ts.Type == ETypeTramites.Astro)
             {
                 EventLogger.SaveLog(EventType.Info, "ElectronicInvoice", "Navegando a FinishAstro Tramite Astro", "OK", "");
-                Navigator.Instance.NavigateTo(new FinishAstroUC());
+                //Navigator.Instance.NavigateTo(new FinishAstroUC());
             
                 return;
             }
@@ -134,14 +134,14 @@ namespace SuSuerteV2.Presentation.UserControls
             if (_ts.Type == ETypeTramites.BetPlay)
             {
                 EventLogger.SaveLog(EventType.Info, "ElectronicInvoice", "Navegando a Finish Tramite Betplay", "OK", "");
-                Navigator.Instance.NavigateTo(new FinishUC());
+               // Navigator.Instance.NavigateTo(new FinishUC());
                 return;
             }
 
             if (_ts.Type == ETypeTramites.RecargasCel || _ts.Type == ETypeTramites.PaquetesCel)
             {
                 EventLogger.SaveLog(EventType.Info, "ElectronicInvoice", "Navegando a Finish Tramite Celular", "OK", "");
-                Navigator.Instance.NavigateTo(new FinishPaquetesUC());
+                //Navigator.Instance.NavigateTo(new FinishPaquetesUC());
                 return;
             }
 
