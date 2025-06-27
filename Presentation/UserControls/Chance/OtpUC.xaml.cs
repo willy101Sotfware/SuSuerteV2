@@ -4,9 +4,12 @@ using SuSuerteV2.Domain.ApiService;
 using SuSuerteV2.Domain.ApiService.IntegrationModels;
 using SuSuerteV2.Domain.Enumerables;
 using SuSuerteV2.Domain.UIServices;
+using SuSuerteV2.Modals;
+using SuSuerteV2.Presentation.UserControls.Astro;
 using SuSuerteV2.UserControls;
 using System.Globalization;
 using System.Windows.Controls;
+using String = System.String;
 
 namespace SuSuerteV2.Presentation.UserControls.Chance
 {
@@ -15,16 +18,26 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
     /// </summary>
     public partial class OtpUC : AppUserControl
     {
+        private const string TIMER_INICIAL = "01:59";
+        private const int ANIMATION_DELAY = 150;
+        private const double SCALE_PRESSED = 0.95;
+        private const double SCALE_NORMAL = 1.0;
+        private const decimal MONTO_MINIMO = 2000;
+        private const decimal MONTO_MAXIMO = 500000;
+        private const decimal INCREMENTO_VALIDO = 100;
 
         public Transaction transaction;
-        private TimerGeneric timer;
+        private TimerGeneric _timer;
         private ApiIntegration _apiIntegration;
+        private Navigator _nav;
 
-        public OtpUC(Transaction transaction)
+        public OtpUC()
         {
             InitializeComponent();
-            this.transaction = transaction;
+            transaction = Transaction.Instance;
             ActivateTimer();
+            EventLogger.SaveLog(EventType.Info, "Iniciando OtpUC");
+
         }
 
 
@@ -57,7 +70,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             InhabilitarVista();
 
             SetCallBacksNull();
-            timer.Stop();
+            _timer.Stop();
 
             ValidateOTP();
         }
@@ -166,12 +179,14 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
 
                                 var ResponseInsert = await _apiIntegration.CrearRegistroCRM(transaction.CrmCreate);
 
-                                Utilities.CloseModal();
+                                
+                               _nav.CloseModal();
+                        
 
                                 if (ResponseInsert != null)
                                 {
 
-                                    if (ResponseInsert.ResponseCode == EResponseCode.OK)
+                                    if (ResponseInsert != null)
                                     {
 
                                         transaction.ResponseConsultarCRMRegistro = new ResponseConsultarCRMRegistro();
@@ -197,16 +212,20 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                                     }
                                     else
                                     {
-                                        Utilities.ShowModal("Hubo un error al momento de guardar tus datos intenta nuevamente", EModalType.Error, false);
-                                        Utilities.navigator.Navigate(UserControlView.Menu);
+
+                                        _nav.ShowModal("Hubo un error al momento de guardar tus datos intenta nuevamente", ModalType.Error);
+                                        _nav.NavigateTo(new MenuUC());
+                                 
                                     }
 
                                 }
                                 else
                                 {
 
-                                    Utilities.ShowModal("Hubo un error al momento de guardar tus datos intenta nuevamente", EModalType.Error, false);
-                                    Utilities.navigator.Navigate(UserControlView.Menu);
+
+                                    _nav.ShowModal("Hubo un error al momento de guardar tus datos intenta nuevamente", ModalType.Error);
+                                    _nav.NavigateTo(new MenuUC());
+                           
 
                                 }
 
@@ -214,27 +233,30 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                             }
                             else
                             {
-                                Utilities.CloseModal();
-                                Utilities.ShowModal("No se logro validar el Codigo OTP Correctamente intenta nuevamente", EModalType.Error, false);
-                                Utilities.navigator.Navigate(UserControlView.Menu);
+                                _nav.CloseModal();
+                                EventLogger.SaveLog(EventType.Error, "Error al validar OTP: " + Response.message);
+                                _nav.ShowModal("No se logro validar el Codigo OTP Correctamente intenta nuevamente", ModalType.Error);
+                                _nav.NavigateTo(new MenuUC());
+                               
                             }
                         }
                         else
                         {
-                            Utilities.CloseModal();
-                            Utilities.ShowModal("No se logro validar el Codigo OTP Correctamente intenta nuevamente", EModalType.Error, false);
-                            Utilities.navigator.Navigate(UserControlView.Menu);
+                            _nav.CloseModal();
+                            _nav.ShowModal("No se logro validar el Codigo OTP Correctamente intenta nuevamente", ModalType.Error);
+                          
                         }
 
 
                     });
 
-                    Utilities.ShowModal("Estamos verificando y organizando la informacion un momento por favor", EModalType.Preload, false);
+
+                    _nav.ShowModal("Estamos verificando y organizando la informacion un momento por favor", ModalType.Loading);
 
                 }
                 else
                 {
-                    Utilities.ShowModal("Digita por favor el codigo OTP que fue enviado a tu numero de celular", EModalType.Error, false);
+                    _nav.ShowModal("Digita por favor el codigo OTP que fue enviado a tu numero de celular", ModalType.Error);
                     ActivateTimer();
                     HabilitarVista();
                 }
@@ -242,10 +264,12 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             }
             catch (Exception ex)
             {
-                AdminPayPlus.SaveLog("OTPUC" + ex.Message + " " + ex.StackTrace);
-                Utilities.CloseModal();
-                Utilities.ShowModal("No se logro validar el Codigo OTP Correctamente intenta nuevamente", EModalType.Error, false);
-                Utilities.navigator.Navigate(UserControlView.Menu);
+                EventLogger.SaveLog(EventType.Error, "OtpUC ValidateOTP Catch: " + ex.Message + " " + ex.StackTrace);
+      
+                _nav.CloseModal();
+                _nav.ShowModal("No se logro validar el Codigo OTP Correctamente intenta nuevamente", ModalType.Error);
+                _nav.NavigateTo(new MenuUC());
+              
             }
         }
 
@@ -257,51 +281,54 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             {
                 RequestConsultarSorteo Request = new RequestConsultarSorteo();
 
-                Request.Transacciondistribuidorid = transaction.IdTransactionApi.ToString();
+                Request.Transacciondistribuidorid = transaction.IdTransaccionApi.ToString();
 
 
 
                 Task.Run(async () =>
                 {
 
-                    var Response = await AdminPayPlus.ApiIntegration.ConsultarSorteo(Request);
+                    var Response = await _apiIntegration.ConsultarSorteo(Request);
 
 
-                    Utilities.CloseModal();
+                    _nav.CloseModal();
 
                     if (Response != null)
                     {
                         if (Response.Estado)
                         {
                             transaction.ResponseConsultarAstro = Response;
-                            Utilities.navigator.Navigate(UserControlView.ConsultarLoteriasAstro, transaction);
+                            _nav.NavigateTo(new LoteriasAstroUC());
+                      
 
                         }
                         else
                         {
-                            Utilities.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", EModalType.Error, true);
-                            Utilities.navigator.Navigate(UserControlView.Menu);
+                            _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", ModalType.Error);
+                            _nav.NavigateTo(new MenuUC());
+             
                         }
                     }
                     else
                     {
-                        Utilities.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles,intenta nuevamente", EModalType.Error, true);
-                        Utilities.navigator.Navigate(UserControlView.Menu);
+                        _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles,intenta nuevamente", ModalType.Error);
+                        _nav.NavigateTo(new MenuUC());
+                    
                     }
 
 
                 });
 
-                Utilities.ShowModal("Estamos validando información un momento por favor", EModalType.Preload, false);
+                _nav.ShowModal("Estamos validando información un momento por favor", ModalType.Loading);
 
 
             }
             catch (Exception ex)
             {
-                AdminPayPlus.SaveLog("LoginUC GetTypeChance Catch : " + ex.Message + null);
-                Utilities.CloseModal();
-                Utilities.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", EModalType.Error, true);
-                Utilities.navigator.Navigate(UserControlView.Menu);
+                EventLogger.SaveLog(EventType.Error, "OtpUC GetTypeAstro Catch: " + ex.Message + " " + ex.StackTrace);
+                _nav.CloseModal();
+                _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", ModalType.Error);
+                _nav.NavigateTo(new MenuUC());
             }
         }
 
@@ -314,16 +341,16 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             {
                 IdProducto Request = new IdProducto();
 
-                Request.transaccion = transaction.IdTransactionApi;
+                Request.transaccion = transaction.IdTransaccionApi;
                 Request.Id = transaction.ProductSelected.Id;
 
 
                 Task.Run(async () =>
                 {
 
-                    var Response = await AdminPayPlus.ApiIntegration.TypeChance(Request);
+                    var Response = await ApiIntegration.TypeChance(Request);
 
-                    Utilities.CloseModal();
+                    _nav.CloseModal();
 
                     if (Response != null)
                     {
@@ -331,88 +358,134 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                         {
                             transaction.TipoChance = Response;
                             transaction.TypeChance = Response.listadotipochanceField;
-                            Utilities.navigator.Navigate(UserControlView.Dia, transaction);
+                            _nav.NavigateTo(new DateUC());
+                      
                             //    GenerateOTP();
 
                         }
                         else
                         {
-                            Utilities.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", EModalType.Error, false);
-                            Utilities.navigator.Navigate(UserControlView.Menu);
+                            _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", ModalType.Error);
+                            _nav.NavigateTo(new MenuUC());
+                         
                         }
                     }
                     else
                     {
-                        Utilities.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", EModalType.Error, false);
-                        Utilities.navigator.Navigate(UserControlView.Menu);
+                        _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", ModalType.Error);
+                        _nav.NavigateTo(new MenuUC());
+                       
                     }
 
                 });
 
-                Utilities.ShowModal("Estamos validando información un momento por favor", EModalType.Preload, false);
+                _nav.ShowModal("Estamos validando información un momento por favor", ModalType.Loading);
 
             }
             catch (Exception ex)
             {
-                AdminPayPlus.SaveLog("OtpUC GetTypeChance Catch : " + ex.Message + null);
-                Utilities.CloseModal();
-                Utilities.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", EModalType.Error, false);
-                Utilities.navigator.Navigate(UserControlView.Menu);
+                EventLogger.SaveLog(EventType.Error, "OtpUC GetTypeChance Catch: " + ex.Message + " " + ex.StackTrace);
+     
+                _nav.CloseModal();
+                _nav.ShowModal("En estos momentos los servicios de Susuerte no estan disponibles, intenta nuevamente", ModalType.Error);
+                _nav.NavigateTo(new MenuUC());
+               
             }
         }
 
-        #region Timer
+        private void InitializeTimer()
+        {
+            try
+            {
+                _timer = new TimerGeneric(TIMER_INICIAL);
+
+                _timer.Tick += OnTimerTick;
+                _timer.TimeOut += OnTimerTimeout;
+
+                tbTimer.Text = TIMER_INICIAL;
+                _timer.Start();
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, "Error al inicializar el timer: " + ex.Message, ex);
+            
+            }
+        }
+
+        /// <summary>
+        /// Activa el timer
+        /// </summary>
         private void ActivateTimer()
         {
             try
             {
-                Dispatcher.BeginInvoke((Action)delegate
+                Dispatcher.BeginInvoke((Action)(() =>
                 {
-                    tbTimer.Text = "01:59";
-                    timer = new TimerGeneric(tbTimer.Text);
-                    timer.CallBackClose = response =>
-                    {
-                        SetCallBacksNull();
-                        timer.CallBackStop?.Invoke(1);
-                        Utilities.navigator.Navigate(UserControlView.Menu);
-                    };
-                    timer.CallBackTimer = response =>
-                    {
-                        Dispatcher.BeginInvoke((Action)delegate
-                        {
-                            tbTimer.Text = response;
-                        });
-                    };
-                    GC.Collect();
-                });
+                    tbTimer.Text = "00:00";
+                    _timer = new TimerGeneric(tbTimer.Text);
 
+                    _timer.Tick += OnTimerTick;
+                    _timer.TimeOut += OnTimerTimeout;
+
+                    _timer.Start();
+                }));
             }
             catch (Exception ex)
             {
-                AdminPayPlus.SaveLog("OtpUC ActivateTimer Catch : " + ex.Message + null);
+                EventLogger.SaveLog(EventType.Error, "Error al activar el timer: " + ex.Message, ex);
+         
             }
         }
 
+        /// <summary>
+        /// Maneja el evento Tick del timer
+        /// </summary>
+        private void OnTimerTick(string tiempo)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                tbTimer.Text = tiempo;
+            });
+        }
+
+        /// <summary>
+        /// Maneja el evento TimeOut del timer
+        /// </summary>
+        private void OnTimerTimeout()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                tbTimer.Text = "00:00";
+                SetCallBacksNull();
+                Navigator.Instance.NavigateTo(new MenuUC());
+            });
+        }
+
+        /// <summary>
+        /// Establece los callbacks del timer a null
+        /// </summary>
         private void SetCallBacksNull()
         {
             try
             {
-                Dispatcher.BeginInvoke((Action)delegate
+                if (_timer != null)
                 {
-                    timer.CallBackClose = null;
-                    timer.CallBackTimer = null;
-
-                });
+                    _timer.Tick -= OnTimerTick;
+                    _timer.TimeOut -= OnTimerTimeout;
+                }
                 GC.Collect();
             }
             catch (Exception ex)
             {
-                AdminPayPlus.SaveLog("OtpUC SetCallBacksNull Catch : " + ex.Message + null);
+                EventLogger.SaveLog(EventType.Error, "Error al establecer callbacks a null: " + ex.Message, ex);
+            
             }
         }
-        #endregion
-
 
 
     }
+
+
+
+
 }

@@ -3,6 +3,7 @@ using SuSuerteV2.Domain.ApiService.Models;
 using SuSuerteV2.Domain.Enumerables;
 using System.ComponentModel;
 using System.Windows.Media.Imaging;
+using static SuSuerteV2.Domain.UIServices.Transaction;
 
 namespace SuSuerteV2.Domain.UIServices
 {
@@ -67,7 +68,10 @@ namespace SuSuerteV2.Domain.UIServices
         public string NumOperator { get; set; }
         public string StatePay { get; set; }
 
+        public int IndexChanceToEdit { get; set; }
 
+
+        public bool Editar { get; set; } = false;
 
         public ETypeTramites Type { get; set; }
         public ResponseNotifyPayment ResponseNotifyPayment { get; set; }
@@ -99,8 +103,11 @@ namespace SuSuerteV2.Domain.UIServices
         public int ValorApostadoAstro { get; set; }
         public List<Chance> ListaChances { get; set; }
 
+
         public ResponseNotificarPaquetes ResponseNotificarPaquetes { get; set; }
         public Dictionary<string, int> DicSginosSeleccionados { get; set; } = new Dictionary<string, int>();
+
+        public List<LotteriesViewModel> ListaLoteriasSeleccionadas { get; set; }
 
         public class Chance
         {
@@ -271,4 +278,9 @@ namespace SuSuerteV2.Domain.UIServices
             set { this._ImageData = value; }
         }
     }
+
+
+
+
+
 }

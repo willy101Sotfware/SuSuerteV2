@@ -789,13 +789,6 @@ namespace SuSuerteV2.Domain.ApiService
 
 
 
-   
-
-
-
-
-
-
         public async Task sendMail(string userMail, byte[] bytesPDF, Transaction transaction)
         {
             _client = new HttpClient();
