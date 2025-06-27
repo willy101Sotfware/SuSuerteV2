@@ -101,7 +101,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             }
 
 
-        }
+        } 
 
         private TextBox GetTextBoxFocused()
         {
@@ -473,7 +473,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                         {
 
                             _ts.ApuestaValidate = Response.Chance.Listadoapuestas.Apuesta;
-                            _nav.NavigateTo(new VerificarUC());
+                            _nav.NavigateTo(new ConfirmNumUC());
                   
                         }
                         else

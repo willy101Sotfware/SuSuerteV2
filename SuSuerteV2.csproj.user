@@ -17,6 +17,9 @@
     <Compile Update="Presentation\UserControls\BetPlay\ValidateUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Presentation\UserControls\Chance\ConfirmNumUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Presentation\UserControls\Chance\DateUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

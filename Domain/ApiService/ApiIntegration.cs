@@ -787,7 +787,33 @@ namespace SuSuerteV2.Domain.ApiService
             return null;
         }
 
+        public async Task<ResponseSavePayer> SavePayerChance(RequestSavePayer Machine)
+        {
+            try
+            {
+                string controller = AppConfig.Get("SaveUser");
 
+                _baseAddress = AppConfig.Get("basseAddressIntegration");
+
+                var response = await GetRequestData<ResponseGeneric>(controller);
+
+                if (response != null)
+                {
+                    var x = JsonConvert.SerializeObject(response.data);
+
+                    var requestData = JsonConvert.DeserializeObject<ResponseSavePayer>(x);
+                    EventLogger.SaveLog(EventType.Info, "ApiIntegration", "Respuesta al metodo SavePayerChance", "OK", x);
+
+
+                    return requestData;
+                }
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, "ApiIntegration", "Response Service SavePayerChance Catch", ex.Message);
+            }
+            return null;
+        }
 
         public async Task sendMail(string userMail, byte[] bytesPDF, Transaction transaction)
         {

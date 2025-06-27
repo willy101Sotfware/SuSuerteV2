@@ -73,6 +73,9 @@ namespace SuSuerteV2.Domain.UIServices
 
         public bool Editar { get; set; } = false;
 
+
+        public int IdUser { get; set; }
+
         public ETypeTramites Type { get; set; }
         public ResponseNotifyPayment ResponseNotifyPayment { get; set; }
         public List<Listadotipochancefield> TypeChance { get; set; }
