@@ -1,0 +1,113 @@
+﻿<local:AppUserControl x:Class="SuSuerteV2.Presentation.UserControls.Astro.SignosAstroUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SuSuerteV2.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1080" Height="1920">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/Backgrounds/BgSuSuerte.png"/>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="400" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0">
+
+                <Grid Margin="10,0,842,303"
+                      TouchDown="Btn_AtrasTouchDown">
+                    <Image Source="/Images/Buttons/btn_atrasBetplay.png"
+                   HorizontalAlignment="Left"                     
+                   VerticalAlignment="Top" Height="105" Width="109" Margin="64,40,0,0"/>
+
+                    <Image Source="/Images/Others/txt_atras.png"
+                   HorizontalAlignment="Left"                   
+                   VerticalAlignment="Top" Height="105" Width="109" Margin="64,150,0,0"/>
+
+                </Grid>
+
+
+
+                <TextBlock 
+            x:Name="tbTimer"
+            FontSize="35"
+            Foreground="White"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top" Height="53" Width="89"/>
+
+                <Image Source="/Images/Others/txt_selecciona_signo.png"
+                   HorizontalAlignment="Center"                   
+                   VerticalAlignment="Top" Height="72" Width="532" Margin="0,405,0,0"/>
+
+            </Grid>
+
+
+
+            <Grid Grid.Row="1" Margin="10,5,-10,395" Grid.RowSpan="2">
+
+
+
+
+                <!--Signos sin seleccionar -->
+
+                <Image Source="/Images/Buttons/aries.png"       x:Name="aries" Visibility="Visible" Tag="aries" MouseDown="ImageSelect_MouseDown" Margin="161,10,719,810" Height="200" />
+                <Image Source="/Images/Buttons/tauro.png"       x:Name="tauro" Visibility="Visible" Tag="tauro" MouseDown="ImageSelect_MouseDown"   Height="200" Width="200" Margin="440,10,440,810"/>
+                <Image Source="/Images/Buttons/geminis.png"     x:Name="geminis" Visibility="Visible" Tag="geminis" MouseDown="ImageSelect_MouseDown"  Height="200" Margin="718,10,162,810"/>
+                <Image Source="/Images/Buttons/cancer.png"      x:Name="cancer" Visibility="Visible" Tag="cancer" MouseDown="ImageSelect_MouseDown"  Height="200"  Width="200" Margin="162,256,718,564"/>
+                <Image Source="/Images/Buttons/leo.png"         x:Name="leo"  Visibility="Visible" Tag="leo" MouseDown="ImageSelect_MouseDown"  Height="200"  Width="200" Margin="439,256,441,564"/>
+                <Image Source="/Images/Buttons/virgo.png"       x:Name="virgo" Visibility="Visible" Tag="virgo" MouseDown="ImageSelect_MouseDown" Height="200"  Width="200" Margin="717,256,163,564" />
+                <Image Source="/Images/Buttons/libra.png"       x:Name="libra" Visibility="Visible" Tag="libra" MouseDown="ImageSelect_MouseDown" Height="200"  Width="200" Margin="162,510,718,310" />
+                <Image Source="/Images/Buttons/escorpion.png"   x:Name="escorpion" Visibility="Visible" Tag="escorpion" MouseDown="ImageSelect_MouseDown" Height="200"  Width="200" Margin="440,510,440,310" />
+                <Image Source="/Images/Buttons/sagitario.png"   x:Name="sagitario" Visibility="Visible" Tag="sagitario" MouseDown="ImageSelect_MouseDown"  Height="200"  Width="200" Margin="717,510,163,310" />
+                <Image Source="/Images/Buttons/capricornio.png" x:Name="capricornio" Visibility="Visible" Tag="capricornio" MouseDown="ImageSelect_MouseDown" Height="200"  Width="200" Margin="163,762,717,58" />
+                <Image Source="/Images/Buttons/acuario.png" x:Name="acuario" Visibility="Visible" Tag="acuario" MouseDown="ImageSelect_MouseDown" Height="200"  Width="200" Margin="439,762,441,58" />
+                <Image Source="/Images/Buttons/piscis.png" x:Name="piscis" Visibility="Visible" Tag="piscis" MouseDown="ImageSelect_MouseDown"  Height="200"  Width="200" Margin="718,762,162,58" />
+
+                <!--Signos seleccionados-->
+
+                <Image Source="/Images/Buttons/aries_selec.png"    x:Name="ariesselect" Visibility="Hidden" Tag="aries" MouseDown="ImageSelect_MouseDown" Margin="161,10,719,810" Height="200" />
+                <Image Source="/Images/Buttons/tauro_selec.png"    x:Name="tauroselect" Visibility="Hidden" Tag="tauro" MouseDown="ImageSelect_MouseDown"   Height="200" Width="200" Margin="440,10,440,810"/>
+                <Image Source="/Images/Buttons/geminis_blue.png"   x:Name="geminisselect" Visibility="Hidden" Tag="geminis" MouseDown="ImageSelect_MouseDown"  Height="200" Margin="718,10,162,810"/>
+                <Image Source="/Images/Buttons/cancer_selec.png" x:Name="cancerselect" Visibility="Hidden" Tag="cancer" MouseDown="ImageSelect_MouseDown"  Height="200"  Width="200" Margin="162,256,718,564"/>
+                <Image Source="/Images/Buttons/leo_selec.png" x:Name="leoselect"  Visibility="Hidden" Tag="leo" MouseDown="ImageSelect_MouseDown"  Height="200"  Width="200" Margin="439,256,441,564"/>
+                <Image Source="/Images/Buttons/virgo_selec.png" x:Name="virgoselect" Visibility="Hidden" Tag="virgo" MouseDown="ImageSelect_MouseDown" Height="200"  Width="200" Margin="717,256,163,564" />
+                <Image Source="/Images/Buttons/libra_selec.png" x:Name="libraselect" Visibility="Hidden" Tag="libra" MouseDown="ImageSelect_MouseDown" Height="200"  Width="200" Margin="162,510,718,310" />
+                <Image Source="/Images/Buttons/escorpion_selec.png" x:Name="escorpionselect" Visibility="Hidden" Tag="escorpion" MouseDown="ImageSelect_MouseDown" Height="200"  Width="200" Margin="440,510,440,310" />
+                <Image Source="/Images/Buttons/sagitario_selec.png" x:Name="sagitarioselect" Visibility="Hidden" Tag="sagitario" MouseDown="ImageSelect_MouseDown"  Height="200"  Width="200" Margin="717,510,163,310" />
+                <Image Source="/Images/Buttons/capricornio_selec.png" x:Name="capricornioselect" Visibility="Hidden" Tag="capricornio" MouseDown="ImageSelect_MouseDown" Height="200"  Width="200" Margin="163,762,717,58" />
+                <Image Source="/Images/Buttons/acuario_selec.png" x:Name="acuarioselect" Visibility="Hidden" Tag="acuario" MouseDown="ImageSelect_MouseDown" Height="200"  Width="200" Margin="439,762,441,58" />
+                <Image Source="/Images/Buttons/piscis_selec.png" x:Name="piscisselect" Visibility="Hidden" Tag="piscis" MouseDown="ImageSelect_MouseDown"  Height="200"  Width="200" Margin="718,762,162,58" />
+
+
+            </Grid>
+
+            <Grid Grid.Row="2">
+
+                <Image Source="/Images/Buttons/btnCancelar.png" 
+                  
+                   HorizontalAlignment="Left"
+                   TouchDown="Btn_CancelarTouchDown"
+                   VerticalAlignment="Top" Height="101" Width="346" Margin="129,43,0,0"/>
+
+                <Image Source="/Images/Buttons/btnContinuar.png" 
+                  
+                   TouchDown="Btn_ContinuarTouchDown"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top" Height="101" Width="346" Margin="610,47,0,0"/>
+
+
+                <Image Source="/Images/Others/ico_atencion_cliente.png"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Height="114" Width="710" Margin="0,247,0,0"/>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</local:AppUserControl>

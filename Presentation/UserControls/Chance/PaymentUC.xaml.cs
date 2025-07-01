@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+﻿
 using SuSuerteV2.Domain;
 using SuSuerteV2.Domain.ApiService;
 using SuSuerteV2.Domain.ApiService.IntegrationModels;
@@ -9,11 +9,10 @@ using SuSuerteV2.Domain.Variables;
 using SuSuerteV2.Modals;
 using SuSuerteV2.UserControls;
 using System.ComponentModel;
-using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Threading;
+
 
 namespace SuSuerteV2.Presentation.UserControls.Chance
 {
@@ -107,9 +106,10 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             _peripherals.StartAcceptance(_paymentViewModel.PayAmount);
 #endif
         }
+
+
         private void InitViewModel()
         {
-
             _paymentViewModel = new PaymentViewModel
             {
                 PayAmount = _ts.paymentProcess.Total,
@@ -119,11 +119,15 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                 Denominations = new List<Denomination>(),
                 DispensedAmount = 0
             };
-            DataView.DataContext = _paymentViewModel;
-            DataContext = _paymentViewModel;
-            DataView.ItemsSource = _paymentViewModel.Denominations;
 
+            // Asignar el DataContext correctamente
+            this.DataContext = _paymentViewModel;
+
+            // Asignar el ItemsSource al ListView real (lv_denominations)
+            lv_denominations.DataContext = _paymentViewModel;
+            lv_denominations.ItemsSource = _paymentViewModel.Denominations;
         }
+     
 
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
@@ -211,10 +215,24 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
         #region UI control methods
         private async Task RefreshView()
         {
-            await Dispatcher.BeginInvoke(() =>
+            try
             {
-                DataView.Items.Refresh();
-            });
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    // Método 1: Acceso directo (recomendado)
+                    lv_denominations?.Items.Refresh();
+
+                    // Método 2: Alternativa segura
+                    if (FindName("lv_denominations") is ListView listView)
+                    {
+                        listView.Items.Refresh();
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                EventLogger.SaveLog(EventType.Error, $"Error al refrescar vista: {ex.Message}");
+            }
         }
         private void CloseLoadModal()
         {
@@ -374,7 +392,6 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             try
             {
                 _paymentViewModel.IsPayCompleted = true;
-                _ts.DatosPago = _paymentViewModel;
                 _ts.paymentProcess.TotalIngresado = _paymentViewModel.EnteredAmount;
                 _ts.paymentProcess.TotalDevuelta = _paymentViewModel.DispensedAmount;
 
@@ -590,8 +607,8 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                 if (_enteredAmount != value)
                 {
                     _enteredAmount = value;
-                    RemainingAmount = EnteredAmount < PayAmount ? PayAmount - EnteredAmount : 0;
-                    ReturnAmount = EnteredAmount > PayAmount ? EnteredAmount - PayAmount : 0;
+                    RemainingAmount = (EnteredAmount < PayAmount) ? PayAmount - EnteredAmount : 0;
+                    ReturnAmount = (EnteredAmount > PayAmount) ? EnteredAmount - PayAmount : 0;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EnteredAmount)));
                 }
             }

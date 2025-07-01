@@ -41,27 +41,6 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
         }
 
 
-        #region Métodos de Timer
-        /// <summary>
-        /// Inicializa el timer del control
-        /// </summary>
-        private void InitializeTimer()
-        {
-            try
-            {
-                _timer = new TimerGeneric(TIMER_INICIAL);
-
-                _timer.Tick += OnTimerTick;
-                _timer.TimeOut += OnTimerTimeout;
-
-                tbTimer.Text = TIMER_INICIAL;
-                _timer.Start();
-            }
-            catch (Exception ex)
-            {
-                LogError("InitializeTimer", ex);
-            }
-        }
 
 
         private void ValidarEstadoLoteria()
@@ -159,7 +138,7 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
                         if (Response.Estado)
                         {
                             _ts.ResponseConsultarSignos = Response;
-                           // Navigator.Instance.NavigateTo(new SignosAstroUC());
+                            Navigator.Instance.NavigateTo(new SignosAstroUC());
                         
 
                         }
@@ -266,39 +245,9 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
                 LogError("SetCallBacksNull", ex);
             }
         }
-        #endregion
+     
 
-        #region Métodos de Inicialización y Limpieza
-        /// <summary>
-        /// Inicializa los componentes adicionales
-        /// </summary>
-        private void InitializeComponents()
-        {
-            // Inicialización adicional si es necesaria
-        }
-
-        /// <summary>
-        /// Limpia los recursos utilizados
-        /// </summary>
-        private void CleanupResources()
-        {
-            try
-            {
-                SetCallBacksNull();
-
-                _timer?.Stop();
-                _timer?.Dispose();
-                _timer = null;
-
-                _animationTimer?.Stop();
-                _animationTimer = null;
-            }
-            catch (Exception ex)
-            {
-                LogError("CleanupResources", ex);
-            }
-        }
-        #endregion
+   
 
         #region Métodos de Utilidad
         /// <summary>
@@ -321,27 +270,7 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
         #endregion
 
 
-        private void InhabilitarVista()
-        {
-            Dispatcher.BeginInvoke((Action)delegate
-            {
-                this.Opacity = 0.3;
-                //this.btnChance.IsEnabled = false;
-                //this.btnRecaudos.IsEnabled = false;
-                this.IsEnabled = false;
-            });
-        }
-
-        private void HabilitarVista()
-        {
-            Dispatcher.BeginInvoke((Action)delegate
-            {
-                this.Opacity = 1;
-                //this.btnChance.IsEnabled = true;
-                //this.btnRecaudos.IsEnabled = true;
-                this.IsEnabled = true;
-            });
-        }
+       
 
 
 

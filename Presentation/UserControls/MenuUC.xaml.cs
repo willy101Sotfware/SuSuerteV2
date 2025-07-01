@@ -251,7 +251,7 @@ namespace SuSuerteV2.Presentation.UserControls
                                 if (_ts.ProductSelected != null)
                                 {
                                     EventLogger.SaveLog(EventType.Info, $"Producto seleccionado: {_ts.ProductSelected.Nombre}");
-                                    //NavigateTo(new ScanDocumentUC(_ts));
+                                    NavigateTo(new ScanDocumentUC());
                                 }
                                 else
                                 {
