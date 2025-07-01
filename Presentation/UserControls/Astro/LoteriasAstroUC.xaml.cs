@@ -187,7 +187,7 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
             {
                 Dispatcher.BeginInvoke((Action)(() =>
                 {
-                    tbTimer.Text = "00:00";
+                    tbTimer.Text = "00:60";
                     _timer = new TimerGeneric(tbTimer.Text);
 
                     _timer.Tick += OnTimerTick;

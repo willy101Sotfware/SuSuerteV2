@@ -5,8 +5,263 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SuSuerteV2.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="1920" d:DesignWidth="1080">
+
+    <Viewbox Stretch="Uniform">
+        <Grid Width="1080" Height="1920"  x:Name="GrdMain">
+
+
+
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/Backgrounds/bgGray.png"/>
+            </Grid.Background>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid
+         Grid.Row="0">
+
+
+                <TextBlock 
+      x:Name="tbTimer"
+      FontSize="45"
+      Foreground="White"
+      FontWeight="Bold"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Top"
+      Margin="0,10,0,0" Height="60" Width="126" RenderTransformOrigin="0.037,0.505"/>
+            </Grid>
+
+            <Grid
+       Grid.Row="1">
+
+
+                <Image Source="/Images/Backgrounds/BgNums.png"
+              HorizontalAlignment="Left"
+              Visibility="Hidden"
+              VerticalAlignment="Top" Height="1612" Width="944" Margin="79,24,0,0"/>
+
+                <TextBlock HorizontalAlignment="Left" 
+                Margin="103,336,0,0"
+                TextWrapping="Wrap"
+                Text="Signos jugados"
+                FontSize="40"
+                VerticalAlignment="Top"
+                Width="174"
+                Foreground="White"
+                Height="128"/>
+
+
+
+                <Image Source="/Images/Others/TxtValorT.png"
+              HorizontalAlignment="Left"
+                   Visibility="Hidden"
+              VerticalAlignment="Top" Height="50" Width="244" Margin="202,1194,0,0"/>
+
+                <Image Source="/Images/Others/TxtIva.png"
+              HorizontalAlignment="Left"
+                   Visibility="Hidden"
+              VerticalAlignment="Top" Height="37" Width="94" Margin="202,1303,0,0"/>
+
+                <Label 
+              HorizontalAlignment="Left"
+              Margin="670,1288,0,0" 
+               Visibility="Hidden"
+              VerticalAlignment="Top" 
+              HorizontalContentAlignment="Center"
+              Foreground="White"
+              x:Name="Iva"
+           Content=""
+              FontSize="50" Width="252" Height="66"/>
+
+                <Label 
+              HorizontalAlignment="Left"
+              Margin="670,1175,0,0" 
+                Visibility="Hidden"
+              VerticalAlignment="Top" 
+              Foreground="White"
+              Content=""
+              HorizontalContentAlignment="Center"
+              x:Name="Valor"
+              FontSize="50" Width="258"/>
+
+                <Image Source="/Images/Backgrounds/BgValor.png"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top" Height="208" Width="694" Margin="206,1112,0,0"/>
+
+
+                <Label 
+              HorizontalAlignment="Left"
+              Margin="421,1194,0,0" 
+              FontWeight="Bold"
+              VerticalAlignment="Top" 
+              HorizontalContentAlignment="Center"
+              Foreground="White"
+              Content=""
+              x:Name="ValorT"
+              FontSize="50" Height="68" Width="264" Background="{x:Null}"/>
+
+
+                <Image Source="/Images/Others/ico_atencion_cliente.png"
+                   VerticalAlignment="Top" Height="114" Margin="185,1558,185,0"/>
+
+                <Image Source="/Images/Buttons/BtnConfirmarA.png"
+              HorizontalAlignment="Left"
+              TouchDown="Btn_Continue"
+              VerticalAlignment="Top" Height="72" Width="324" Margin="586,1384,0,0"/>
+
+                <Image Source="/Images/Buttons/BtnCancelar.png"
+              HorizontalAlignment="Left"
+              TouchDown="Btn_Cancel"
+              VerticalAlignment="Top" Height="90" Width="274" Margin="213,1381,0,0"/>
+
+                <Image Source="/Images/Others/txt_resumen.png"
+           VerticalAlignment="Top" 
+           Height="42" 
+           Margin="303,136,277,0"/>
+
+                <TextBlock HorizontalAlignment="Left" 
+                Margin="103,652,0,0"
+                TextWrapping="Wrap"
+                Text="Loteria"
+                FontSize="40"
+                VerticalAlignment="Top"
+                Width="174"
+                Foreground="White"
+                Height="48"/>
+
+
+
+                <TextBlock HorizontalAlignment="Left" 
+                Margin="460,652,0,0"
+                TextWrapping="Wrap"
+                Text="Numero"
+                FontSize="40"
+                VerticalAlignment="Top"
+                Width="214"
+                Foreground="White"
+                Height="48"/>
+
+                <TextBlock HorizontalAlignment="Left" 
+                Margin="784,652,0,0"
+                TextWrapping="Wrap"
+                Text="Valor"
+                FontSize="40"
+                VerticalAlignment="Top"
+                Width="154"
+                Foreground="White"
+                Height="48" />
+
+
+                <!--Data Numeros-->
+
+                <Image Source="{Binding ImgLot2}"
+                x:Name="imgLoteria2"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" Height="242" Width="190" Margin="74,736,0,0"/>
+
+
+
+                <!--End Data Numeros-->
+
+                <!--Data Directos-->
+
+                <TextBlock HorizontalAlignment="Center" 
+                Margin="0,752,0,0"
+                TextWrapping="Wrap"
+                Text=""
+                TextAlignment="Center"
+                FontSize="50"
+                x:Name="Directo1"
+                VerticalAlignment="Top"
+                Width="160"
+                Foreground="White"
+                Height="75"/>
+
+
+
+                <!--Data Pata-->
+
+                <TextBlock HorizontalAlignment="Left" 
+                Margin="696,752,0,0"
+                TextWrapping="Wrap"
+                Text=""
+                           TextAlignment="Center"
+                FontSize="50"
+                x:Name="Pata1"
+                VerticalAlignment="Top"
+                Width="242"
+                Foreground="White"
+                Height="60"/>
+
+
+
+                <!--End Data Pata-->
+
+
+
+
+
+                <ListView 
+               x:Name="lvLotteries"
+              
+               
+               ItemsSource="{Binding}"            
+               SelectionMode="Multiple" Background="{x:Null}" Margin="381,230,98,1116">
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="4"
+                             VerticalAlignment="Top"
+                            HorizontalAlignment="Center"/>
+
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid 
+                                  
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Margin="0,10,10,0"
+                            x:Name="LotterieSelected"
+                           Width="100"
+                           Height="100">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100" />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0"                      
+                                   x:Name="LotteriesSelected"
+                                 >
+
+                                    <Grid.Background>
+
+                                        <ImageBrush 
+                                       ImageSource="{Binding ImageData}"                                            
+                                       Stretch="Fill"                                      
+                                       />
+                                    </Grid.Background>
+
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+                <Image Source="/Images/Others/TxtValorPagar.png"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Top" Height="44" Width="410" Margin="377,1126,0,0"/>
+            </Grid>
+
+
+
+
+
+
+        </Grid>
+    </Viewbox>
 </local:AppUserControl>

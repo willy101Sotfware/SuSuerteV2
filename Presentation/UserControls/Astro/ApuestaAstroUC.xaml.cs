@@ -628,114 +628,7 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
             txtDirecto.Focus();
         }
 
-        internal class SelectNumViewModel : INotifyPropertyChanged
-        {
-            public event PropertyChangedEventHandler PropertyChanged;
-            protected virtual void OnPropertyChanged(string propertyName)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-
-            private int _valorDirecto = 0;
-            public int ValorDirecto
-            {
-                get
-                {
-                    return _valorDirecto;
-                }
-                set
-                {
-                    _valorDirecto = value;
-                    OnPropertyChanged(nameof(ValorDirecto));
-                }
-            }
-            private int _valorCombinado = 0;
-            public int ValorCombinado
-            {
-                get
-                {
-                    return _valorCombinado;
-                }
-                set
-                {
-                    _valorCombinado = value;
-                    OnPropertyChanged(nameof(ValorCombinado));
-                }
-            }
-            private int _valorPata = 0;
-            public int ValorPata
-            {
-                get
-                {
-                    return _valorPata;
-                }
-                set
-                {
-                    _valorPata = value;
-                    OnPropertyChanged(nameof(ValorPata));
-                }
-            }
-            private int _valorUna = 0;
-
-            public int ValorUna
-            {
-                get
-                {
-                    return _valorUna;
-                }
-                set
-                {
-                    _valorUna = value;
-                    OnPropertyChanged(nameof(ValorUna));
-                }
-            }
-
-            private string _imgLot2 = string.Empty;
-
-            public string ImgLot2
-            {
-                get
-                {
-                    return _imgLot2;
-                }
-                set
-                {
-                    _imgLot2 = value;
-                    OnPropertyChanged(nameof(ImgLot2));
-                }
-            }
-
-            private string _imgLot3 = string.Empty;
-
-            public string ImgLot3
-            {
-                get
-                {
-                    return _imgLot3;
-                }
-                set
-                {
-                    _imgLot3 = value;
-                    OnPropertyChanged(nameof(ImgLot3));
-                }
-            }
-
-            private string _msgValidations;
-            public string MsgValidations
-            {
-                get
-                {
-                    return _msgValidations;
-                }
-                set
-                {
-                    _msgValidations = value;
-                    OnPropertyChanged(nameof(MsgValidations));
-                }
-            }
-
-
-        }
+ 
 
 
         /// <summary>
@@ -835,4 +728,114 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
 
 
     }
+
+    internal class SelectNumViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private int _valorDirecto = 0;
+        public int ValorDirecto
+        {
+            get
+            {
+                return _valorDirecto;
+            }
+            set
+            {
+                _valorDirecto = value;
+                OnPropertyChanged(nameof(ValorDirecto));
+            }
+        }
+        private int _valorCombinado = 0;
+        public int ValorCombinado
+        {
+            get
+            {
+                return _valorCombinado;
+            }
+            set
+            {
+                _valorCombinado = value;
+                OnPropertyChanged(nameof(ValorCombinado));
+            }
+        }
+        private int _valorPata = 0;
+        public int ValorPata
+        {
+            get
+            {
+                return _valorPata;
+            }
+            set
+            {
+                _valorPata = value;
+                OnPropertyChanged(nameof(ValorPata));
+            }
+        }
+        private int _valorUna = 0;
+
+        public int ValorUna
+        {
+            get
+            {
+                return _valorUna;
+            }
+            set
+            {
+                _valorUna = value;
+                OnPropertyChanged(nameof(ValorUna));
+            }
+        }
+
+        private string _imgLot2 = string.Empty;
+
+        public string ImgLot2
+        {
+            get
+            {
+                return _imgLot2;
+            }
+            set
+            {
+                _imgLot2 = value;
+                OnPropertyChanged(nameof(ImgLot2));
+            }
+        }
+
+        private string _imgLot3 = string.Empty;
+
+        public string ImgLot3
+        {
+            get
+            {
+                return _imgLot3;
+            }
+            set
+            {
+                _imgLot3 = value;
+                OnPropertyChanged(nameof(ImgLot3));
+            }
+        }
+
+        private string _msgValidations;
+        public string MsgValidations
+        {
+            get
+            {
+                return _msgValidations;
+            }
+            set
+            {
+                _msgValidations = value;
+                OnPropertyChanged(nameof(MsgValidations));
+            }
+        }
+
+
+    }
+
 }
