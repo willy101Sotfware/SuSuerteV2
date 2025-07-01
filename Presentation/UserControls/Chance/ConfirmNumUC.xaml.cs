@@ -491,8 +491,6 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                             _ts.IdUser = Response.Tercero.Id;
                             _nav.NavigateTo(new PaymentUC());
                        
-
-
                         }
                         else
                         {
