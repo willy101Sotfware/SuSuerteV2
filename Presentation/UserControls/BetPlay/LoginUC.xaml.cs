@@ -212,7 +212,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
 
                 if (Validate())
                 {
-                    Transaction.Instance.Documento = TxtCedula.Text;
+                    Transaction.Instance.paymentProcess.Documento = TxtCedula.Text;
                     EventLogger.SaveLog(EventType.Info, "LoginUC", "Navegando a Recharge", "OK");
                     Navigator.Instance.NavigateTo(new RechargeUC());
                 }

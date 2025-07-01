@@ -62,12 +62,12 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
 
                 iva = valor * 0.19;
 
-                _ts.Total = valor;
+                _ts.paymentProcess.Total = valor;
 
-                int ValorTL = (int)(Convert.ToInt32(_ts.Total) - iva);
+                int ValorTL = (int)(Convert.ToInt32(_ts.paymentProcess.Total) - iva);
 
                 Iva.Content = string.Format("{0:C0}", Convert.ToDecimal(iva));
-                ValorT.Content = string.Format("{0:C0}", Convert.ToDecimal(_ts.Total));
+                ValorT.Content = string.Format("{0:C0}", Convert.ToDecimal(_ts.paymentProcess.Total));
                 Valor.Content = string.Format("{0:C0}", Convert.ToDecimal(ValorTL));
 
             }
@@ -423,7 +423,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                         _ts.Type = ETypeTramites.Chance;
                         _ts.Tipo = ETransactionType.Payment;
                         _ts.TypeTramite = ETypeTramites.Chance;
-                        _ts.Valor = _ts.Total.ToString("C0");
+                        _ts.Valor = _ts.paymentProcess.Total.ToString("C0");
 
                         await Api.CreateTransaction();
                         EventLogger.SaveLog(EventType.Info, "ConfirmNumUC SendData", "Transacción creada con éxito");

@@ -863,10 +863,10 @@ namespace SuSuerteV2.Domain.ApiService
                            DateTime.Now.ToString("dd-MM-yyyy");
 
             decimal valor = transaction.Type == ETypeTramites.BetPlay ? (decimal)transaction.ResponseNotifyBetplay.ValorRecaudo :
-                             transaction.Type == ETypeTramites.RecargasCel ? Convert.ToDecimal(transaction.Total) :
-                             transaction.Type == ETypeTramites.PaquetesCel ? Convert.ToDecimal(transaction.Total) :
-                              transaction.Type == ETypeTramites.Astro ? Convert.ToDecimal(transaction.Total) :
-                             Convert.ToDecimal(transaction.Total);
+                             transaction.Type == ETypeTramites.RecargasCel ? Convert.ToDecimal(transaction.paymentProcess.Total) :
+                             transaction.Type == ETypeTramites.PaquetesCel ? Convert.ToDecimal(transaction.paymentProcess.Total) :
+                              transaction.Type == ETypeTramites.Astro ? Convert.ToDecimal(transaction.paymentProcess.Total) :
+                             Convert.ToDecimal(transaction.paymentProcess.Total);
             string formattedValue = valor.ToString("C0", CultureInfo.CurrentCulture);
 
 

@@ -388,7 +388,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                     {
                         if (amount >= MONTO_MINIMO && amount <= MONTO_MAXIMO && amount % INCREMENTO_VALIDO == 0)
                         {
-                            _ts.Total = amount;
+                            _ts.paymentProcess.Total = amount;
                             return true;
                         }
                         else
@@ -427,7 +427,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                 _ts.Payer = new PAYER
                 {
                 
-                    IDENTIFICATION = _ts.Documento,
+                    IDENTIFICATION = _ts.paymentProcess.Documento,
                     NAME = _ts.Name,
                    
                 };

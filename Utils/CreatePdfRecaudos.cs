@@ -59,7 +59,7 @@ namespace SuSuerteV2.Utils
                                     {
                                         txt.DefaultTextStyle(style => style.FontSize(22).FontColor("ffffff").Bold());
                                         txt.Span("Total:    ");
-                                        txt.Span($"{Transaction.Total:C0}");
+                                        txt.Span($"{Transaction.paymentProcess.Total:C0}");
                                     });
 
 
@@ -67,7 +67,7 @@ namespace SuSuerteV2.Utils
                                 {
                                     txt.DefaultTextStyle(style => style.FontSize(13).FontColor("808080"));
                                     txt.Line($"RECAUDO PARA TERCEROS {Transaction.Company.Nombre}");
-                                    txt.Line($"{Transaction.Total:C0}");
+                                    txt.Line($"{Transaction.paymentProcess.Total:C0}");
                                 });
 
 
@@ -177,7 +177,7 @@ namespace SuSuerteV2.Utils
                                     {
                                         txt.DefaultTextStyle(style => style.FontSize(22).FontColor("ffffff").Bold());
                                         txt.Span("Total:    ");
-                                        txt.Span($"{Transaction.Total:C0}");
+                                        txt.Span($"{Transaction.paymentProcess.Total:C0}");
                                     });
 
 
@@ -318,7 +318,7 @@ namespace SuSuerteV2.Utils
                                     {
                                         txt.DefaultTextStyle(style => style.FontSize(22).FontColor("ffffff").Bold());
                                         txt.Span("Total:    ");
-                                        txt.Span($"{Transaction.Total:C0}");
+                                        txt.Span($"{Transaction.paymentProcess.Total:C0}");
                                     });
 
 
@@ -443,7 +443,7 @@ namespace SuSuerteV2.Utils
                                     {
                                         txt.DefaultTextStyle(style => style.FontSize(22).FontColor("ffffff").Bold());
                                         txt.Span("Total:    ");
-                                        txt.Span($"{Transaction.Total:C0}");
+                                        txt.Span($"{Transaction.paymentProcess.Total:C0}");
                                     });
 
 
@@ -453,7 +453,7 @@ namespace SuSuerteV2.Utils
 
                                     txt.DefaultTextStyle(style => style.FontSize(13).FontColor("808080"));
                                     txt.Line($" RECAUDO PARA TERCEROS recarga Celular por");
-                                    decimal valor = Convert.ToDecimal(Transaction.Total);
+                                    decimal valor = Convert.ToDecimal(Transaction.paymentProcess.Total);
                                     string formattedValue = valor.ToString("C0", CultureInfo.CurrentCulture);
                                     txt.Line($" el valor de {formattedValue} al número de celular {Transaction.NumOperator}");
 
@@ -569,7 +569,7 @@ namespace SuSuerteV2.Utils
                                     {
                                         txt.DefaultTextStyle(style => style.FontSize(22).FontColor("ffffff").Bold());
                                         txt.Span("Total:    ");
-                                        txt.Span($"{Transaction.Total:C0}");
+                                        txt.Span($"{Transaction.paymentProcess.Total:C0}");
                                     });
 
                                 col.Item().AlignCenter().AlignMiddle().ShowIf(Transaction.Type == ETypeTramites.PaquetesCel).Text(txt =>
@@ -577,7 +577,7 @@ namespace SuSuerteV2.Utils
 
                                     txt.DefaultTextStyle(style => style.FontSize(13).FontColor("808080"));
                                     txt.Line($" RECAUDO PARA TERCEROS Paquetes Celular por");
-                                    decimal valor = Convert.ToDecimal(Transaction.Total);
+                                    decimal valor = Convert.ToDecimal(Transaction.paymentProcess.Total);
                                     string formattedValue = valor.ToString("C0", CultureInfo.CurrentCulture);
                                     txt.Line($" el valor de {formattedValue} al número de celular {Transaction.NumOperator}");
 
@@ -693,14 +693,14 @@ namespace SuSuerteV2.Utils
                                     {
                                         txt.DefaultTextStyle(style => style.FontSize(22).FontColor("ffffff").Bold());
                                         txt.Span("Total:    ");
-                                        txt.Span($"{Transaction.Total:C0}");
+                                        txt.Span($"{Transaction.paymentProcess.Total:C0}");
                                     });
 
                                 col.Item().AlignCenter().AlignMiddle().ShowIf(Transaction.Type == ETypeTramites.Recaudos).Text(txt =>
                                 {
                                     txt.DefaultTextStyle(style => style.FontSize(13).FontColor("808080"));
                                     txt.Line($"RECAUDO PARA TERCEROS {Transaction.Company.Nombre}");
-                                    txt.Line($"{Transaction.Total:C0}");
+                                    txt.Line($"{Transaction.paymentProcess.Total:C0}");
                                 });
 
 
@@ -709,7 +709,7 @@ namespace SuSuerteV2.Utils
 
                                     txt.DefaultTextStyle(style => style.FontSize(13).FontColor("808080"));
                                     txt.Line($" RECAUDO PARA TERCEROS SUPER ASTRO por");
-                                    decimal valor = Convert.ToDecimal(Transaction.Total);
+                                    decimal valor = Convert.ToDecimal(Transaction.paymentProcess.Total);
                                     string formattedValue = valor.ToString("C0", CultureInfo.CurrentCulture);
                                     txt.Line($" el valor de {formattedValue} al número apostado {Transaction.ResponseVentaAstro.Listadodetalles.Detalle.Numeroapostado}");
 

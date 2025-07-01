@@ -35,8 +35,8 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
         {
             InitializeComponent();
             InitializeTimer();
-            TxtCedula.Text = string.Concat(_ts.Documento.ToString());
-            TxtMonto.Text = string.Concat(String.Format("{0:C0}", Convert.ToDecimal(_ts.Total)));
+            TxtCedula.Text = string.Concat(_ts.paymentProcess.Documento.ToString());
+            TxtMonto.Text = string.Concat(String.Format("{0:C0}", Convert.ToDecimal(_ts.paymentProcess.Total)));
             EventLogger.SaveLog(EventType.Info, "ValidateUC", "Inicializando ValidateUC", "OK");
         }
 

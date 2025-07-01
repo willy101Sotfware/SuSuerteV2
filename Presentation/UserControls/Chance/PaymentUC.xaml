@@ -260,10 +260,9 @@
                 Grid.Row="4">
 
                 <Image Source="/Images/Buttons/btnCancelar.png"
-
+                       Name="cancelar"
                        HorizontalAlignment="Center"
                        Visibility="{Binding ImgCancel}"
-                       Name="cancelar"
                        TouchDown="Btn_CancelarTouchDown"
                        VerticalAlignment="Top" Height="92" Width="336" Margin="0,32,0,0"/>
 

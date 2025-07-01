@@ -216,7 +216,7 @@ namespace SuSuerteV2.Presentation.UserControls
                     Body = new Dictionary<string, string>
                 {
                     {"Producto:", $"{_ts.Company.Nombre}"},
-                    {"Referencia:", $"{_ts.Referencia}"},
+                    {"Referencia:", $"{_ts.paymentProcess.Referencia}"},
                     {"Codigo Seg:", $"{_ts.ResponseNotifyPayment.Codigoseguridad}"},
                     {"ID:", $"{_ts.ResponseNotifyPayment.Transaccionid}"},
 

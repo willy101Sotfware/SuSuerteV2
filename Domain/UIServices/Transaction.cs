@@ -41,20 +41,28 @@ namespace SuSuerteV2.Domain.UIServices
         public ETypeTramites TypeTramite { get; set; }
         public ETransactionType Tipo { get; set; }
         public string EstadoTransaccionVerb { get; set; }
-        public string? Referencia { get; set; }
-        public string? Documento { get; set; }
-        public string? Descripcion { get; set; }
-        public string? FechaVencimiento { get; set; }
-        public decimal TotalSinRedondear { get; set; }
-        public decimal Total { get; set; }
-        public decimal TotalDevuelta { get; set; }
-        public decimal TotalIngresado { get; set; }
 
-        public string Name { get; set; }
+        //PaymentProcess
+        public class PaymentProcess
+        {
+            public string? Referencia { get; set; }
+            public string? Documento { get; set; }
+            public string? Descripcion { get; set; }
+            public string? FechaVencimiento { get; set; }
+            public decimal TotalSinRedondear { get; set; }
+            public decimal Total { get; set; }
+            public decimal TotalDevuelta { get; set; }
+            public decimal TotalIngresado { get; set; }
+            public decimal ValorFaltante { get; set; }
+            public bool DevueltaCorrecta { get; set; }
+            public string Calificacion { get; set; }
 
-        public bool DevueltaCorrecta { get; set; }
+        }
+        public PaymentProcess paymentProcess { get; set; } = new();
+
         public ulong Transacciondistribuidorid { get; set; }
 
+        public string Name { get; set; }
         public string NombreUsuario { get; set; }
         public string Valor { get; set; }
         public int ValorGanar { get; set; }

@@ -185,7 +185,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
 
                     usuario.FechaNacimiento = fechaFormateada;
 
-                    _ts.Documento = usuario.NumIdentificacion;
+                    _ts.paymentProcess.Documento = usuario.NumIdentificacion;
                     _ts.Name = $"{usuario.PrimerNombre} {usuario.PrimerApellido}".ToCapitalized();
 
                     // Hacer peticion para averiguar si el usuario está registrado
@@ -247,7 +247,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                     };
 
 
-                    _ts.Documento = usuario.NumIdentificacion;
+                    _ts.paymentProcess.Documento = usuario.NumIdentificacion;
                     _ts.Name = $"{usuario.PrimerNombre} {usuario.PrimerApellido}".ToCapitalized();
 
                     // Hacer peticion para averiguar si el usuario está registrado
@@ -338,7 +338,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                 RequestConsultCrmRegistro request = new RequestConsultCrmRegistro();
 
                 request.DocumentType = "CC";
-                request.Document = _ts.Documento;
+                request.Document = _ts.paymentProcess.Documento;
 
                 Task.Run(async () =>
                 {

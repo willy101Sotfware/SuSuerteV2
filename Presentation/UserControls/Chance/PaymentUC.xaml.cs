@@ -36,7 +36,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
 
 
             _ts = Transaction.Instance;
-            _ts.DevueltaCorrecta = false;
+            _ts.paymentProcess.DevueltaCorrecta = false;
 
 #if NO_PERIPHERALS
             Button dynamicButton = new Button();
@@ -112,8 +112,8 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
 
             _paymentViewModel = new PaymentViewModel
             {
-                PayAmount = _ts.Total,
-                RemainingAmount = _ts.Total,
+                PayAmount = _ts.paymentProcess.Total,
+                RemainingAmount = _ts.paymentProcess.Total,
                 ReturnAmount = 0,
                 EnteredAmount = 0,
                 Denominations = new List<Denomination>(),
@@ -182,14 +182,14 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
 
             if (_paymentViewModel.DispensedAmount == _paymentViewModel.ReturnAmount)
             {
-                _ts.DevueltaCorrecta = true;
+                _ts.paymentProcess.DevueltaCorrecta = true;
                 await SavePay();
             }
             else
             {
                 _currentLoadModal = _nav.ShowLoadModal("No se pudo entregar la totalidad del dinero hay un faltante de:" + $" {strValueToReturn} " + ".Por favor comunícate con un administrador.");
                 await Task.Delay(10000); // Timer para mostrar la modal y que se pueda leer
-                _ts.DevueltaCorrecta = false;
+                _ts.paymentProcess.DevueltaCorrecta = false;
                 await SavePay();
             }
 
@@ -227,7 +227,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                 });
             }
         }
-        private async void BtnCancel_TouchDown(object sender, EventArgs e)
+        private async void Btn_CancelarTouchDown(object sender, EventArgs e)
         {
             _ = Dispatcher.BeginInvoke(() => cancelar.Visibility = Visibility.Collapsed);
 
@@ -277,7 +277,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                     Transaccion = _ts.IdTransaccionApi,
                     codigoApostar = AppConfig.Get("CodData"),
                     idPagador = _ts.IdUser.ToString(),
-                    cedula = _ts.Documento
+                    cedula = _ts.paymentProcess.Documento
                 };
 
                 // Llenado de apuestas (tu lógica original de Chance)
@@ -351,7 +351,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             }
             else
             {
-                _ts.DevueltaCorrecta = true;
+                _ts.paymentProcess.DevueltaCorrecta = true;
                 await SavePay();
             }
         }
@@ -375,14 +375,14 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             {
                 _paymentViewModel.IsPayCompleted = true;
                 _ts.DatosPago = _paymentViewModel;
-                _ts.TotalIngresado = _paymentViewModel.EnteredAmount;
-                _ts.TotalDevuelta = _paymentViewModel.DispensedAmount;
+                _ts.paymentProcess.TotalIngresado = _paymentViewModel.EnteredAmount;
+                _ts.paymentProcess.TotalDevuelta = _paymentViewModel.DispensedAmount;
 
                 SetTransactionDescription();
 
 
                 if ((_tranStateTemp == StateTransaction.Aprobada || _tranStateTemp == StateTransaction.Cancelada)
-                    && !_ts.DevueltaCorrecta)
+                    && !_ts.paymentProcess.DevueltaCorrecta)
                 {
                     // Si el estado de transacción es aprobada o cancelada y además hay error de devuelta se cambia a su respectivo estado
                     // CanceladoErrorDevuelta o AprobadaErrorDevuelta
@@ -420,7 +420,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
 
         private void ReturnMoney(decimal returnValue)
         {
-            _ts.DevueltaCorrecta = false;
+            _ts.paymentProcess.DevueltaCorrecta = false;
 #if NO_PERIPHERALS
             OnCashDispensed(returnValue, new Dictionary<int, int>());
 #else
@@ -450,7 +450,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                 else
                 {
                     _currentLoadModal = _nav.ShowLoadModal("Transacción cancelada");
-                    _ts.DevueltaCorrecta = true;
+                    _ts.paymentProcess.DevueltaCorrecta = true;
                     await SavePay();
                 }
 
@@ -509,29 +509,30 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             {
                 case StateTransaction.Aprobada:
                     _ts.EstadoTransaccionVerb = "Exitoso";
-                    _ts.Descripcion += "Transacción finalizada correctamente. ";
+                    _ts.paymentProcess.Descripcion += "Transacción finalizada correctamente. ";
                     break;
                 case StateTransaction.Cancelada:
                     _ts.EstadoTransaccionVerb = "Declinada";
-                    _ts.Descripcion += "Transacción Cancelada, No se realizó el pago.";
+                    _ts.paymentProcess.Descripcion += "Transacción Cancelada, No se realizó el pago.";
                     break;
                 case StateTransaction.AprobadaSinNotificar:
                     _ts.EstadoTransaccionVerb = "Exitoso";
-                    _ts.Descripcion += "Transacción aprobada, pero no se ha podido notificar el pago a la entidad correspondiente. ";
+                    _ts.paymentProcess.Documento += "Transacción aprobada, pero no se ha podido notificar el pago a la entidad correspondiente. ";
                     break;
                 case StateTransaction.ErrorServicioTercero:
                     _ts.EstadoTransaccionVerb = "Declinada";
-                    _ts.Descripcion += $"Transacción cancelada ocurrió un error en el servicio tercero, No se realizó el pago.";
+                    _ts.paymentProcess.Documento += $"Transacción cancelada ocurrió un error en el servicio tercero, No se realizó el pago.";
                     break;
                 default:
                     break;
             }
 
-            if (!_ts.DevueltaCorrecta)
-                _ts.Descripcion += $"Ocurrió un error durante la devolución del dinero. Cantidad faltante {_paymentViewModel.RemainingAmount.ToString("C0")}";
+            if (!_ts.paymentProcess.DevueltaCorrecta)
+                _ts.paymentProcess.Documento += $"Ocurrió un error durante la devolución del dinero. Cantidad faltante {_paymentViewModel.RemainingAmount.ToString("C0")}";
         }
 
         #endregion
+
 
     }
 

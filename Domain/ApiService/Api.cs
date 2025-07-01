@@ -112,14 +112,14 @@ namespace SuSuerteV2.Domain.ApiService
             ts.EstadoTransaccion = StateTransaction.Iniciada;
             var transactionToCreate = new TransactionDto
             {
-                Document = ts.Documento,
-                Reference = ts.Referencia,
+                Document = ts.paymentProcess.Documento,
+                Reference = ts.paymentProcess.Referencia,
                 Product = ts.TipoRecaudo,
-                TotalAmount = Convert.ToDouble(ts.Total),
-                RealAmount = Convert.ToDouble(ts.TotalSinRedondear),
+                TotalAmount = Convert.ToDouble(ts.paymentProcess.Total),
+                RealAmount = Convert.ToDouble(ts.paymentProcess.TotalSinRedondear),
                 IncomeAmount = 0,
                 ReturnAmount = 0,
-                Description = ts.Descripcion ?? string.Empty,
+                Description = ts.paymentProcess.Descripcion ?? string.Empty,
                 IdStateTransaction = (int)ts.EstadoTransaccion,
                 StateTransaction = ts.EstadoTransaccion.ToString(),
                 IdTypeTransaction = (int)ts.TipoTransaccion,
@@ -186,10 +186,11 @@ namespace SuSuerteV2.Domain.ApiService
             var transactionToUpdate = ts.ApiDto;
 
             transactionToUpdate.IdStateTransaction = (int)ts.EstadoTransaccion;
-            transactionToUpdate.Description = ts.Descripcion;
-            transactionToUpdate.IncomeAmount = (double)ts.TotalIngresado;
-            transactionToUpdate.ReturnAmount = (double)ts.TotalDevuelta;
-            transactionToUpdate.Document = ts.Documento;
+            transactionToUpdate.Description = ts.paymentProcess.Descripcion;
+            transactionToUpdate.Description = ts.paymentProcess.Descripcion;
+            transactionToUpdate.IncomeAmount = (double)ts.paymentProcess.TotalIngresado;
+            transactionToUpdate.ReturnAmount = (double)ts.paymentProcess.TotalDevuelta;
+            transactionToUpdate.Document = ts.paymentProcess.Documento;
 
 
 

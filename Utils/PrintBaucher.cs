@@ -38,11 +38,11 @@ namespace SuSuerteV2.Utils
 
                     // Número de Cédula
                     PrintService.PrintInLeft("Número de Cedula");
-                    PrintService.PrintInRight(Transaction.Documento ?? string.Empty);
+                    PrintService.PrintInRight(Transaction.paymentProcess.Documento ?? string.Empty);
 
                     // Valor a Pagar
                     PrintService.PrintInLeft("Valor recarga");
-                    PrintService.PrintInRight($"${Transaction.Total}");
+                    PrintService.PrintInRight($"${Transaction.paymentProcess.Total}");
 
                     // Mensaje final
                     PrintService.PrintInCenter("REALIZA TU APUESTA EN: BETPLAY.COM.CO");
@@ -84,9 +84,9 @@ namespace SuSuerteV2.Utils
                 PrintService.PrintInCenter("Numero7"); // Asegúrate de definir Numero7
 
                 // Imprimir información adicional
-                PrintService.PrintInCenter($"COL - {AppConfig.Get("Terminal")} CLI - {Transaction.Documento}");
+                PrintService.PrintInCenter($"COL - {AppConfig.Get("Terminal")} CLI - {Transaction.paymentProcess.Documento}");
                 PrintService.PrintInCenter($"FV: {DateTime.Now:dd/MM/yyyy HH:mm:ss} FS: {Convert.ToDateTime(Transaction.Fecha):dd/MM/yyyy}");
-                PrintService.PrintInCenter($"Vlr: {string.Format("{0:C2}", $"${Transaction.Valor}")} IVA: {string.Format("{0:C2}", $"${Transaction.Iva}")} TOTAL: {string.Format("{0:C2}", $"${Transaction.Total}")}");
+                PrintService.PrintInCenter($"Vlr: {string.Format("{0:C2}", $"${Transaction.Valor}")} IVA: {string.Format("{0:C2}", $"${Transaction.Iva}")} TOTAL: {string.Format("{0:C2}", $"${Transaction.paymentProcess.Total}")}");
 
                 PrintService.PrintInCenter("OF:");
                 PrintService.PrintInCenter("SV: " + AppConfig.Get("Sitio"));
@@ -138,16 +138,16 @@ namespace SuSuerteV2.Utils
                     PrintService.PrintInLeft("Descripción: " + TypePack);
 
                     // Valor recarga
-                    PrintService.PrintInLeft("Valor recarga: " + string.Format("{0:C2}", "$" + Transaction.Total.ToString()));
+                    PrintService.PrintInLeft("Valor recarga: " + string.Format("{0:C2}", "$" + Transaction.paymentProcess.Total.ToString()));
 
                     // Estado de la transacción
                     PrintService.PrintInLeft("Estado de transacción: " + Transaction.StatePay.ToString());
 
                     // Valor ingresado
-                    PrintService.PrintInLeft("Valor ingresado: " + string.Format("{0:C2}", "$" + Transaction.TotalIngresado.ToString()));
+                    PrintService.PrintInLeft("Valor ingresado: " + string.Format("{0:C2}", "$" + Transaction.paymentProcess.TotalIngresado.ToString()));
 
                     // Total Devuelto
-                    PrintService.PrintInLeft("Total Devuelto: " + string.Format("{0:C2}", "$" + Transaction.TotalDevuelta.ToString()));
+                    PrintService.PrintInLeft("Total Devuelto: " + string.Format("{0:C2}", "$" + Transaction.paymentProcess.TotalDevuelta.ToString()));
 
                     // Imprimir línea divisoria
                     PrintService.PrintInCenter("------------------------------------------------------------");
