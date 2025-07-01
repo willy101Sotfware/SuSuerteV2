@@ -8,6 +8,9 @@
     <Compile Update="Presentation\UserControls\Astro\LoteriasAstroUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Presentation\UserControls\Astro\PaymentAstroUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Presentation\UserControls\Astro\ResumenAstroUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
