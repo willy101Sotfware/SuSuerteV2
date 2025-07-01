@@ -549,7 +549,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
                 }
 
                 GuardarNumero();
-                _nav.NavigateTo(new ApuestaUC());
+                _nav.NavigateTo(new SelectNumUC());
                 
             }
         }

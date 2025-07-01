@@ -4,6 +4,7 @@ using SuSuerteV2.Domain.Enumerables;
 using System.ComponentModel;
 using System.Windows.Media.Imaging;
 using static SuSuerteV2.Domain.UIServices.Transaction;
+using static SuSuerteV2.Presentation.UserControls.BetPlay.PaymentBetplayUC;
 
 namespace SuSuerteV2.Domain.UIServices
 {
@@ -106,7 +107,7 @@ namespace SuSuerteV2.Domain.UIServices
         public int ValorApostadoAstro { get; set; }
         public List<Chance> ListaChances { get; set; }
 
-
+        public PaymentViewModel DatosPago { get; set; }
         public ResponseNotificarPaquetes ResponseNotificarPaquetes { get; set; }
         public Dictionary<string, int> DicSginosSeleccionados { get; set; } = new Dictionary<string, int>();
 
