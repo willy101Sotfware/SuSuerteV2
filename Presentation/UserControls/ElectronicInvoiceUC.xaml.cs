@@ -1,5 +1,5 @@
-﻿using SuSuerteV2.Domain;
-using SuSuerteV2.Domain.ApiService;
+﻿using SuSuerteV2.ApiService;
+using SuSuerteV2.Domain;
 using SuSuerteV2.Domain.ApiService.IntegrationModels;
 using SuSuerteV2.Domain.Enumerables;
 using SuSuerteV2.Domain.UIServices;
@@ -18,18 +18,8 @@ namespace SuSuerteV2.Presentation.UserControls
     /// </summary>
     public partial class ElectronicInvoiceUC : AppUserControl
     {
-        private const string TIMER_INICIAL = "03:59";
-        private const int ANIMATION_DELAY = 150;
-        private const double SCALE_PRESSED = 0.95;
-        private const double SCALE_NORMAL = 1.0;
-        private const decimal MONTO_MINIMO = 2000;
-        private const decimal MONTO_MAXIMO = 500000;
-        private const decimal INCREMENTO_VALIDO = 100;
-
-
-
-
-        private TimerGeneric _timer;
+      
+       private TimerGeneric _timer;
         private DispatcherTimer _animationTimer;
         private Transaction _ts;
         private ModalWindow? _currentLoadModal = null;
@@ -47,6 +37,7 @@ namespace SuSuerteV2.Presentation.UserControls
         private void CancelButton(object sender, EventArgs e)
         {
             SetCallBacksNull();
+            _nav.CloseModal();  
             _timer?.Stop();
 
 
@@ -76,7 +67,7 @@ namespace SuSuerteV2.Presentation.UserControls
         private async void ContinueButton(object sender, EventArgs e)
         {
 
-            InhabilitarVista();
+           await InhabilitarVista();
 
 
             EventLogger.SaveLog(EventType.Info,"ElectronicInvoice", "Entrando a ContinueButton ", "OK", "");
@@ -358,26 +349,7 @@ namespace SuSuerteV2.Presentation.UserControls
         #endregion
 
         #region Métodos de Timer
-        /// <summary>
-        /// Inicializa el timer del control
-        /// </summary>
-        private void InitializeTimer()
-        {
-            try
-            {
-                _timer = new TimerGeneric(TIMER_INICIAL);
-
-                _timer.Tick += OnTimerTick;
-                _timer.TimeOut += OnTimerTimeout;
-
-                tbTimer.Text = TIMER_INICIAL;
-                _timer.Start();
-            }
-            catch (Exception ex)
-            {
-                LogError("InitializeTimer", ex);
-            }
-        }
+      
 
         /// <summary>
         /// Activa el timer
@@ -457,27 +429,8 @@ namespace SuSuerteV2.Presentation.UserControls
             // Inicialización adicional si es necesaria
         }
 
-        /// <summary>
-        /// Limpia los recursos utilizados
-        /// </summary>
-        private void CleanupResources()
-        {
-            try
-            {
-                SetCallBacksNull();
-
-                _timer?.Stop();
-                _timer?.Dispose();
-                _timer = null;
-
-                _animationTimer?.Stop();
-                _animationTimer = null;
-            }
-            catch (Exception ex)
-            {
-                LogError("CleanupResources", ex);
-            }
-        }
+   
+      
         #endregion
 
         #region Métodos de Utilidad

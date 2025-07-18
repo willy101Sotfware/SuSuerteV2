@@ -1,4 +1,5 @@
-﻿using SuSuerteV2.Domain;
+﻿using SuSuerteV2.ApiService;
+using SuSuerteV2.Domain;
 using SuSuerteV2.Domain.ApiService;
 using SuSuerteV2.Domain.UIServices;
 using SuSuerteV2.Modals;
@@ -33,7 +34,7 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
 
 
 
-        private async void Btn_ContinuarTouchDown(object sender, EventArgs e)
+        private  void Btn_ContinuarTouchDown(object sender, EventArgs e)
         {
             SetCallBacksNull();
             _timer?.Stop();
@@ -125,7 +126,7 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
         }
 
 
-        private async Task<bool> Validarsignoselect(string tag, int id, UIElement signoselect)
+        private Task<bool> Validarsignoselect(string tag, int id, UIElement signoselect)
         {
             try
             {
@@ -135,7 +136,7 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
                     signoselect.Visibility = Visibility.Visible;
 
                     _ts.DicSginosSeleccionados[tag] = id;
-                    return true;
+                    return Task.FromResult(true);
                 }
                 else
                 {
@@ -147,7 +148,7 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
                         _ts.DicSginosSeleccionados.Remove(tag);
                     }
 
-                    return false;
+                    return Task.FromResult(false);
                 }
 
             }
@@ -155,7 +156,7 @@ namespace SuSuerteV2.Presentation.UserControls.Astro
             {
                 EventLogger.SaveLog(EventType.Error, nameof(SignosAstroUC), "Validarsignoselect", ex.Message + " " + ex.StackTrace);
                 _nav.NavigateTo(new MenuUC());
-                return false;
+                return Task.FromResult(false);
          
             }
 

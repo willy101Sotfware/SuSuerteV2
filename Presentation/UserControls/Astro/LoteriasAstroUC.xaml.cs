@@ -1,5 +1,5 @@
-﻿using SuSuerteV2.Domain;
-using SuSuerteV2.Domain.ApiService;
+﻿using SuSuerteV2.ApiService;
+using SuSuerteV2.Domain;
 using SuSuerteV2.Domain.ApiService.IntegrationModels;
 using SuSuerteV2.Domain.UIServices;
 using SuSuerteV2.Modals;

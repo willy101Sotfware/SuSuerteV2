@@ -1,4 +1,5 @@
-﻿using SuSuerteV2.Domain;
+﻿using SuSuerteV2.ApiService;
+using SuSuerteV2.Domain;
 using SuSuerteV2.Domain.ApiService;
 using SuSuerteV2.Domain.ApiService.IntegrationModels;
 using SuSuerteV2.Domain.ApiService.Models;
@@ -500,15 +501,6 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
             });
         }
 
-        private void HabilitarVista()
-        {
-            Dispatcher.BeginInvoke((Action)delegate
-            {
-                this.Opacity = 1;
-                //this.btnChance.IsEnabled = true;
-                //this.btnRecaudos.IsEnabled = true;
-                this.IsEnabled = true;
-            });
-        }
+      
     }
 }

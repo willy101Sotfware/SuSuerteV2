@@ -7,6 +7,7 @@ using SuSuerteV2.Domain.Variables;
 using SuSuerteV2.Modals;
 using SuSuerteV2.Presentation.UserControls.Chance;
 using SuSuerteV2.UserControls;
+using SuSuerteV2.Utils;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -120,12 +121,12 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
         {
             switch (elementName)
             {
-         
+
                 case "btnCancelar":
                     ProcessCancelarAsync();
                     break;
 
-            
+
             }
         }
         private void ProcessElementClick(FrameworkElement element)
@@ -152,8 +153,8 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
         /// </summary>
         /// 
 
-     
-        
+
+
         private async Task ProcessCancelarAsync()
         {
             _ = Dispatcher.BeginInvoke(() => BtnCancel.Visibility = Visibility.Collapsed);
@@ -204,7 +205,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
             try
             {
                 _paymentViewModel.IsPayCompleted = true;
-        
+
                 _ts.paymentProcess.TotalIngresado = _paymentViewModel.EnteredAmount;
                 _ts.paymentProcess.TotalDevuelta = _paymentViewModel.DispensedAmount;
 
@@ -235,7 +236,7 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
                     GC.Collect();
 
                 }
-              
+
 
             }
             catch (Exception ex)
@@ -440,5 +441,6 @@ namespace SuSuerteV2.Presentation.UserControls.BetPlay
         }
 
 
- 
+
+    }
 }

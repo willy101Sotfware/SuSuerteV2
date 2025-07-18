@@ -298,7 +298,7 @@ namespace SuSuerteV2.Presentation.UserControls
         {
             InhabilitarVista();
             EventLogger.SaveLog(EventType.Info, "Abriendo menú Recargas");
-          // NavigateTo(new ValidacionRegistroUC());
+           NavigateTo(new ValidacionRegistroUC());
         }
 
         private void InhabilitarVista()

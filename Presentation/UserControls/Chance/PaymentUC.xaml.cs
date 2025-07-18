@@ -265,7 +265,7 @@ namespace SuSuerteV2.Presentation.UserControls.Chance
         {
 
 
-            NotifyChance();
+            await NotifyChance();
             
 
         }
